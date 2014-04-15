@@ -7,5 +7,6 @@ module.exports.Ray = require('./lib/Ray');
 module.exports.Geometry = require('./lib/Geometry');
 module.exports.gen = {
   Cube: require('./lib/gen/Cube'),
-  Sphere: require('./lib/gen/Sphere')
+  Sphere: require('./lib/gen/Sphere'),
+  LineBuilder: require('./lib/gen/LineBuilder')
 }
