@@ -3,6 +3,7 @@ module.exports.Vec3 = require('./lib/Vec3');
 module.exports.Vec4 = require('./lib/Vec4');
 module.exports.Mat4 = require('./lib/Mat4');
 module.exports.Quat = require('./lib/Quat');
+module.exports.Spline3D = require('./lib/Spline3D');
 module.exports.Ray = require('./lib/Ray');
 module.exports.Geometry = require('./lib/Geometry');
 module.exports.gen = {
