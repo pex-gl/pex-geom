@@ -5,7 +5,7 @@ var materials = require('pex-materials');
 var geom = require('pex-geom');
 
 var Window = sys.Window;
-var Sphere = require('../lib/gen/Sphere');
+var Cube = require('../lib/gen/Cube');
 var IsoSurface = require('../lib/gen/IsoSurface');
 var Mesh = glu.Mesh;
 var PerspectiveCamera = glu.PerspectiveCamera;
@@ -36,11 +36,6 @@ Window.create({
 
     this.meshes = [];
 
-    var sphere = new Sphere(0.75);
-    var colors = sphere.vertices.map(function() {
-      return new Color(Math.random(), Math.random(), Math.random(), 1.0);
-    });
-
     var spheres = [
       { position: new Vec3(-0.2, 0, 0), radius: 0.4, force: 1.0 },
       { position: new Vec3( 0.3, 0, 0), radius: 0.3, force: 1.0 },
@@ -48,7 +43,7 @@ Window.create({
       { position: new Vec3( 0.0, 0.5, 0.2), radius: 0.3, force: 1.0 }
     ];
 
-    var iso = new IsoSurface(20, 1);
+    var iso = new IsoSurface(10, 1);
     var isoGeom = iso.update(spheres);
     isoGeom.normals = [];
     isoGeom.texCoords = [];
@@ -72,6 +67,10 @@ Window.create({
     //this.meshes.push(new Mesh(sphere, new Textured({ texture: texture2D, scale: new Vec2(5, 5) }), { triangles: true }));
     //this.meshes.push(new Mesh(sphere, new FlatToonShading({ colorBands: colorBands }), { triangles: true }));
     this.meshes.push(new Mesh(isoGeom, new MatCap({ texture: mapCap }), { triangles: true }));
+
+    var boxGeom = new Cube();
+    boxGeom.computeEdges();
+    this.box = new Mesh(boxGeom, new SolidColor(), { lines: true });
   },
   draw: function() {
     glu.clearColorAndDepth(Color.Black);
@@ -83,6 +82,7 @@ Window.create({
     var dw = 1/cols * this.width;
     var dh = 1/rows * this.height;
     this.camera.setAspectRatio(dw/dh);
+    this.box.draw(this.camera);
     for(var j=0; j<rows; j++) {
       for(var i=0; i<cols; i++) {
         var mesh = this.meshes[index++];
