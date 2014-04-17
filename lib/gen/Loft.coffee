@@ -1,4 +1,4 @@
-merge = require('merge')
+extend = require('extend')
 Geometry = require('../Geometry')
 Vec2 = require('../Vec2')
 Vec3 = require('../Vec3')
@@ -39,7 +39,7 @@ class Loft extends Geometry
 
     path.samplesCount = 5000
 
-    @options = options = merge(defaults, options)
+    @options = options = extend(defaults, options)
     @shapePath = options.path || @makeShapePath(options.numSegments)
 
     @rfunc = @makeRadiusFunction(options.r)
