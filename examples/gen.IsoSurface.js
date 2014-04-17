@@ -14,6 +14,7 @@ var Color = color.Color;
 var Vec3 = require('../lib/Vec3');
 var Vec2 = require('../lib/Vec2');
 var Texture2D = glu.Texture2D;
+var Time = sys.Time;
 
 var ShowNormals = materials.ShowNormals;
 var SolidColor = materials.SolidColor;
@@ -36,37 +37,21 @@ Window.create({
 
     this.meshes = [];
 
-    var spheres = [
-      { position: new Vec3(-0.2, 0, 0), radius: 0.4, force: 1.0 },
-      { position: new Vec3( 0.3, 0, 0), radius: 0.3, force: 1.0 },
+    var spheres = this.spheres = [
+      { position: new Vec3(-0.2, 0, 0), radius: 0.2, force: 1.0 },
+      { position: new Vec3( 0.3, 0, 0), radius: 0.25, force: 1.0 },
       { position: new Vec3( 0.3, 0.5, 0), radius: 0.3, force: 1.0 },
-      { position: new Vec3( 0.0, 0.5, 0.2), radius: 0.3, force: 1.0 }
+      { position: new Vec3( 0.0, -0.5, 0), radius: 0.4, force: 1.0 }
     ];
 
-    var iso = new IsoSurface(10, 1);
+    var iso = this.iso = new IsoSurface(20, 1);
     var isoGeom = iso.update(spheres);
-    isoGeom.normals = [];
-    isoGeom.texCoords = [];
-    console.log(isoGeom.vertices.length)
-    //isoGeom.vertices = [];
-    //isoGeom.faces = [];
-    isoGeom.vertices = isoGeom.vertices.map(function() {
-      return new Vec3();
-    })
-    //console.log(isoGeom.vertices.length);
-    //sphere.addAttrib('colors', 'color', colors);
 
-    //sphere = new geom.gen.Sphere();
+    var colorBands = Texture2D.load('assets/palette_limehighlight.png');
+    var mapCap = Texture2D.load('assets/hi_gloss_clay_724.png');
 
-    var colorBands = Texture2D.load('assets/palette_green.png');
-    var mapCap = Texture2D.load('assets/matcap.jpg');
-
-    //this.meshes.push(new Mesh(isoGeom, new SolidColor({ color: Color.Red }), { triangles: true }));
-    //this.meshes.push(new Mesh(isoGeom, new ShowNormals(), { triangles: true }));
-    //this.meshes.push(new Mesh(sphere, new ShowColors(), { triangles: true }));
-    //this.meshes.push(new Mesh(sphere, new Textured({ texture: texture2D, scale: new Vec2(5, 5) }), { triangles: true }));
-    //this.meshes.push(new Mesh(sphere, new FlatToonShading({ colorBands: colorBands }), { triangles: true }));
     this.meshes.push(new Mesh(isoGeom, new MatCap({ texture: mapCap }), { triangles: true }));
+    //this.meshes.push(new Mesh(isoGeom, new FlatToonShading({ colorBands: colorBands }), { triangles: true }));
 
     var boxGeom = new Cube();
     boxGeom.computeEdges();
@@ -76,6 +61,8 @@ Window.create({
     glu.clearColorAndDepth(Color.Black);
     glu.enableDepthReadAndWrite(true);
 
+    Time.verbose = true;
+
     var cols = 3;
     var rows = 3;
     var index = 0;
@@ -83,6 +70,19 @@ Window.create({
     var dh = 1/rows * this.height;
     this.camera.setAspectRatio(dw/dh);
     this.box.draw(this.camera);
+
+    this.spheres[0].position.y = 0.3*Math.cos(Time.seconds*2+Math.PI/4)
+    this.spheres[0].position.z = 0.2*Math.sin(Time.seconds*4+Math.PI/4)*Math.cos(Time.seconds*2+Math.PI/4)
+    this.spheres[0].position.x = 0.1*Math.cos(Time.seconds*2+Math.PI/4)
+    this.spheres[1].position.z = 0.5*Math.cos(Time.seconds*2+Math.PI/4)
+    this.spheres[1].position.y = 0.2*Math.sin(Time.seconds*3+Math.PI/4)*Math.cos(Time.seconds*2+Math.PI/4)
+    this.spheres[1].position.x = 0.1*Math.cos(Time.seconds*2+Math.PI/4)
+    this.spheres[2].position.x = 0.4*Math.cos(Time.seconds*2+Math.PI/4)
+    this.spheres[2].position.y = 0.5*Math.sin(Time.seconds*2+Math.PI/4)*Math.cos(Time.seconds*2+Math.PI/4)
+    this.spheres[2].position.z = 0.1*Math.cos(Time.seconds*3+Math.PI/4)
+    this.meshes[0].geom = this.iso.update(this.spheres);
+    this.meshes[0].geom.computeEdges();
+
     for(var j=0; j<rows; j++) {
       for(var i=0; i<cols; i++) {
         var mesh = this.meshes[index++];
