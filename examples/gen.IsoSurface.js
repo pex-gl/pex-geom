@@ -47,11 +47,9 @@ Window.create({
     var iso = this.iso = new IsoSurface(20, 1);
     var isoGeom = iso.update(spheres);
 
-    var colorBands = Texture2D.load('assets/palette_limehighlight.png');
-    var mapCap = Texture2D.load('assets/hi_gloss_clay_724.png');
+    var mapCap = Texture2D.load('assets/matcap.jpg');
 
     this.meshes.push(new Mesh(isoGeom, new MatCap({ texture: mapCap }), { triangles: true }));
-    //this.meshes.push(new Mesh(isoGeom, new FlatToonShading({ colorBands: colorBands }), { triangles: true }));
 
     var boxGeom = new Cube();
     boxGeom.computeEdges();
