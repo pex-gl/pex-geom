@@ -1,8 +1,8 @@
 {
   "name": "pex-geom",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Geometry related code for the pex library",
-  "homepage": "https://github.com/vorg/pex-geom",
+  "homepage": "https://github.com/vorg/pex-geom.git",
   "keywords": [
     "geometry",
     "3d",
@@ -14,16 +14,14 @@
     "url": "http://marcinignac.com"
   },
   "main": "index.js",
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
-    "extend": "1.2.1"
+    "merge": "1.1.3"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/vorg/pex-geom.git"
   },
   "bugs": "https://github.com/vorg/pex-geom/issues",
-  "homepage": "https://github.com/vorg/pex-geom.git",
   "license": "MIT"
 }
