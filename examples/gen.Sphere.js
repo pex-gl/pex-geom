@@ -4,7 +4,7 @@ var geom = require('pex-geom');
 var materials = require('pex-materials');
 var color = require('pex-color');
 
-var Sphere = geom.gen.Sphere;
+var Sphere = require('../lib/gen/Sphere');
 var Mesh = glu.Mesh;
 var ShowNormals = materials.ShowNormals;
 var PerspectiveCamera = glu.PerspectiveCamera;

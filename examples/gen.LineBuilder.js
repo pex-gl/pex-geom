@@ -4,7 +4,7 @@ var geom = require('pex-geom');
 var materials = require('pex-materials');
 var color = require('pex-color');
 
-var LineBuilder = geom.gen.LineBuilder;
+var LineBuilder = require('../lib/gen/LineBuilder');
 var Mesh = glu.Mesh;
 var ShowColors = materials.ShowColors;
 var PerspectiveCamera = glu.PerspectiveCamera;
