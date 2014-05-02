@@ -10,3 +10,9 @@ module.exports.Spline2D = require('./lib/Spline2D');
 module.exports.Spline1D = require('./lib/Spline1D');
 module.exports.Ray = require('./lib/Ray');
 module.exports.Geometry = require('./lib/Geometry');
+module.exports.Random = require('./lib/Random');
+
+//unpack Random methods to geom package
+for(var funcName in module.exports.Random) {
+  module.exports[funcName] = module.exports.Random[funcName];
+}
