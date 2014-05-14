@@ -9,6 +9,7 @@ module.exports.Spline3D = require('./lib/Spline3D');
 module.exports.Spline2D = require('./lib/Spline2D');
 module.exports.Spline1D = require('./lib/Spline1D');
 module.exports.Ray = require('./lib/Ray');
+module.exports.Plane = require('./lib/Plane');
 module.exports.Geometry = require('./lib/Geometry');
 module.exports.Random = require('./lib/Random');
 
