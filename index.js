@@ -12,6 +12,8 @@ module.exports.Ray = require('./lib/Ray');
 module.exports.Plane = require('./lib/Plane');
 module.exports.Geometry = require('./lib/Geometry');
 module.exports.Random = require('./lib/Random');
+module.exports.BoundingBox = require('./lib/BoundingBox');
+module.exports.Triangle2D = require('./lib/Triangle2D');
 
 //unpack Random methods to geom package
 for(var funcName in module.exports.Random) {
