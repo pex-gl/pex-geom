@@ -14,6 +14,7 @@ module.exports.Geometry = require('./lib/Geometry');
 module.exports.Random = require('./lib/Random');
 module.exports.BoundingBox = require('./lib/BoundingBox');
 module.exports.Triangle2D = require('./lib/Triangle2D');
+module.exports.Octree = require('./lib/Octree');
 
 //unpack Random methods to geom package
 for(var funcName in module.exports.Random) {
