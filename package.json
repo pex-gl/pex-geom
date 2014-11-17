@@ -1,6 +1,6 @@
 {
   "name": "pex-geom",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "Geometry related code for the pex library",
   "homepage": "https://github.com/vorg/pex-geom.git",
   "keywords": [
