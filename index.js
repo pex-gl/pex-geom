@@ -15,3 +15,4 @@ module.exports.BoundingBox = require('./lib/BoundingBox');
 module.exports.Triangle2D = require('./lib/Triangle2D');
 module.exports.Triangle3D = require('./lib/Triangle3D');
 module.exports.Octree = require('./lib/Octree');
+module.exports.Frustum = require('./lib/Frustum');
