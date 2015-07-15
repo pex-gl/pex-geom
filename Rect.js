@@ -48,7 +48,7 @@ function setMinMax4(a,minx,miny,maxx,maxy){
 
 function getMin(a,out){
     if(out === undefined){
-        return [a[0][0],a[1]];
+        return [a[0][0],a[0][1]];
     }
     out[0] = a[0][0];
     out[1] = a[0][1];
