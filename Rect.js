@@ -167,6 +167,12 @@ function includePoint(a,point){
 }
 
 function includePoint2(a,x,y){
+    if(isZero(a)){
+        a[0] = a[2] = x;
+        a[1] = a[3] = y;
+        return a;
+    }
+
     var minx = a[0];
     var miny = a[1];
     var maxx = a[2];
@@ -181,6 +187,11 @@ function includePoint2(a,x,y){
 }
 
 function includePoints(a,points){
+    if(isZero(a)){
+        a[0] = a[1] =  Number.MAX_VALUE;
+        a[2] = a[3] = -Number.MAX_VALUE;
+    }
+
     var minx = a[0];
     var miny = a[1];
     var maxx = a[2];
@@ -205,6 +216,10 @@ function includePoints(a,points){
 }
 
 function includePointsFlat(a,points){
+    if(isZero(a)){
+        a[0] = a[1] =  Number.MAX_VALUE;
+        a[2] = a[3] = -Number.MAX_VALUE;
+    }
     var minx = a[0];
     var miny = a[1];
     var maxx = a[2];
@@ -243,6 +258,11 @@ function includeRects(a,rects){
 
 function isZero(a){
     return a[0] == 0 && a[1] == 0 && a[2] == 0 && a[3] == 0;
+}
+
+function toZero(a){
+    a[0] = a[1] = a[2] = a[3] = 0;
+    return a;
 }
 
 function toMax(a){
@@ -299,6 +319,7 @@ module.exports = {
     includeRects  : includeRects,
     isZero : isZero,
     toMax  : toMax,
+    toZero : toZero,
     createFromPoints     : createFromPoints,
     createFromPointsFlat : createFromPointsFlat,
     createFromRects      : createFromRects
