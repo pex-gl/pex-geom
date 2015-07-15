@@ -245,6 +245,31 @@ function includeRects(a,rects){
     return a;
 }
 
+function mapPoint(a,point){
+    var minx = a[0][0];
+    var miny = a[0][1];
+    var maxx = a[1][0];
+    var maxy = a[1][1];
+    var x = point[0];
+    var y = point[1];
+
+    point[0] = Math.max(minx,Math.min(x,maxx)) - minx;
+    point[1] = Math.max(miny,Math.min(y,maxy)) - miny;
+    return point;
+}
+
+function clampPoint(a,point){
+
+    var minx = a[0][0];
+    var miny = a[0][1];
+    var maxx = a[1][0];
+    var maxy = a[1][1];
+
+    point[0] = Math.max(minx,Math.min(point[0],maxx));
+    point[1] = Math.max(miny,Math.min(point[1],maxy));
+    return point;
+}
+
 function toMax(a){
     a[0][0] = a[1][0] = -Number.MAX_VALUE;
     a[0][1] = a[1][1] =  Number.MAX_VALUE;
@@ -317,6 +342,8 @@ module.exports = {
     includePointsFlat : includePointsFlat,
     includeRect   : includeRect,
     includeRects  : includeRects,
+    mapPoint   : mapPoint,
+    clampPoint : clampPoint,
     isZero   : isZero,
     isEmpty  : isEmpty,
     setEmpty : setEmpty,
