@@ -1,4 +1,8 @@
 function create(){
+    return [[Infinity,Infinity],[-Infinity,-Infinity]];
+}
+
+function zero(){
     return [[0,0],[0,0]];
 }
 
@@ -167,12 +171,6 @@ function includePoint(a,point){
 }
 
 function includePoint2(a,x,y){
-    if(isZero(a)){
-        a[0][0] = a[1][0] = x;
-        a[0][1] = a[1][1] = y;
-        return a;
-    }
-
     var minx = a[0][0];
     var miny = a[0][1];
     var maxx = a[1][0];
@@ -187,11 +185,6 @@ function includePoint2(a,x,y){
 }
 
 function includePoints(a,points){
-    if(isZero(a)){
-        a[0][0] = a[0][1] =  Number.MAX_VALUE;
-        a[1][0] = a[1][1] = -Number.MAX_VALUE;
-    }
-
     var minx = a[0][0];
     var miny = a[0][1];
     var maxx = a[1][0];
@@ -216,10 +209,6 @@ function includePoints(a,points){
 }
 
 function includePointsFlat(a,points){
-    if(isZero(a)){
-        a[0][0] = a[0][1] =  Number.MAX_VALUE;
-        a[1][0] = a[1][1] = -Number.MAX_VALUE;
-    }
     var minx = a[0][0];
     var miny = a[0][1];
     var maxx = a[1][0];
@@ -256,18 +245,28 @@ function includeRects(a,rects){
     return a;
 }
 
+function toMax(a){
+    a[0][0] = a[1][0] = -Number.MAX_VALUE;
+    a[0][1] = a[1][1] =  Number.MAX_VALUE;
+}
+
+function setEmpty(a){
+    a[0][0] = a[0][1] =  Infinity;
+    a[1][0] = a[1][1] = -Infinity;
+    return a;
+}
+
+function isEmpty(a){
+    return (a[0][0] > a[1][0]) || (a[0][1] > a[1][1]);
+}
+
 function isZero(a){
     return a[0][0] == 0 && a[0][1] == 0 && a[1][0] == 0 && a[1][1] == 0;
 }
 
-function toZero(a){
+function setZero(a){
     a[0][0] = a[0][1] = a[1][0] = a[1][1] = 0;
     return a;
-}
-
-function toMax(a){
-    a[0][0] = a[1][0] = -Number.MAX_VALUE;
-    a[0][1] = a[1][1] =  Number.MAX_VALUE;
 }
 
 function createFromPoints(points){
@@ -284,6 +283,7 @@ function createFromRects(rects){
 
 module.exports = {
     create : create,
+    zero   : zero,
     copy   : copy,
     set  : set,
     set4 : set4,
@@ -317,9 +317,11 @@ module.exports = {
     includePointsFlat : includePointsFlat,
     includeRect   : includeRect,
     includeRects  : includeRects,
-    isZero : isZero,
+    isZero   : isZero,
+    isEmpty  : isEmpty,
+    setEmpty : setEmpty,
     toMax  : toMax,
-    toZero : toZero,
+    setZero : setZero,
     createFromPoints     : createFromPoints,
     createFromPointsFlat : createFromPointsFlat,
     createFromRects      : createFromRects
