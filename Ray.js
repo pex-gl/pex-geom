@@ -104,9 +104,45 @@ function hitTestPlane(a,point,normal,out) {
     return Vec3.set(out,Vec3.add(origin,Vec3.scale(direction,t)));
 }
 
+//http://gamedev.stackexchange.com/questions/18436/most-efficient-aabb-vs-ray-collision-algorithms
+function intersectsAABB(a,aabb){
+    var origin    = a[0];
+    var direction = a[1];
+
+    var dirFracx = 1.0 / direction[0];
+    var dirFracy = 1.0 / direction[1];
+    var dirFracz = 1.0 / direction[2];
+
+    var min  = aabb[0];
+    var max  = aabb[1];
+
+    var minx = min[0];
+    var miny = min[1];
+    var minz = min[2];
+
+    var maxx = max[0];
+    var maxy = max[1];
+    var maxz = max[2];
+
+    var t1 = (minx - origin[0]) * dirFracx;
+    var t2 = (maxx - origin[0]) * dirFracx;
+
+    var t3 = (miny - origin[1]) * dirFracy;
+    var t4 = (maxy - origin[1]) * dirFracy;
+
+    var t5 = (minz - origin[2]) * dirFracz;
+    var t6 = (maxz - origin[2]) * dirFracz;
+
+    var tmin = Math.max(Math.max(Math.min(t1, t2), Math.min(t3, t4)), Math.min(t5, t6));
+    var tmax = Math.min(Math.min(Math.max(t1, t2), Math.max(t3, t4)), Math.max(t5, t6));
+
+    return !(tmax < 0 || tmin > tmax);
+}
+
 module.exports = {
     create : create,
     hitTestTriangle3 : hitTestTriangle3,
     hitTestTriangle  : hitTestTriangle,
-    hitTestPlane     : hitTestPlane
+    hitTestPlane     : hitTestPlane,
+    intersectsAABB   : intersectsAABB
 };
