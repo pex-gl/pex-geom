@@ -9,7 +9,7 @@ var TEMP_VEC3_5 = Vec3.create();
 var TEMP_VEC3_6 = Vec3.create();
 var TEMP_VEC3_7 = Vec3.create();
 
-var EPSILON = 0.0001;
+var EPSILON = 0.000001;
 
 function create(){
     return [[0,0,0],[0,0,1]];
