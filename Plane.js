@@ -11,12 +11,7 @@ function getRayIntersection(plane,ray,out){
     return Ray.hitTestPlane(ray, plane[0], plane[1], out);
 }
 
-/**
- * Check if the point is above, below or on the plane
- * @param  {Plane} - plane
- * @param  {Vec3} - point
- * @return {Int}  - "1" if plane is above, "-1" of plane is below, 0 if point is on the plane
- */
+
 function side(plane, point) {
     var planePoint = plane[0];
     var planeNormal = plane[1];
@@ -29,8 +24,26 @@ function side(plane, point) {
     return 0;
 }
 
-module.exports = {
+/**
+ * [Plane description]
+ * @type {Object}
+ */
+var Plane = {
+    /**
+     * [create description]
+     * @type {Function}
+     */
     create : create,
+    /**
+     * [create description]
+     * @type {Function}
+     */
     getRayIntersection : getRayIntersection,
+    /**
+     * [create description]
+     * @type {Function}
+     */
     side: side
 };
+
+module.exports = Plane;
