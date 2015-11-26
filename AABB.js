@@ -57,11 +57,6 @@ function size(aabb, out) {
     return out;
 }
 
-/**
- * AABB is empty if min > max
- * @param  {[type]}  aabb [description]
- * @return {Boolean}      [description]
- */
 function isEmpty(aabb) {
     return (aabb[0][0] > aabb[1][0]) || (aabb[0][1] > aabb[1][1]) || (aabb[0][2] > aabb[1][2]);
 }
@@ -85,15 +80,53 @@ function includeAABB(a, b) {
     return a;
 }
 
-
+/**
+ * [AABB description]
+ * @type {Object}
+ */
 var AABB = {
+    /**
+     * [create description]
+     * @return {[type]} [description]
+     */
     create: create,
+
+    /**
+     * [set description]
+     * @param {[type]} a [description]
+     * @param {[type]} b [description]
+     */
     set: set,
+    /**
+     * [copy description]
+     * @type {[type]}
+     */
     copy: copy,
+    /**
+     * [fromPoints description]
+     * @type {[type]}
+     */
     fromPoints: fromPoints,
+    /**
+     * [center description]
+     * @type {[type]}
+     */
     center: center,
+    /**
+     * [size description]
+     * @type {[type]}
+     */
     size: size,
+    /**
+     * AABB is empty if min > max
+     * @param  {[type]}  aabb [description]
+     * @return {Boolean}      [description]
+     */
     isEmpty: isEmpty,
+    /**
+     * [includeAABB description]
+     * @type {[type]}
+     */
     includeAABB: includeAABB
 };
 
