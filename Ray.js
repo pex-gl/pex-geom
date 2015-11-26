@@ -139,10 +139,36 @@ function intersectsAABB(a,aabb){
     return !(tmax < 0 || tmin > tmax);
 }
 
-module.exports = {
+/**
+ * [Ray description]
+ * @type {Object}
+ */
+var Ray = {
+    /**
+     * [create description]
+     * @type {[type]}
+     */
     create : create,
+    /**
+     * [create description]
+     * @type {[type]}
+     */
     hitTestTriangle3 : hitTestTriangle3,
+    /**
+     * [create description]
+     * @type {[type]}
+     */
     hitTestTriangle  : hitTestTriangle,
+    /**
+     * [create description]
+     * @type {[type]}
+     */
     hitTestPlane     : hitTestPlane,
+    /**
+     * [create description]
+     * @type {[type]}
+     */
     intersectsAABB   : intersectsAABB
 };
+
+module.exports = Ray;
