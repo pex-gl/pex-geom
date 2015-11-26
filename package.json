@@ -2,7 +2,7 @@
   "name": "pex-geom",
   "version": "1.0.0-alpha.1",
   "description": "Geometry related code for the pex library",
-  "homepage": "https://github.com/variablestudio/pex-geom",
+  "homepage": "https://github.com/pex-gl/pex-geom",
   "keywords": [
     "pex",
     "geometry",
@@ -29,9 +29,9 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/variablestudio/pex-geom.git"
+    "url": "https://github.com/pex-gl/pex-geom.git"
   },
-  "bugs": "https://github.com/variablestudio/pex-geom/issues",
+  "bugs": "https://github.com/pex-gl/pex-geom/issues",
   "license": "MIT",
   "dependencies": {
   }
