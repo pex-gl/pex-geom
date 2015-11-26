@@ -306,50 +306,236 @@ function createFromRects(rects){
     return includeRects(create(),rects);
 }
 
-module.exports = {
+/**
+ * [Rect description]
+ * @type {Object}
+ */
+var Rect = {
+    /**
+     * [create description]
+     * @type {[type]}
+     */
     create : create,
+    /**
+     * [zero description]
+     * @type {[type]}
+     */
     zero   : zero,
+    /**
+     * [copy description]
+     * @type {[type]}
+     */
     copy   : copy,
+    /**
+     * [set description]
+     * @type {[type]}
+     */
     set  : set,
+    /**
+     * [set4 description]
+     * @type {[type]}
+     */
     set4 : set4,
+    /**
+     * [scale description]
+     * @type {[type]}
+     */
     scale : scale,
+    /**
+     * [setMinMax description]
+     * @type {[type]}
+     */
     setMinMax : setMinMax,
+    /**
+     * [setMinMax4 description]
+     * @type {[type]}
+     */
     setMinMax4 : setMinMax4,
+    /**
+     * [getMin description]
+     * @type {[type]}
+     */
     getMin : getMin,
+    /**
+     * [getMax description]
+     * @type {[type]}
+     */
     getMax : getMax,
+    /**
+     * [setSize2 description]
+     * @type {[type]}
+     */
     setSize2  : setSize2,
+    /**
+     * [setSize description]
+     * @type {[type]}
+     */
     setSize   : setSize,
+    /**
+     * [getSize description]
+     * @type {[type]}
+     */
     getSize   : getSize,
+    /**
+     * [setWidth description]
+     * @type {[type]}
+     */
     setWidth  : setWidth,
+    /**
+     * [getWidth description]
+     * @type {[type]}
+     */
     getWidth  : getWidth,
+    /**
+     * [setHeight description]
+     * @type {[type]}
+     */
     setHeight : setHeight,
+    /**
+     * [getHeight description]
+     * @type {[type]}
+     */
     getHeight : getHeight,
+    /**
+     * [getAspectRatio description]
+     * @type {[type]}
+     */
     getAspectRatio : getAspectRatio,
+    /**
+     * [setPosition description]
+     * @type {[type]}
+     */
     setPosition  : setPosition,
+    /**
+     * [setPosition2 description]
+     * @type {[type]}
+     */
     setPosition2 : setPosition2,
+    /**
+     * [getPosition description]
+     * @type {[type]}
+     */
     getPosition  : getMin,
+    /**
+     * [getTL description]
+     * @type {[type]}
+     */
     getTL : getMin,
+    /**
+     * [getTR description]
+     * @type {[type]}
+     */
     getTR : getTR,
+    /**
+     * [getBL description]
+     * @type {[type]}
+     */
     getBL : getBL,
+    /**
+     * [getBR description]
+     * @type {[type]}
+     */
     getBR : getMax,
+    /**
+     * [getCenter description]
+     * @type {[type]}
+     */
     getCenter : getCenter,
+    /**
+     * [containsPoint description]
+     * @type {[type]}
+     */
     containsPoint : containsPoint,
+    /**
+     * [containsPoint2 description]
+     * @type {[type]}
+     */
     containsPoint2 : containsPoint2,
+    /**
+     * [containsRect description]
+     * @type {[type]}
+     */
     containsRect   : containsRect,
+    /**
+     * [includePoint description]
+     * @type {[type]}
+     */
     includePoint      : includePoint,
+    /**
+     * [includePoint2 description]
+     * @type {[type]}
+     */
     includePoint2     : includePoint2,
+    /**
+     * [includePoints description]
+     * @type {[type]}
+     */
     includePoints     : includePoints,
+    /**
+     * [includePointsFlat description]
+     * @type {[type]}
+     */
     includePointsFlat : includePointsFlat,
+    /**
+     * [includeRect description]
+     * @type {[type]}
+     */
     includeRect   : includeRect,
+    /**
+     * [includeRects description]
+     * @type {[type]}
+     */
     includeRects  : includeRects,
+    /**
+     * [mapPoint description]
+     * @type {[type]}
+     */
     mapPoint   : mapPoint,
+    /**
+     * [clampPoint description]
+     * @type {[type]}
+     */
     clampPoint : clampPoint,
+    /**
+     * [isZero description]
+     * @type {Boolean}
+     */
     isZero   : isZero,
+    /**
+     * [isEmpty description]
+     * @type {Boolean}
+     */
     isEmpty  : isEmpty,
+    /**
+     * [setEmpty description]
+     * @type {[type]}
+     */
     setEmpty : setEmpty,
+    /**
+     * [toMax description]
+     * @type {[type]}
+     */
     toMax  : toMax,
+    /**
+     * [setZero description]
+     * @type {[type]}
+     */
     setZero : setZero,
+    /**
+     * [createFromPoints description]
+     * @type {[type]}
+     */
     createFromPoints     : createFromPoints,
+    /**
+     * [createFromPointsFlat description]
+     * @type {[type]}
+     */
     createFromPointsFlat : createFromPointsFlat,
+    /**
+     * [createFromRects description]
+     * @type {[type]}
+     */
     createFromRects      : createFromRects
 };
+
+module.exports = Rect;
