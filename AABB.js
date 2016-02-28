@@ -80,6 +80,16 @@ function includeAABB(a, b) {
     return a;
 }
 
+function includePoint(a, p) {
+    a[0][0] = Math.min(a[0][0], p[0])
+    a[0][1] = Math.min(a[0][1], p[1])
+    a[0][2] = Math.min(a[0][2], p[2])
+    a[1][0] = Math.max(a[1][0], p[0])
+    a[1][1] = Math.max(a[1][1], p[1])
+    a[1][2] = Math.max(a[1][2], p[2])
+    return a;
+}
+
 /**
  * [AABB description]
  * @type {Object}
@@ -127,7 +137,12 @@ var AABB = {
      * [includeAABB description]
      * @type {[type]}
      */
-    includeAABB: includeAABB
+    includeAABB: includeAABB,
+    /**
+     * [includePoint description]
+     * @type {[type]}
+     */
+    includePoint: includePoint
 };
 
 module.exports = AABB;
