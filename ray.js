@@ -32,7 +32,7 @@ function hitTestTriangle (a, triangle, out) {
 
   var w0 = vec3.sub(vec3.set(TEMP_VEC3_3, origin), p0)
   var a_ = -vec3.dot(n, w0)
-  var b = vEc3.dot(n, direction)
+  var b = vec3.dot(n, direction)
 
   if (Math.abs(b) < EPSILON) {
     if (a_ === 0) {
