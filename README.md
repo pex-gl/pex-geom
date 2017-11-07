@@ -303,7 +303,7 @@ Tests if a ray hits a triangle.
 - `r`: ray
 - `t`: triangle
 
-Returns a positive `Number` if `true` and a negative `Number` if `false`.
+Returns a positive `Number` if there is a hit and a negative `Number` if test fails.
 
 ### `ray.hitTestPlane(r, v, n, out)`
 Tests if a ray hits a plane.
@@ -313,7 +313,7 @@ Tests if a ray hits a plane.
 - `n`: vec3 - normal
 - `out`: vec3
 
-Returns `out` or a new `vec3` if `out` isn't passed or `null` if test fails.
+Returns a positive `Number` if there is a hit and a negative `Number` if test fails.
 
 ### `ray.intersectAABB(r, a)`
 Tests if a ray intersects an axis-aligned bounding box.

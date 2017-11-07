@@ -90,17 +90,18 @@ function hitTestPlane (a, point, normal, out) {
   var dotDirectionNormal = vec3.dot(direction, normal)
 
   if (dotDirectionNormal === 0) {
-    return null
+    return -1
   }
 
   var t = vec3.dot(vec3.sub(point, origin), normal) / dotDirectionNormal
 
   if (t < 0) {
-    return null
+    return -2
   }
 
   out = out === undefined ? vec3.create() : out
-  return vec3.set(out, vec3.add(origin, vec3.scale(direction, t)))
+  vec3.set(out, vec3.add(origin, vec3.scale(direction, t)))
+  return 1
 }
 
 // http://gamedev.stackexchange.com/questions/18436/most-efficient-aabb-vs-ray-collision-algorithms
