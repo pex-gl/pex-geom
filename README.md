@@ -309,3 +309,33 @@ Creates a rect from an array of points.
 
 Returns a `rect`.
 
+## plane
+
+`var plane = require('pex-geom/plane')`
+
+### plane.create()
+Creates a new plane.
+
+```
+var p = plane.create()
+// => [[0, 0, 0], [0, 1, 0]]
+```
+
+Returns a new `plane`.
+
+### plane.getRayIntersection(p, r, out)
+Returns the point if intersection betweeen a plane and a ray if it exists.
+
+- `p`: plane
+- `r`: ray
+- `out`: vec3
+
+Returns a `vec3` or `Null`.
+
+### plane.side(p, v)
+Returns on which side a ray a point is.
+
+- `p`: plane
+- `v`: vec3
+
+Returns `1`, `0` or `-1`.
