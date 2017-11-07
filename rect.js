@@ -152,7 +152,7 @@ function createFromPoints (points) {
   return r
 }
 
-var Rect = {
+module.exports = {
   create: create,
   zero: zero,
   copy: copy,
@@ -174,4 +174,3 @@ var Rect = {
   createFromPoints: createFromPoints
 }
 
-module.exports = Rect
