@@ -29,17 +29,10 @@ Copies a bounding box.
 
 Returns a new instance of `a`.
 
-### `aabb.copy(a)`
-Copies a bounding box.
-
-- `a`: aabb
-
-Returns a new instance of `a`.
-
-### `aabb.fromPoints(a)`
+### `aabb.fromPoints(aa)`
 Creates a bounding box a list of points.
 
-- `a`: [vec3]
+- `aa`: [vec3]
 
 Returns a new `aabb`.
 
@@ -74,11 +67,11 @@ Includes a bounding box in another.
 
 Returns `a`.
 
-### `aabb.includePoint(a, p)`
+### `aabb.includePoint(a, v)`
 Includes a point in a bounding box.
 
 - `a`: aabb
-- `p`: vec3
+- `v`: vec3
 
 Returns `a`.
 
@@ -93,7 +86,7 @@ Returns a new rectangle.
 var r = rect.create()
 // => [[Infinity, Infinity], [-Infinity, -Infinity]]
 ```
-Returns a `rect`.
+Returns a new `rect`.
 
 ### `rect.zero()`
 Returns a new rectangle with all zeros.
@@ -102,31 +95,14 @@ Returns a new rectangle with all zeros.
 var r = rect.zero()
 // => [[0, 0], [0, 0]]
 ```
-Returns a `rect`.
-
-### `rect.zero()`
-Returns a new rectangle with all zeros.
-
-```
-var r = rect.zero()
-// => [[0, 0], [0, 0]]
-```
-Returns a `rect`.
+Returns a new `rect`.
 
 ### `rect.copy(r)`
 Copies a rect.
 
 - `r`: rect
 
-Returns a `rect`.
-
-### `rect.set(r, c)`
-Copies a rect.
-
-- `r`: rect
-- `c`: rect
-
-Returns `r`.
+Returns a new instance of `r`.
 
 ### `rect.set(r, c)`
 Sets a rect to another.
@@ -144,23 +120,6 @@ Scales a rect.
 
 Returns `r` scaled.
 
-### `rect.scale(r, s)`
-Scales a rect.
-
-- `r`: rect
-- `s`: Number
-
-Returns `r` scaled.
-
-### `rect.setSize(r, w, h)`
-Sets the size of a rect using width and height.
-
-- `r`: rect
-- `w`: Number - width
-- `h`: Number - height
-
-Returns `r` with new size.
-
 ### `rect.setSize(r, wh)`
 Sets the size of a rect using width and height.
 
@@ -170,20 +129,12 @@ Sets the size of a rect using width and height.
 Returns `r` with new size.
 
 ### `rect.getSize(r, out)`
-Sets the size of a rect using width and height.
+Returns the size of a rect.
 
 - `r`: rect
 - `out`: vec2 - [width, height]
 
-Returns `r` with new size.
-
-### `rect.getSize(r, out)`
-Sets the size of a rect using width and height.
-
-- `r`: rect
-- `out`: vec2 - [width, height]
-
-Returns `r` with new size.
+Returns `out` or a new `vec2` if `out` isn't passed.
 
 ### `rect.getAspectRatio(r)`
 Returns the aspect ratio of a rect.
@@ -192,19 +143,11 @@ Returns the aspect ratio of a rect.
 
 Returns a `Number`.
 
-### `rect.setPosition(r, p)`
+### `rect.setPosition(r, v)`
 Sets the position of a rect.
 
 - `r`: rect
-- `p`: vec2
-
-Returns `a`.
-
-### `rect.setPosition(r, p)`
-Sets the position of a rect.
-
-- `r`: rect
-- `p`: vec2
+- `v`: vec2
 
 Returns `a`.
 
@@ -216,11 +159,11 @@ Returns the center of a rect.
 
 Returns `out` or a new `vec` if out isn't passed.
 
-### `rect.containsPoint(r, p)`
+### `rect.containsPoint(r, v)`
 Checks whether a point is inside a rect.
 
 - `r`: rect
-- `p`: vec2
+- `v`: vec2
 
 Returns a `bool`.
 
@@ -232,27 +175,27 @@ Checks whether a point is inside a rect.
 
 Returns a `bool`.
 
-### `rect.includePoint(r, p)`
+### `rect.includePoint(r, v)`
 Includes point in a rect.
 
 - `r`: rect
-- `p`: vec2
+- `v`: vec2
 
 Returns `r`.
 
-### `rect.includePoints(r, pp)`
+### `rect.includePoints(r, vv)`
 Includes an array of points in a rect.
 
 - `r`: rect
-- `pp`: [vec2]
+- `vv`: [vec2]
 
 Returns `r`.
 
-### `rect.includePoints(r, pp)`
+### `rect.includePoints(r, vv)`
 Includes an array of points in a rect.
 
 - `r`: rect
-- `pp`: [vec2]
+- `vv`: [vec2]
 
 Returns `r`.
 
@@ -272,19 +215,19 @@ Includes an array of rects in a rect.
 
 Returns `r`.
 
-### `rect.mapPoint(r, p)`
+### `rect.mapPoint(r, v)`
 Maps a point into the dimensions of a rect.
 
 - `r`: rect
-- `p`: vec2
+- `v`: vec2
 
 Returns `p`.
 
-### `rect.clampPoint(r, p)`
+### `rect.clampPoint(r, v)`
 Clamps a point into the dimensions of a rect.
 
 - `r`: rect
-- `p`: vec2
+- `v`: vec2
 
 Returns `p`.
 
@@ -302,10 +245,10 @@ Checks whether a rect is empty.
 
 Returns a `bool`.
 
-### `rect.createFromPoints(pp)`
+### `rect.createFromPoints(vv)`
 Creates a rect from an array of points.
 
-- `pp`: [vec2]
+- `vv`: [vec2]
 
 Returns a `rect`.
 
@@ -313,7 +256,7 @@ Returns a `rect`.
 
 `var plane = require('pex-geom/plane')`
 
-### plane.create()
+### `plane.create()`
 Creates a new plane.
 
 ```
@@ -323,8 +266,8 @@ var p = plane.create()
 
 Returns a new `plane`.
 
-### plane.getRayIntersection(p, r, out)
-Returns the point if intersection betweeen a plane and a ray if it exists.
+### `plane.getRayIntersection(p, r, out)`
+Returns the point of intersection betweeen a plane and a ray if it exists.
 
 - `p`: plane
 - `r`: ray
@@ -332,10 +275,50 @@ Returns the point if intersection betweeen a plane and a ray if it exists.
 
 Returns a `vec3` or `Null`.
 
-### plane.side(p, v)
+### `plane.side(p, v)`
 Returns on which side a ray a point is.
 
 - `p`: plane
 - `v`: vec3
 
 Returns `1`, `0` or `-1`.
+
+## ray
+
+`var aabb = require('pex-geom/aabb')`
+
+### `ray.create()`
+Returns a new ray.
+
+```
+var `r = ray.create()`
+// => [[0, 0, 0], [0, 0, 1]]
+```
+
+Returns a `ray`.
+
+### `ray.hitTestTriangle(r, t, out)`
+Tests if a ray hits a triangle.
+
+- `r`: ray
+- `t`: triangle
+
+Returns a positive `Number` if `true` and a negative `Number` if `false`.
+
+### `ray.hitTestPlane(r, v, n, out)`
+Tests if a ray hits a plane.
+
+- `r`: ray
+- `v`: vec3
+- `n`: vec3 - normal
+- `out`: vec3
+
+Returns `out` or a new `vec3` if `out` isn't passed or `null` if test fails.
+
+### `ray.intersectAABB(r, a)`
+Tests if a ray intersects an axis-aligned bounding box.
+
+- `r`: ray
+- `a`: aabb
+
+Returns a `bool`.
