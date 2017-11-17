@@ -1,6 +1,6 @@
 module.exports = {
-    AABB: require('./AABB'),
-    Plane: require('./Plane'),
-    Ray: require('./Ray'),
-    Rect: require('./Rect')
+  aabb: require('./aabb'),
+  place: require('./plane'),
+  ray: require('./ray'),
+  rect: require('./rect')
 }
