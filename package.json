@@ -32,7 +32,7 @@
   "bugs": "https://github.com/pex-gl/pex-geom/issues",
   "license": "MIT",
   "dependencies": {
-    "pex-math": "^1.0.1",
+    "pex-math": "^2.0.0",
     "tape": "^4.8.0"
   }
 }
