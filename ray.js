@@ -1,4 +1,4 @@
-var vec3 = require('pex-math/Vec3')
+var vec3 = require('pex-math/vec3')
 
 var TEMP_VEC3_0 = vec3.create()
 var TEMP_VEC3_1 = vec3.create()
