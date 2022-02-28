@@ -1,23 +1,22 @@
-var test = require('tape')
-var aabb = require('../aabb')
+import test from "tape";
+import { aabb } from "../index.js";
 
-var allMethods = Object.keys(aabb)
-var handledMethods = []
+const allMethods = Object.keys(aabb);
+const handledMethods = [];
 
-test('aabb.create', function (t) {
-  var min = [Infinity, Infinity, Infinity]
-  var max = [-Infinity, -Infinity, -Infinity]
-  t.deepEqual(aabb.create(), [min, max], 'should create a new abb')
-  handledMethods.push('create')
-  t.end()
-})
+test("aabb.create", (t) => {
+  const min = [Infinity, Infinity, Infinity];
+  const max = [-Infinity, -Infinity, -Infinity];
+  t.deepEqual(aabb.create(), [min, max], "should create a new abb");
+  handledMethods.push("create");
+  t.end();
+});
 
-test('coverage', function (t) {
-  allMethods.forEach(function (name) {
-    if (handledMethods.indexOf(name) === -1) {
-      console.log('missing test for aabb.' + name)
+test("coverage", (t) => {
+  allMethods.forEach((name) => {
+    if (!handledMethods.includes(name)) {
+      console.log(`missing test for aabb.${name}`);
     }
-  })
-  t.end()
-})
-
+  });
+  t.end();
+});

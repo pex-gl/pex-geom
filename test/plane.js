@@ -1,21 +1,27 @@
-var test = require('tape')
-var plane = require('../plane')
+import test from "tape";
+import { plane } from "../index.js";
 
-var allMethods = Object.keys(plane)
-var handledMethods = []
+const allMethods = Object.keys(plane);
+const handledMethods = [];
 
-test('plane.create', function (t) {
-  t.deepEqual(plane.create(), [[0, 0, 0], [0, 1, 0]], 'should create a new plane')
-  handledMethods.push('create')
-  t.end()
-})
+test("plane.create", (t) => {
+  t.deepEqual(
+    plane.create(),
+    [
+      [0, 0, 0],
+      [0, 1, 0],
+    ],
+    "should create a new plane"
+  );
+  handledMethods.push("create");
+  t.end();
+});
 
-test('coverage', function (t) {
-  allMethods.forEach(function (name) {
-    if (handledMethods.indexOf(name) === -1) {
-      console.log('missing test for plane.' + name)
+test("coverage", (t) => {
+  allMethods.forEach((name) => {
+    if (!handledMethods.includes(name)) {
+      console.log(`missing test for plane.${name}`);
     }
-  })
-  t.end()
-})
-
+  });
+  t.end();
+});
