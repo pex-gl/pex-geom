@@ -1,18 +1,39 @@
 import pexMath from "pex-math";
 
+/**
+ * @typedef {number[][]} ray A ray defined by a starting 3D point origin and a 3D direction vector.
+ */
+
 const { vec3 } = pexMath;
 
-const TEMP_VEC3_0 = vec3.create();
-const TEMP_VEC3_1 = vec3.create();
-const TEMP_VEC3_2 = vec3.create();
-const TEMP_VEC3_3 = vec3.create();
-const TEMP_VEC3_4 = vec3.create();
-const TEMP_VEC3_5 = vec3.create();
-const TEMP_VEC3_6 = vec3.create();
-const TEMP_VEC3_7 = vec3.create();
+/**
+ * Enum for different intersections values
+ * @readonly
+ * @enum {number}
+ */
+export const INTERSECTIONS = Object.freeze({
+  INTERSECT: 1,
+  NO_INTERSECT: 0,
+  SAME_PLANE: -1,
+  PARALLEL: -2,
+  TRIANGLE_DEGENERATE: -2,
+});
 
-const EPSILON = 0.000001;
+const TEMP_0 = vec3.create();
+const TEMP_1 = vec3.create();
+const TEMP_2 = vec3.create();
+const TEMP_3 = vec3.create();
+const TEMP_4 = vec3.create();
+const TEMP_5 = vec3.create();
+const TEMP_6 = vec3.create();
+const TEMP_7 = vec3.create();
 
+const EPSILON = 1e-6;
+
+/**
+ * Creates a new ray
+ * @returns {ray}
+ */
 export function create() {
   return [
     [0, 0, 0],
@@ -20,104 +41,109 @@ export function create() {
   ];
 }
 
-export function hitTestTriangle(a, triangle, out) {
-  const p0 = triangle[0];
-  const p1 = triangle[1];
-  const p2 = triangle[2];
+/**
+ * Determines if a ray intersect a plane
+ * https://www.cs.princeton.edu/courses/archive/fall00/cs426/lectures/raycast/sld017.htm
+ * @param {ray} ray
+ * @param {import("pex-math").vec3} point
+ * @param {import("pex-math").vec3} normal
+ * @param {import("pex-math").vec3} out
+ * @returns {number}
+ */
+export function hitTestPlane(ray, point, normal, out = vec3.create()) {
+  const origin = vec3.set(TEMP_0, ray[0]);
+  const direction = vec3.set(TEMP_1, ray[1]);
 
-  const origin = a[0];
-  const direction = a[1];
+  const dotDirectionNormal = vec3.dot(direction, normal);
+  if (dotDirectionNormal === 0) return INTERSECTIONS.SAME_PLANE;
 
-  const u = vec3.sub(vec3.set(TEMP_VEC3_0, p1), p0);
-  const v = vec3.sub(vec3.set(TEMP_VEC3_1, p2), p0);
-  const n = vec3.cross(vec3.set(TEMP_VEC3_2, u), v);
+  point = vec3.set(TEMP_2, point);
 
-  if (vec3.length(n) < EPSILON) {
-    return -1;
-  }
+  const t = vec3.dot(vec3.sub(point, origin), normal) / dotDirectionNormal;
+  if (t < 0) return INTERSECTIONS.PARALLEL;
 
-  const w0 = vec3.sub(vec3.set(TEMP_VEC3_3, origin), p0);
-  const a_ = -vec3.dot(n, w0);
+  vec3.set(out, vec3.add(origin, vec3.scale(direction, t)));
+  return INTERSECTIONS.INTERSECT;
+}
+
+/**
+ * Determines if a ray intersect a triangle
+ * http://geomalgorithms.com/a06-_intersect-2.html#intersect3D_RayTriangle()
+ * @param {ray} ray
+ * @param {triangle} triangle
+ * @param {import("pex-math").vec3} out
+ * @returns {number}
+ */
+export function hitTestTriangle(
+  [origin, direction],
+  [p0, p1, p2],
+  out = vec3.create()
+) {
+  // get triangle edge vectors and plane normal
+  const u = vec3.sub(vec3.set(TEMP_0, p1), p0);
+  const v = vec3.sub(vec3.set(TEMP_1, p2), p0);
+  const n = vec3.cross(vec3.set(TEMP_2, u), v);
+
+  if (vec3.length(n) < EPSILON) return INTERSECTIONS.TRIANGLE_DEGENERATE;
+
+  // ray vectors
+  const w0 = vec3.sub(vec3.set(TEMP_3, origin), p0);
+
+  // params to calc ray-plane intersect
+  const a = -vec3.dot(n, w0);
   const b = vec3.dot(n, direction);
 
   if (Math.abs(b) < EPSILON) {
-    if (a_ === 0) {
-      return -2;
-    }
-    return -3;
+    if (a === 0) return INTERSECTIONS.SAME_PLANE;
+    return INTERSECTIONS.NO_INTERSECT;
   }
 
-  const r = a_ / b;
-  if (r < -EPSILON) {
-    return -4;
-  }
+  // get intersect point of ray with triangle plane
+  const r = a / b;
+  // ray goes away from triangle
+  if (r < -EPSILON) return INTERSECTIONS.NO_INTERSECT;
 
+  // for a segment, also test if (r > 1.0) => no intersect
+  // intersect point of ray and plane
   const I = vec3.add(
-    vec3.set(TEMP_VEC3_4, origin),
-    vec3.scale(vec3.set(TEMP_VEC3_5, direction), r)
+    vec3.set(TEMP_4, origin),
+    vec3.scale(vec3.set(TEMP_5, direction), r)
   );
 
   const uu = vec3.dot(u, u);
   const uv = vec3.dot(u, v);
   const vv = vec3.dot(v, v);
 
-  const w = vec3.sub(vec3.set(TEMP_VEC3_6, I), p0);
+  const w = vec3.sub(vec3.set(TEMP_6, I), p0);
 
   const wu = vec3.dot(w, u);
   const wv = vec3.dot(w, v);
 
   const D = uv * uv - uu * vv;
 
+  // get and test parametric coords
   const s = (uv * wv - vv * wu) / D;
-
-  if (s < -EPSILON || s > 1.0 + EPSILON) {
-    return -5;
-  }
+  if (s < -EPSILON || s > 1.0 + EPSILON) return INTERSECTIONS.NO_INTERSECT;
 
   const t = (uv * wu - uu * wv) / D;
-
-  if (t < -EPSILON || s + t > 1.0 + EPSILON) {
-    return -6;
-  }
-
-  out = out === undefined ? vec3.create() : out;
+  if (t < -EPSILON || s + t > 1.0 + EPSILON) return INTERSECTIONS.NO_INTERSECT;
 
   vec3.set(out, u);
   vec3.scale(out, s);
-  vec3.add(out, vec3.scale(vec3.set(TEMP_VEC3_7, v), t));
+  vec3.add(out, vec3.scale(vec3.set(TEMP_7, v), t));
   vec3.add(out, p0);
 
-  return 1;
+  return INTERSECTIONS.INTERSECT;
 }
 
-export function hitTestPlane(a, point, normal, out) {
-  const origin = vec3.set(TEMP_VEC3_0, a[0]);
-  const direction = vec3.set(TEMP_VEC3_1, a[1]);
-
-  point = vec3.set(TEMP_VEC3_2, point);
-
-  const dotDirectionNormal = vec3.dot(direction, normal);
-
-  if (dotDirectionNormal === 0) {
-    return -1;
-  }
-
-  const t = vec3.dot(vec3.sub(point, origin), normal) / dotDirectionNormal;
-
-  if (t < 0) {
-    return -2;
-  }
-
-  out = out === undefined ? vec3.create() : out;
-  vec3.set(out, vec3.add(origin, vec3.scale(direction, t)));
-  return 1;
-}
-
-// http://gamedev.stackexchange.com/questions/18436/most-efficient-aabb-vs-ray-collision-algorithms
-export function intersectsAABB(a, aabb) {
-  const origin = a[0];
-  const direction = a[1];
-
+/**
+ * Determines if a ray intersect an AABB bounding box
+ * http://gamedev.stackexchange.com/questions/18436/most-efficient-aabb-vs-ray-collision-algorithms
+ * @param {ray} ray
+ * @param {aabb} aabb
+ * @returns {boolean}
+ */
+export function hitTestAABB([origin, direction], aabb) {
   const dirFracx = 1.0 / direction[0];
   const dirFracy = 1.0 / direction[1];
   const dirFracz = 1.0 / direction[2];
@@ -153,3 +179,9 @@ export function intersectsAABB(a, aabb) {
 
   return !(tmax < 0 || tmin > tmax);
 }
+
+/**
+ * Alias for {@link hitTestAABB}
+ * @function
+ */
+export const intersectsAABB = hitTestAABB;

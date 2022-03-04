@@ -1,7 +1,7 @@
 {
   "name": "pex-geom",
   "version": "2.0.2",
-  "description": "Geometry related code for PEX.",
+  "description": "Geometry intersection and bounding volume helpers for PEX.",
   "keywords": [
     "pex",
     "geom",
@@ -28,16 +28,18 @@
   "main": "index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "test": "tape ./test/*.js"
+    "test": "c8 mocha",
+    "test:watch": "mocha --watch --parallel"
   },
   "engines": {
     "node": ">=16.0.0",
     "npm": ">=7.0.0"
   },
   "dependencies": {
-    "pex-math": "^2.0.0"
+    "pex-math": "^3.0.0-4"
   },
   "devDependencies": {
-    "tape": "^5.5.2"
+    "c8": "^7.11.0",
+    "mocha": "^9.2.1"
   }
 }
