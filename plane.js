@@ -1,3 +1,7 @@
+/**
+ * @module plane
+ */
+
 import pexMath from "pex-math";
 
 import { hitTestPlane } from "./ray.js";

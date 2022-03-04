@@ -1,3 +1,7 @@
+/**
+ * @module ray
+ */
+
 import pexMath from "pex-math";
 
 /**

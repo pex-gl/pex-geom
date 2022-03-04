@@ -1,4 +1,7 @@
 /**
+ * @module rect
+ */
+/**
  * @typedef {number[][]} rect A rectangle defined by two diagonally opposite 2D points.
  */
 
@@ -83,7 +86,7 @@ export function setPoints(a, points) {
  * Returns a list of 4 points from a rectangle.
  * @param {rect} a
  * @param {import("pex-math").vec2[]} points
- * @returns
+ * @returns {import("pex-math").vec2[]}
  */
 export function getPoints(a, points = []) {
   points[0] = a[0].slice();
@@ -230,7 +233,7 @@ export function includePoint(a, [x, y]) {
  * Includes a rectangle in another rectangle.
  * @param {rect} a
  * @param {rect} b
- * @returns
+ * @returns {rect}
  */
 export function includeRect(a, b) {
   includePoint(a, b[0]);
