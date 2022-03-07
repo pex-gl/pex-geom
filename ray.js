@@ -2,13 +2,11 @@
  * @module ray
  */
 
-import pexMath from "pex-math";
+import { vec3 } from "pex-math";
 
 /**
  * @typedef {number[][]} ray A ray defined by a starting 3D point origin and a 3D direction vector.
  */
-
-const { vec3 } = pexMath;
 
 /**
  * Enum for different intersections values

@@ -36,7 +36,7 @@
     "test:watch": "mocha --watch --parallel"
   },
   "dependencies": {
-    "pex-math": "^3.0.0-4"
+    "pex-math": "github:pex-gl/pex-math#v4"
   },
   "devDependencies": {
     "c8": "^7.11.0",
