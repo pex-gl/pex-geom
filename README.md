@@ -392,8 +392,7 @@ A ray defined by a starting 3D point origin and a 3D direction vector.
     - [.copy(b)](#module_rect.copy) ⇒ [<code>rect</code>](#module_rect..rect)
     - [.set(a, b)](#module_rect.set) ⇒ [<code>rect</code>](#module_rect..rect)
     - [.isEmpty(a)](#module_rect.isEmpty) ⇒ <code>boolean</code>
-    - [.fromPoints(points)](#module_rect.fromPoints) ⇒ [<code>rect</code>](#module_rect..rect)
-    - [.setPoints(a, points)](#module_rect.setPoints) ⇒ [<code>rect</code>](#module_rect..rect)
+    - [.fromPoints(a, points)](#module_rect.fromPoints) ⇒ [<code>rect</code>](#module_rect..rect)
     - [.getPoints(a, points)](#module_rect.getPoints) ⇒ <code>Array.&lt;module:pex-math~vec2&gt;</code>
     - [.scale(a, n)](#module_rect.scale) ⇒ [<code>rect</code>](#module_rect..rect)
     - [.setSize(a, size)](#module_rect.setSize) ⇒ [<code>rect</code>](#module_rect..rect)
@@ -470,19 +469,7 @@ Checks if a rectangle is empty.
 
 <a name="module_rect.fromPoints"></a>
 
-### rect.fromPoints(points) ⇒ [<code>rect</code>](#module_rect..rect)
-
-Creates a rectangle from a list of points.
-
-**Kind**: static method of [<code>rect</code>](#module_rect)
-
-| Param  | Type                                            |
-| ------ | ----------------------------------------------- |
-| points | <code>Array.&lt;module:pex-math~vec2&gt;</code> |
-
-<a name="module_rect.setPoints"></a>
-
-### rect.setPoints(a, points) ⇒ [<code>rect</code>](#module_rect..rect)
+### rect.fromPoints(a, points) ⇒ [<code>rect</code>](#module_rect..rect)
 
 Updates a rectangle from a list of points.
 

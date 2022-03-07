@@ -52,11 +52,8 @@ describe("rect", () => {
     strictEqual(rect.isEmpty(NORM_RECT), false);
   });
 
-  it("fromPoints() should create a rectangle from a list of points", () => {
-    deepEqual(rect.fromPoints(NORM_POINTS), NORM_RECT);
-  });
-  it("setPoints() should update a rectangle from a list of points", () => {
-    deepEqual(rect.setPoints(rect.copy(DEFAULT_RECT), NORM_POINTS), NORM_RECT);
+  it("fromPoints() should update a rectangle from a list of points", () => {
+    deepEqual(rect.fromPoints(rect.copy(DEFAULT_RECT), NORM_POINTS), NORM_RECT);
   });
   it("getPoints() should return a list of 4 points from a rectangle", () => {
     deepEqual(rect.getPoints(rect.copy(NORM_RECT)), NORM_POINTS);

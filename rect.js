@@ -60,21 +60,12 @@ export function isEmpty(a) {
 }
 
 /**
- * Creates a rectangle from a list of points.
- * @param {import("pex-math").vec2[]} points
- * @returns {rect}
- */
-export function fromPoints(points) {
-  return setPoints(create(), points);
-}
-
-/**
  * Updates a rectangle from a list of points.
  * @param {rect} a
  * @param {import("pex-math").vec2[]} points
  * @returns {rect}
  */
-export function setPoints(a, points) {
+export function fromPoints(a, points) {
   for (let i = 0; i < points.length; i++) {
     includePoint(a, points[i]);
   }
