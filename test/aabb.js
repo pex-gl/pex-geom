@@ -83,6 +83,28 @@ describe("aabb", () => {
     deepEqual(aabb.size(NORM_BOX), [2, 2, 2]);
   });
 
+  it("containsPoint() should check if a point is inside a bounding box", () => {
+    strictEqual(aabb.containsPoint(DEFAULT_BOX, [0, 0, 0]), false);
+    strictEqual(aabb.containsPoint(DEFAULT_BOX, [1, 1, 1]), false);
+    strictEqual(aabb.containsPoint(DEFAULT_BOX, [-1, -1, -1]), false);
+    strictEqual(aabb.containsPoint(DEFAULT_BOX, [2, 2, 2]), false);
+
+    strictEqual(aabb.containsPoint(POSITIVE_BOX, [0, 0, 0]), true);
+    strictEqual(aabb.containsPoint(POSITIVE_BOX, [1, 1, 1]), true);
+    strictEqual(aabb.containsPoint(POSITIVE_BOX, [-1, -1, -1]), false);
+    strictEqual(aabb.containsPoint(POSITIVE_BOX, [2, 2, 2]), false);
+
+    strictEqual(aabb.containsPoint(NEGATIVE_BOX, [0, 0, 0]), true);
+    strictEqual(aabb.containsPoint(NEGATIVE_BOX, [1, 1, 1]), false);
+    strictEqual(aabb.containsPoint(NEGATIVE_BOX, [-1, -1, -1]), true);
+    strictEqual(aabb.containsPoint(NEGATIVE_BOX, [2, 2, 2]), false);
+
+    strictEqual(aabb.containsPoint(NORM_BOX, [0, 0, 0]), true);
+    strictEqual(aabb.containsPoint(NORM_BOX, [1, 1, 1]), true);
+    strictEqual(aabb.containsPoint(NORM_BOX, [-1, -1, -1]), true);
+    strictEqual(aabb.containsPoint(NORM_BOX, [2, 2, 2]), false);
+  });
+
   it("includeAABB() should include a bounding box in another", () => {
     // Empty a
     deepEqual(

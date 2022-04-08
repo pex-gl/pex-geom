@@ -145,6 +145,23 @@ export function size(a, out = [0, 0, 0]) {
 }
 
 /**
+ * Checks if a point is inside a bounding box.
+ * @param {bbox} a
+ * @param {import("pex-math").vec3} p
+ * @returns {boolean}
+ */
+export function containsPoint(a, [x, y, z]) {
+  return (
+    x >= a[0][0] &&
+    x <= a[1][0] &&
+    y >= a[0][1] &&
+    y <= a[1][1] &&
+    z >= a[0][2] &&
+    z <= a[1][2]
+  );
+}
+
+/**
  * Includes a bounding box in another.
  * @param {aabb} a
  * @param {aabb} b
