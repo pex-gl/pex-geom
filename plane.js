@@ -40,9 +40,7 @@ export function getRayIntersection(plane, ray, out) {
  * @param {import("pex-math").vec3} point
  * @returns {number}
  */
-export function side(plane, point) {
-  const planePoint = plane[0];
-  const planeNormal = plane[1];
+export function side([planePoint, planeNormal], point) {
   vec3.set(TEMP_0, planePoint);
   vec3.sub(TEMP_0, point);
   vec3.normalize(TEMP_0);
