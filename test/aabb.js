@@ -1,4 +1,4 @@
-import { deepEqual, notStrictEqual, strictEqual } from "assert";
+import { deepEqual, notStrictEqual, strictEqual } from "node:assert";
 
 import { ORIGIN } from "./constants.js";
 import { aabb } from "../index.js";

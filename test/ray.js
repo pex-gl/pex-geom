@@ -1,4 +1,4 @@
-import { deepEqual } from "assert";
+import { deepEqual } from "node:assert";
 
 import {
   Y_UP_PLANE,

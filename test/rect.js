@@ -1,4 +1,4 @@
-import { deepEqual, notStrictEqual, strictEqual } from "assert";
+import { deepEqual, notStrictEqual, strictEqual } from "node:assert";
 
 import { rect } from "../index.js";
 
