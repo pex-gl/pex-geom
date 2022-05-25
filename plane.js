@@ -4,8 +4,6 @@
 
 import { vec3 } from "pex-math";
 
-import { hitTestPlane } from "./ray.js";
-
 /**
  * @typedef {number[][]} plane A plane defined by a 3D point and a normal vector perpendicular to the plane’s surface.
  */
