@@ -55,11 +55,8 @@ describe("aabb", () => {
     strictEqual(aabb.isEmpty(NORM_BOX), false);
   });
 
-  it("fromPoints() should create a bounding box from a list of points", () => {
-    deepEqual(aabb.fromPoints(NORM_POINTS), NORM_BOX);
-  });
-  it("setPoints() should update a bounding box from a list of points", () => {
-    deepEqual(aabb.setPoints(aabb.copy(DEFAULT_BOX), NORM_POINTS), NORM_BOX);
+  it("fromPoints() should update a bounding box from a list of points", () => {
+    deepEqual(aabb.fromPoints(aabb.copy(DEFAULT_BOX), NORM_POINTS), NORM_BOX);
   });
   it("getPoints() should return a list of 8 points from a bounding box", () => {
     deepEqual(aabb.getPoints(aabb.copy(NORM_BOX)), NORM_POINTS);
