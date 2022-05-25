@@ -68,21 +68,12 @@ export function isEmpty(a) {
 }
 
 /**
- * Creates a bounding box from a list of points.
- * @param {import("pex-math").vec3[]} points
- * @returns {aabb}
- */
-export function fromPoints(points) {
-  return setPoints(create(), points);
-}
-
-/**
  * Updates a bounding box from a list of points.
  * @param {aabb} a
  * @param {import("pex-math").vec3[]} points
  * @returns {aabb}
  */
-export function setPoints(a, points) {
+export function fromPoints(a, points) {
   for (let i = 0; i < points.length; i++) {
     includePoint(a, points[i]);
   }
