@@ -35,17 +35,6 @@ export function create() {
 }
 
 /**
- * Set the point of intersection betweeen a plane and a ray if it exists to out.
- * @param {plane} plane
- * @param {ray} ray
- * @param {import("pex-math").vec3} out
- * @returns {number}
- */
-export function getRayIntersection(plane, ray, out) {
-  return hitTestPlane(ray, plane[0], plane[1], out);
-}
-
-/**
  * Returns on which side a point is.
  * @param {plane} plane
  * @param {import("pex-math").vec3} point
