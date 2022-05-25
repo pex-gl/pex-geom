@@ -70,11 +70,11 @@ console.log(intersect);
     - [.copy(a)](#module_aabb.copy) ⇒ [<code>aabb</code>](#module_aabb..aabb)
     - [.set(a, b)](#module_aabb.set) ⇒ [<code>aabb</code>](#module_aabb..aabb)
     - [.isEmpty(aabb)](#module_aabb.isEmpty) ⇒ <code>boolean</code>
-    - [.fromPoints(points)](#module_aabb.fromPoints) ⇒ [<code>aabb</code>](#module_aabb..aabb)
-    - [.setPoints(a, points)](#module_aabb.setPoints) ⇒ [<code>aabb</code>](#module_aabb..aabb)
+    - [.fromPoints(a, points)](#module_aabb.fromPoints) ⇒ [<code>aabb</code>](#module_aabb..aabb)
     - [.getPoints(aabb, points)](#module_aabb.getPoints) ⇒ <code>Array.&lt;module:pex-math~vec3&gt;</code>
     - [.center(a, out)](#module_aabb.center) ⇒ <code>module:pex-math~vec3</code>
     - [.size(a, out)](#module_aabb.size) ⇒ <code>module:pex-math~vec3</code>
+    - [.containsPoint(a, p)](#module_aabb.containsPoint) ⇒ <code>boolean</code>
     - [.includeAABB(a, b)](#module_aabb.includeAABB) ⇒ [<code>aabb</code>](#module_aabb..aabb)
     - [.includePoint(a, p)](#module_aabb.includePoint) ⇒ <code>module:pex-math~vec3</code>
   - _inner_
@@ -138,19 +138,7 @@ Checks if a bounding box is empty.
 
 <a name="module_aabb.fromPoints"></a>
 
-### aabb.fromPoints(points) ⇒ [<code>aabb</code>](#module_aabb..aabb)
-
-Creates a bounding box from a list of points.
-
-**Kind**: static method of [<code>aabb</code>](#module_aabb)
-
-| Param  | Type                                            |
-| ------ | ----------------------------------------------- |
-| points | <code>Array.&lt;module:pex-math~vec3&gt;</code> |
-
-<a name="module_aabb.setPoints"></a>
-
-### aabb.setPoints(a, points) ⇒ [<code>aabb</code>](#module_aabb..aabb)
+### aabb.fromPoints(a, points) ⇒ [<code>aabb</code>](#module_aabb..aabb)
 
 Updates a bounding box from a list of points.
 
@@ -200,6 +188,19 @@ Returns the size of a bounding box.
 | a     | [<code>aabb</code>](#module_aabb..aabb) |
 | out   | <code>module:pex-math~vec3</code>       |
 
+<a name="module_aabb.containsPoint"></a>
+
+### aabb.containsPoint(a, p) ⇒ <code>boolean</code>
+
+Checks if a point is inside a bounding box.
+
+**Kind**: static method of [<code>aabb</code>](#module_aabb)
+
+| Param | Type                              |
+| ----- | --------------------------------- |
+| a     | <code>bbox</code>                 |
+| p     | <code>module:pex-math~vec3</code> |
+
 <a name="module_aabb.includeAABB"></a>
 
 ### aabb.includeAABB(a, b) ⇒ [<code>aabb</code>](#module_aabb..aabb)
@@ -245,12 +246,20 @@ Re-export aabb, plane, ray and rect
 
 - [plane](#module_plane)
   - _static_
+    - [.Side](#module_plane.Side) : <code>enum</code>
     - [.create()](#module_plane.create) ⇒ [<code>plane</code>](#module_plane..plane)
-    - [.getRayIntersection(plane, ray, out)](#module_plane.getRayIntersection) ⇒ <code>number</code>
     - [.side(plane, point)](#module_plane.side) ⇒ <code>number</code>
   - _inner_
     - [~plane](#module_plane..plane) : <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
 
+<a name="module_plane.Side"></a>
+
+### plane.Side : <code>enum</code>
+
+Enum for different side values
+
+**Kind**: static enum of [<code>plane</code>](#module_plane)
+**Read only**: true
 <a name="module_plane.create"></a>
 
 ### plane.create() ⇒ [<code>plane</code>](#module_plane..plane)
@@ -258,20 +267,6 @@ Re-export aabb, plane, ray and rect
 Creates a new plane
 
 **Kind**: static method of [<code>plane</code>](#module_plane)
-<a name="module_plane.getRayIntersection"></a>
-
-### plane.getRayIntersection(plane, ray, out) ⇒ <code>number</code>
-
-Set the point of intersection betweeen a plane and a ray if it exists to out.
-
-**Kind**: static method of [<code>plane</code>](#module_plane)
-
-| Param | Type                                       |
-| ----- | ------------------------------------------ |
-| plane | [<code>plane</code>](#module_plane..plane) |
-| ray   | <code>ray</code>                           |
-| out   | <code>module:pex-math~vec3</code>          |
-
 <a name="module_plane.side"></a>
 
 ### plane.side(plane, point) ⇒ <code>number</code>
@@ -298,7 +293,7 @@ A plane defined by a 3D point and a normal vector perpendicular to the plane’s
 
 - [ray](#module_ray)
   - _static_
-    - [.INTERSECTIONS](#module_ray.INTERSECTIONS) : <code>enum</code>
+    - [.Intersections](#module_ray.Intersections) : <code>enum</code>
     - [.create()](#module_ray.create) ⇒ [<code>ray</code>](#module_ray..ray)
     - [.hitTestPlane(ray, point, normal, out)](#module_ray.hitTestPlane) ⇒ <code>number</code>
     - [.hitTestTriangle(ray, triangle, out)](#module_ray.hitTestTriangle) ⇒ <code>number</code>
@@ -307,9 +302,9 @@ A plane defined by a 3D point and a normal vector perpendicular to the plane’s
   - _inner_
     - [~ray](#module_ray..ray) : <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
 
-<a name="module_ray.INTERSECTIONS"></a>
+<a name="module_ray.Intersections"></a>
 
-### ray.INTERSECTIONS : <code>enum</code>
+### ray.Intersections : <code>enum</code>
 
 Enum for different intersections values
 
