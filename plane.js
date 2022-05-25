@@ -15,10 +15,10 @@ import { hitTestPlane } from "./ray.js";
  * @readonly
  * @enum {number}
  */
-export const SIDE = Object.freeze({
-  ON_PLANE: 0,
-  SAME: -1,
-  OPPOSITE: 1,
+export const Side = Object.freeze({
+  OnPlane: 0,
+  Same: -1,
+  Opposite: 1,
 });
 
 const TEMP_0 = vec3.create();
@@ -45,7 +45,7 @@ export function side([planePoint, planeNormal], point) {
   vec3.sub(TEMP_0, point);
   vec3.normalize(TEMP_0);
   const dot = vec3.dot(TEMP_0, planeNormal);
-  if (dot > 0) return SIDE.OPPOSITE;
-  if (dot < 0) return SIDE.SAME;
-  return SIDE.ON_PLANE;
+  if (dot > 0) return Side.Opposite;
+  if (dot < 0) return Side.Same;
+  return Side.OnPlane;
 }

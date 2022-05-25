@@ -13,12 +13,12 @@ import { vec3 } from "pex-math";
  * @readonly
  * @enum {number}
  */
-export const INTERSECTIONS = Object.freeze({
-  INTERSECT: 1,
-  NO_INTERSECT: 0,
-  SAME_PLANE: -1,
-  PARALLEL: -2,
-  TRIANGLE_DEGENERATE: -2,
+export const Intersections = Object.freeze({
+  Intersect: 1,
+  NoIntersect: 0,
+  SamePlane: -1,
+  Parallel: -2,
+  TriangleDegenerate: -2,
 });
 
 const TEMP_0 = vec3.create();
@@ -57,15 +57,15 @@ export function hitTestPlane(ray, point, normal, out = vec3.create()) {
   const direction = vec3.set(TEMP_1, ray[1]);
 
   const dotDirectionNormal = vec3.dot(direction, normal);
-  if (dotDirectionNormal === 0) return INTERSECTIONS.SAME_PLANE;
+  if (dotDirectionNormal === 0) return Intersections.SamePlane;
 
   point = vec3.set(TEMP_2, point);
 
   const t = vec3.dot(vec3.sub(point, origin), normal) / dotDirectionNormal;
-  if (t < 0) return INTERSECTIONS.PARALLEL;
+  if (t < 0) return Intersections.Parallel;
 
   vec3.set(out, vec3.add(origin, vec3.scale(direction, t)));
-  return INTERSECTIONS.INTERSECT;
+  return Intersections.Intersect;
 }
 
 /**
@@ -86,7 +86,7 @@ export function hitTestTriangle(
   const v = vec3.sub(vec3.set(TEMP_1, p2), p0);
   const n = vec3.cross(vec3.set(TEMP_2, u), v);
 
-  if (vec3.length(n) < EPSILON) return INTERSECTIONS.TRIANGLE_DEGENERATE;
+  if (vec3.length(n) < EPSILON) return Intersections.TriangleDegenerate;
 
   // ray vectors
   const w0 = vec3.sub(vec3.set(TEMP_3, origin), p0);
@@ -96,14 +96,14 @@ export function hitTestTriangle(
   const b = vec3.dot(n, direction);
 
   if (Math.abs(b) < EPSILON) {
-    if (a === 0) return INTERSECTIONS.SAME_PLANE;
-    return INTERSECTIONS.NO_INTERSECT;
+    if (a === 0) return Intersections.SamePlane;
+    return Intersections.NoIntersect;
   }
 
   // get intersect point of ray with triangle plane
   const r = a / b;
   // ray goes away from triangle
-  if (r < -EPSILON) return INTERSECTIONS.NO_INTERSECT;
+  if (r < -EPSILON) return Intersections.NoIntersect;
 
   // for a segment, also test if (r > 1.0) => no intersect
   // intersect point of ray and plane
@@ -125,17 +125,17 @@ export function hitTestTriangle(
 
   // get and test parametric coords
   const s = (uv * wv - vv * wu) / D;
-  if (s < -EPSILON || s > 1.0 + EPSILON) return INTERSECTIONS.NO_INTERSECT;
+  if (s < -EPSILON || s > 1.0 + EPSILON) return Intersections.NoIntersect;
 
   const t = (uv * wu - uu * wv) / D;
-  if (t < -EPSILON || s + t > 1.0 + EPSILON) return INTERSECTIONS.NO_INTERSECT;
+  if (t < -EPSILON || s + t > 1.0 + EPSILON) return Intersections.NoIntersect;
 
   vec3.set(out, u);
   vec3.scale(out, s);
   vec3.add(out, vec3.scale(vec3.set(TEMP_7, v), t));
   vec3.add(out, p0);
 
-  return INTERSECTIONS.INTERSECT;
+  return Intersections.Intersect;
 }
 
 /**
