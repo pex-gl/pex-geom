@@ -38,7 +38,7 @@
     "test:watch": "mocha --watch --parallel"
   },
   "dependencies": {
-    "pex-math": "4.0.0-alpha.0"
+    "pex-math": "4.0.0-alpha.1"
   },
   "devDependencies": {
     "c8": "^7.11.3",
