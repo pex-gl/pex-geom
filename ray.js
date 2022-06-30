@@ -1,6 +1,4 @@
-/**
- * @module ray
- */
+/** @module ray */
 
 import { vec3 } from "pex-math";
 

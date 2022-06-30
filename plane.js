@@ -1,6 +1,4 @@
-/**
- * @module plane
- */
+/** @module plane */
 
 import { vec3 } from "pex-math";
 

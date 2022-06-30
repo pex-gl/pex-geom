@@ -1,6 +1,5 @@
-/**
- * @module rect
- */
+/** @module rect */
+
 /**
  * @typedef {number[][]} rect A rectangle defined by two diagonally opposite 2D points.
  */

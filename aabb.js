@@ -1,6 +1,4 @@
-/**
- * @module aabb
- */
+/** @module aabb */
 
 /**
  * @typedef {number[][]} aabb An axis-aligned bounding box defined by two min and max 3D points.
