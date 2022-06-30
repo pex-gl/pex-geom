@@ -42,32 +42,35 @@ export function create() {
 }
 
 /**
- * Determines if a ray intersect a plane
+ * Determines if a ray intersect a plane and set intersection point
  * https://www.cs.princeton.edu/courses/archive/fall00/cs426/lectures/raycast/sld017.htm
  * @param {ray} ray
- * @param {import("pex-math").vec3} point
- * @param {import("pex-math").vec3} normal
+ * @param {plane} plane
  * @param {import("pex-math").vec3} out
  * @returns {number}
  */
-export function hitTestPlane(ray, point, normal, out = vec3.create()) {
-  const origin = vec3.set(TEMP_0, ray[0]);
-  const direction = vec3.set(TEMP_1, ray[1]);
+export function hitTestPlane(
+  [origin, direction],
+  [point, normal],
+  out = vec3.create()
+) {
+  vec3.set(TEMP_0, origin);
+  vec3.set(TEMP_1, direction);
 
-  const dotDirectionNormal = vec3.dot(direction, normal);
+  const dotDirectionNormal = vec3.dot(TEMP_1, normal);
   if (dotDirectionNormal === 0) return Intersections.SamePlane;
 
-  point = vec3.set(TEMP_2, point);
+  vec3.set(TEMP_2, point);
 
-  const t = vec3.dot(vec3.sub(point, origin), normal) / dotDirectionNormal;
+  const t = vec3.dot(vec3.sub(TEMP_2, TEMP_0), normal) / dotDirectionNormal;
   if (t < 0) return Intersections.Parallel;
 
-  vec3.set(out, vec3.add(origin, vec3.scale(direction, t)));
+  vec3.set(out, vec3.add(TEMP_0, vec3.scale(TEMP_1, t)));
   return Intersections.Intersect;
 }
 
 /**
- * Determines if a ray intersect a triangle
+ * Determines if a ray intersect a triangle and set intersection point
  * http://geomalgorithms.com/a06-_intersect-2.html#intersect3D_RayTriangle()
  * @param {ray} ray
  * @param {triangle} triangle

@@ -20,26 +20,26 @@ describe("ray", () => {
   describe("hitTestPlane()", () => {
     it("should return 1 if the ray is intersecting", () => {
       deepEqual(
-        ray.hitTestPlane(Y_UP_RAY, ...Y_UP_PLANE),
+        ray.hitTestPlane(Y_UP_RAY, Y_UP_PLANE),
         ray.Intersections.Intersect
       );
       deepEqual(
-        ray.hitTestPlane(Y_DOWN_RAY, ...Y_UP_PLANE),
+        ray.hitTestPlane(Y_DOWN_RAY, Y_UP_PLANE),
         ray.Intersections.Intersect
       );
       deepEqual(
-        ray.hitTestPlane(XYZ_RAY, ...Y_UP_PLANE),
+        ray.hitTestPlane(XYZ_RAY, Y_UP_PLANE),
         ray.Intersections.Intersect
       );
     });
     it("should set the plane intersection point", () => {
       const out = [];
-      ray.hitTestPlane(Y_UP_RAY, ...Y_UP_PLANE, out);
+      ray.hitTestPlane(Y_UP_RAY, Y_UP_PLANE, out);
       deepEqual(out, ORIGIN);
     });
     it("should return -1 if the ray is not intersecting (ray on the plane)", () => {
       deepEqual(
-        ray.hitTestPlane(Z_UP_RAY, ...Y_UP_PLANE),
+        ray.hitTestPlane(Z_UP_RAY, Y_UP_PLANE),
         ray.Intersections.SamePlane
       );
     });
@@ -50,7 +50,7 @@ describe("ray", () => {
             [0, 1, 0],
             [0, 1, 1],
           ],
-          ...Y_UP_PLANE
+          Y_UP_PLANE
         ),
         ray.Intersections.Parallel
       );
