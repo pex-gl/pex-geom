@@ -55,8 +55,8 @@ describe("rect", () => {
   it("fromPoints() should update a rectangle from a list of points", () => {
     deepEqual(rect.fromPoints(rect.copy(DEFAULT_RECT), NORM_POINTS), NORM_RECT);
   });
-  it("getPoints() should return a list of 4 points from a rectangle", () => {
-    deepEqual(rect.getPoints(rect.copy(NORM_RECT)), NORM_POINTS);
+  it("getCorners() should return a list of 4 points from a rectangle", () => {
+    deepEqual(rect.getCorners(rect.copy(NORM_RECT)), NORM_POINTS);
   });
 
   it("scale() should scale a rect", () => {

@@ -1,5 +1,7 @@
 /** @module aabb */
 
+import { set3 } from "../pex-math/avec3.js";
+
 /**
  * @typedef {number[][]} aabb An axis-aligned bounding box defined by two min and max 3D points.
  */
@@ -80,30 +82,20 @@ export function fromPoints(a, points) {
 }
 
 /**
- * @private
- */
-function setVec3(v = [], x, y, z) {
-  v[0] = x;
-  v[1] = y;
-  v[2] = z;
-  return v;
-}
-
-/**
  * Returns a list of 8 points from a bounding box.
  * @param {aabb} aabb
- * @param {import("pex-math").vec3[]} points
+ * @param {import("pex-math").vec3[]} [points]
  * @returns {import("pex-math").vec3[]}
  */
-export function getPoints(a, points = []) {
-  points[0] = setVec3(points[0], a[0][0], a[0][1], a[0][2]);
-  points[1] = setVec3(points[1], a[1][0], a[0][1], a[0][2]);
-  points[2] = setVec3(points[2], a[1][0], a[0][1], a[1][2]);
-  points[3] = setVec3(points[3], a[0][0], a[0][1], a[1][2]);
-  points[4] = setVec3(points[4], a[0][0], a[1][1], a[0][2]);
-  points[5] = setVec3(points[5], a[1][0], a[1][1], a[0][2]);
-  points[6] = setVec3(points[6], a[1][0], a[1][1], a[1][2]);
-  points[7] = setVec3(points[7], a[0][0], a[1][1], a[1][2]);
+export function getCorners(a, points = Array.from({ length: 8 }, () => [])) {
+  set3(points[0], 0, a[0][0], a[0][1], a[0][2]);
+  set3(points[1], 0, a[1][0], a[0][1], a[0][2]);
+  set3(points[2], 0, a[1][0], a[0][1], a[1][2]);
+  set3(points[3], 0, a[0][0], a[0][1], a[1][2]);
+  set3(points[4], 0, a[0][0], a[1][1], a[0][2]);
+  set3(points[5], 0, a[1][0], a[1][1], a[0][2]);
+  set3(points[6], 0, a[1][0], a[1][1], a[1][2]);
+  set3(points[7], 0, a[0][0], a[1][1], a[1][2]);
   return points;
 }
 

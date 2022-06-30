@@ -78,7 +78,7 @@ export function fromPoints(a, points) {
  * @param {import("pex-math").vec2[]} points
  * @returns {import("pex-math").vec2[]}
  */
-export function getPoints(a, points = []) {
+export function getCorners(a, points = []) {
   points[0] = a[0].slice();
   points[1] = [a[0][1], a[1][0]];
   points[2] = a[1].slice();
