@@ -61,12 +61,13 @@ export function isEmpty(a) {
 /**
  * Updates a rectangle from a list of points.
  * @param {rect} a
- * @param {import("pex-math").vec2[]} points
+ * @param {import("pex-math").vec2[] | TypedArray} points
  * @returns {rect}
  */
 export function fromPoints(a, points) {
-  for (let i = 0; i < points.length; i++) {
-    includePoint(a, points[i]);
+  const isTypedArray = !Array.isArray(points);
+  for (let i = 0; i < points.length / (isTypedArray ? 2 : 1); i++) {
+    includePoint(a, isTypedArray ? points.slice(i * 2) : points[i]);
   }
 
   return a;

@@ -70,12 +70,13 @@ export function isEmpty(a) {
 /**
  * Updates a bounding box from a list of points.
  * @param {aabb} a
- * @param {import("pex-math").vec3[]} points
+ * @param {import("pex-math").vec3[] | TypedArray} points
  * @returns {aabb}
  */
 export function fromPoints(a, points) {
-  for (let i = 0; i < points.length; i++) {
-    includePoint(a, points[i]);
+  const isTypedArray = !Array.isArray(points);
+  for (let i = 0; i < points.length / (isTypedArray ? 3 : 1); i++) {
+    includePoint(a, isTypedArray ? points.slice(i * 3) : points[i]);
   }
 
   return a;

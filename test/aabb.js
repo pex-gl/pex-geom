@@ -58,6 +58,15 @@ describe("aabb", () => {
   it("fromPoints() should update a bounding box from a list of points", () => {
     deepEqual(aabb.fromPoints(aabb.copy(DEFAULT_BOX), NORM_POINTS), NORM_BOX);
   });
+  it("fromPoints() should update a bounding box from a list of points passed as flat array", () => {
+    deepEqual(
+      aabb.fromPoints(
+        aabb.copy(DEFAULT_BOX),
+        new Float32Array(NORM_POINTS.flat())
+      ),
+      NORM_BOX
+    );
+  });
   it("getCorners() should return a list of 8 points from a bounding box", () => {
     deepEqual(aabb.getCorners(aabb.copy(NORM_BOX)), NORM_POINTS);
   });

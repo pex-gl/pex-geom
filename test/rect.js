@@ -55,6 +55,15 @@ describe("rect", () => {
   it("fromPoints() should update a rectangle from a list of points", () => {
     deepEqual(rect.fromPoints(rect.copy(DEFAULT_RECT), NORM_POINTS), NORM_RECT);
   });
+  it("fromPoints() should update a rectangle from a list of points passed as flat array", () => {
+    deepEqual(
+      rect.fromPoints(
+        rect.copy(DEFAULT_RECT),
+        new Float32Array(NORM_POINTS.flat())
+      ),
+      NORM_RECT
+    );
+  });
   it("getCorners() should return a list of 4 points from a rectangle", () => {
     deepEqual(rect.getCorners(rect.copy(NORM_RECT)), NORM_POINTS);
   });
