@@ -3,10 +3,6 @@
 import { vec3 } from "pex-math";
 
 /**
- * @typedef {number[][]} ray A ray defined by a starting 3D point origin and a 3D direction vector.
- */
-
-/**
  * Enum for different intersections values
  * @readonly
  * @enum {number}
@@ -32,7 +28,7 @@ const EPSILON = 1e-6;
 
 /**
  * Creates a new ray
- * @returns {ray}
+ * @returns {import("./types.js").ray}
  */
 export function create() {
   return [
@@ -43,9 +39,9 @@ export function create() {
 
 /**
  * Determines if a ray intersect a plane and set intersection point
- * https://www.cs.princeton.edu/courses/archive/fall00/cs426/lectures/raycast/sld017.htm
- * @param {ray} ray
- * @param {plane} plane
+ * @see {@link https://www.cs.princeton.edu/courses/archive/fall00/cs426/lectures/raycast/sld017.htm}
+ * @param {import("./types.js").ray} ray
+ * @param {import("./types.js").plane} plane
  * @param {import("pex-math").vec3} out
  * @returns {number}
  */
@@ -71,9 +67,9 @@ export function hitTestPlane(
 
 /**
  * Determines if a ray intersect a triangle and set intersection point
- * http://geomalgorithms.com/a06-_intersect-2.html#intersect3D_RayTriangle()
- * @param {ray} ray
- * @param {triangle} triangle
+ * @see {@link http://geomalgorithms.com/a06-_intersect-2.html#intersect3D_RayTriangle()}
+ * @param {import("./types.js").ray} ray
+ * @param {import("./types.js").triangle} triangle
  * @param {import("pex-math").vec3} out
  * @returns {number}
  */
@@ -141,9 +137,9 @@ export function hitTestTriangle(
 
 /**
  * Determines if a ray intersect an AABB bounding box
- * http://gamedev.stackexchange.com/questions/18436/most-efficient-aabb-vs-ray-collision-algorithms
- * @param {ray} ray
- * @param {aabb} aabb
+ * @see {@link http://gamedev.stackexchange.com/questions/18436/most-efficient-aabb-vs-ray-collision-algorithms}
+ * @param {import("./types.js").ray} ray
+ * @param {import("./types.js").aabb} aabb
  * @returns {boolean}
  */
 export function hitTestAABB([origin, direction], aabb) {

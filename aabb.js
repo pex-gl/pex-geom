@@ -3,12 +3,8 @@
 import { set3 } from "../pex-math/avec3.js";
 
 /**
- * @typedef {number[][]} aabb An axis-aligned bounding box defined by two min and max 3D points.
- */
-
-/**
  * Creates a new bounding box.
- * @returns {aabb}
+ * @returns {import("./types.js").aabb}
  */
 export function create() {
   // [min, max]
@@ -20,8 +16,8 @@ export function create() {
 
 /**
  * Reset a bounding box.
- * @param {aabb} a
- * @returns {rect}
+ * @param {import("./types.js").aabb} a
+ * @returns {import("./types.js").rect}
  */
 export function empty(a) {
   a[0][0] = Infinity;
@@ -35,8 +31,8 @@ export function empty(a) {
 
 /**
  * Copies a bounding box.
- * @param {aabb} a
- * @returns {aabb}
+ * @param {import("./types.js").aabb} a
+ * @returns {import("./types.js").aabb}
  */
 export function copy(a) {
   return [a[0].slice(), a[1].slice()];
@@ -44,9 +40,9 @@ export function copy(a) {
 
 /**
  * Sets a bounding box to another.
- * @param {aabb} a
- * @param {aabb} b
- * @returns {aabb}
+ * @param {import("./types.js").aabb} a
+ * @param {import("./types.js").aabb} b
+ * @returns {import("./types.js").aabb}
  */
 export function set(a, b) {
   a[0][0] = b[0][0];
@@ -60,7 +56,7 @@ export function set(a, b) {
 
 /**
  * Checks if a bounding box is empty.
- * @param {aabb} aabb
+ * @param {import("./types.js").aabb} aabb
  * @returns {boolean}
  */
 export function isEmpty(a) {
@@ -69,9 +65,9 @@ export function isEmpty(a) {
 
 /**
  * Updates a bounding box from a list of points.
- * @param {aabb} a
+ * @param {import("./types.js").aabb} a
  * @param {import("pex-math").vec3[] | TypedArray} points
- * @returns {aabb}
+ * @returns {import("./types.js").aabb}
  */
 export function fromPoints(a, points) {
   const isTypedArray = !Array.isArray(points);
@@ -84,7 +80,7 @@ export function fromPoints(a, points) {
 
 /**
  * Returns a list of 8 points from a bounding box.
- * @param {aabb} aabb
+ * @param {import("./types.js").aabb} aabb
  * @param {import("pex-math").vec3[]} [points]
  * @returns {import("pex-math").vec3[]}
  */
@@ -102,7 +98,7 @@ export function getCorners(a, points = Array.from({ length: 8 }, () => [])) {
 
 /**
  * Returns the center of a bounding box.
- * @param {aabb} a
+ * @param {import("./types.js").aabb} a
  * @param {import("pex-math").vec3} out
  * @returns {import("pex-math").vec3}
  */
@@ -115,7 +111,7 @@ export function center(a, out = [0, 0, 0]) {
 
 /**
  * Returns the size of a bounding box.
- * @param {aabb} a
+ * @param {import("./types.js").aabb} a
  * @param {import("pex-math").vec3} out
  * @returns {import("pex-math").vec3}
  */
@@ -128,7 +124,7 @@ export function size(a, out = [0, 0, 0]) {
 
 /**
  * Checks if a point is inside a bounding box.
- * @param {bbox} a
+ * @param {import("./types.js").aabb} a
  * @param {import("pex-math").vec3} p
  * @returns {boolean}
  */
@@ -145,9 +141,9 @@ export function containsPoint(a, [x, y, z]) {
 
 /**
  * Includes a bounding box in another.
- * @param {aabb} a
- * @param {aabb} b
- * @returns {aabb}
+ * @param {import("./types.js").aabb} a
+ * @param {import("./types.js").aabb} b
+ * @returns {import("./types.js").aabb}
  */
 export function includeAABB(a, b) {
   if (isEmpty(a)) {
@@ -168,7 +164,7 @@ export function includeAABB(a, b) {
 
 /**
  * Includes a point in a bounding box.
- * @param {aabb} a
+ * @param {import("./types.js").aabb} a
  * @param {import("pex-math").vec3} p
  * @returns {import("pex-math").vec3}
  */

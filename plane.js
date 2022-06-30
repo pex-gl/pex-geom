@@ -3,10 +3,6 @@
 import { vec3 } from "pex-math";
 
 /**
- * @typedef {number[][]} plane A plane defined by a 3D point and a normal vector perpendicular to the plane’s surface.
- */
-
-/**
  * Enum for different side values
  * @readonly
  * @enum {number}
@@ -21,7 +17,7 @@ const TEMP_0 = vec3.create();
 
 /**
  * Creates a new plane
- * @returns {plane}
+ * @returns {import("./types.js").plane}
  */
 export function create() {
   return [
@@ -32,7 +28,7 @@ export function create() {
 
 /**
  * Returns on which side a point is.
- * @param {plane} plane
+ * @param {import("./types.js").plane} plane
  * @param {import("pex-math").vec3} point
  * @returns {number}
  */
