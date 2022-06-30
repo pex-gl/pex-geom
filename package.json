@@ -41,8 +41,8 @@
     "pex-math": "4.0.0-alpha.0"
   },
   "devDependencies": {
-    "c8": "^7.11.0",
-    "mocha": "^9.2.1"
+    "c8": "^7.11.3",
+    "mocha": "^10.0.0"
   },
   "engines": {
     "node": ">=16.0.0",
