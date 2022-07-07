@@ -1,6 +1,6 @@
 /** @module aabb */
 
-import { set3 } from "../pex-math/avec3.js";
+import { avec3 } from "pex-math";
 
 /**
  * Creates a new bounding box.
@@ -85,14 +85,14 @@ export function fromPoints(a, points) {
  * @returns {import("pex-math").vec3[]}
  */
 export function getCorners(a, points = Array.from({ length: 8 }, () => [])) {
-  set3(points[0], 0, a[0][0], a[0][1], a[0][2]);
-  set3(points[1], 0, a[1][0], a[0][1], a[0][2]);
-  set3(points[2], 0, a[1][0], a[0][1], a[1][2]);
-  set3(points[3], 0, a[0][0], a[0][1], a[1][2]);
-  set3(points[4], 0, a[0][0], a[1][1], a[0][2]);
-  set3(points[5], 0, a[1][0], a[1][1], a[0][2]);
-  set3(points[6], 0, a[1][0], a[1][1], a[1][2]);
-  set3(points[7], 0, a[0][0], a[1][1], a[1][2]);
+  avec3.set3(points[0], 0, a[0][0], a[0][1], a[0][2]);
+  avec3.set3(points[1], 0, a[1][0], a[0][1], a[0][2]);
+  avec3.set3(points[2], 0, a[1][0], a[0][1], a[1][2]);
+  avec3.set3(points[3], 0, a[0][0], a[0][1], a[1][2]);
+  avec3.set3(points[4], 0, a[0][0], a[1][1], a[0][2]);
+  avec3.set3(points[5], 0, a[1][0], a[1][1], a[0][2]);
+  avec3.set3(points[6], 0, a[1][0], a[1][1], a[1][2]);
+  avec3.set3(points[7], 0, a[0][0], a[1][1], a[1][2]);
   return points;
 }
 
