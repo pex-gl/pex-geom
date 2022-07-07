@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.0.0-alpha.1](https://github.com/pex-gl/pex-geom/compare/v3.0.0-alpha.0...v3.0.0-alpha.1) (2022-07-07)
+
+
+### Bug Fixes
+
+* wrong pex-math import path ([26b7b8a](https://github.com/pex-gl/pex-geom/commit/26b7b8a7089f17f89f8571fa31f36d8aa142632d))
+
+
+
 # [3.0.0-alpha.0](https://github.com/pex-gl/pex-geom/compare/v2.0.2...v3.0.0-alpha.0) (2022-06-30)
 
 
