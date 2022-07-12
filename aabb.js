@@ -1,6 +1,6 @@
 /** @module aabb */
 
-import { avec3 } from "pex-math";
+import { avec3, vec3 } from "pex-math";
 
 /**
  * Creates a new bounding box.
@@ -176,4 +176,15 @@ export function includePoint(a, p) {
   a[1][1] = Math.max(a[1][1], p[1]);
   a[1][2] = Math.max(a[1][2], p[2]);
   return a;
+}
+
+/**
+ * Prints a bounding box to a string.
+ * @param {import("./types.js").aabb} a
+ * @param {number} [precision=4]
+ * @returns {string}
+ */
+export function toString(a, precision = 4) {
+  // prettier-ignore
+  return `[${vec3.toString(a[0], precision)}, ${vec3.toString(a[1], precision)}]`;
 }

@@ -166,4 +166,8 @@ describe("ray", () => {
       );
     });
   });
+
+  it("toString() should print a ray to a string", () => {
+    deepEqual(ray.toString(Y_UP_RAY), "[[0, 0, 0], [0, 1, 0]]");
+  });
 });

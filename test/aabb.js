@@ -141,4 +141,12 @@ describe("aabb", () => {
       ORIGIN,
     ]);
   });
+  it("toString() should print a bounding box to a string", () => {
+    deepEqual(
+      aabb.toString(DEFAULT_BOX),
+      "[[Infinity, Infinity, Infinity], [-Infinity, -Infinity, -Infinity]]"
+    );
+    deepEqual(aabb.toString(NORM_BOX), "[[-1, -1, -1], [1, 1, 1]]");
+    deepEqual(aabb.toString(POSITIVE_BOX), "[[0, 0, 0], [1, 1, 1]]");
+  });
 });

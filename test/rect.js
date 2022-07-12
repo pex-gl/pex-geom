@@ -310,4 +310,13 @@ describe("rect", () => {
     deepEqual(rect.clampPoint(NEGATIVE_RECT, [2, 2]), [0, 0]);
     deepEqual(rect.clampPoint(NEGATIVE_RECT, [-2, -2]), [-1, -1]);
   });
+
+  it("toString() should print a rect to a string", () => {
+    deepEqual(
+      rect.toString(DEFAULT_RECT),
+      "[[Infinity, Infinity], [-Infinity, -Infinity]]"
+    );
+    deepEqual(rect.toString(NORM_RECT), "[[-1, -1], [1, 1]]");
+    deepEqual(rect.toString(POSITIVE_RECT), "[[0, 0], [1, 1]]");
+  });
 });

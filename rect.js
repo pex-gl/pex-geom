@@ -1,5 +1,7 @@
 /** @module rect */
 
+import { vec2 } from "pex-math";
+
 /**
  * Creates a new rectangle.
  * @returns {import("./types.js").rect}
@@ -260,4 +262,15 @@ export function clampPoint(a, p) {
   p[0] = Math.max(minx, Math.min(p[0], maxx));
   p[1] = Math.max(miny, Math.min(p[1], maxy));
   return p;
+}
+
+/**
+ * Prints a rect to a string.
+ * @param {import("./types.js").rect} a
+ * @param {number} [precision=4]
+ * @returns {string}
+ */
+export function toString(a, precision = 4) {
+  // prettier-ignore
+  return `[${vec2.toString(a[0], precision)}, ${vec2.toString(a[1], precision)}]`;
 }

@@ -20,4 +20,8 @@ describe("plane", () => {
       deepEqual(plane.side(Y_UP_PLANE, ORIGIN), plane.Side.OnPlane);
     });
   });
+
+  it("toString() should print a plane to a string", () => {
+    deepEqual(plane.toString(Y_UP_PLANE), "[[0, 0, 0], [0, 1, 0]]");
+  });
 });

@@ -41,3 +41,14 @@ export function side([planePoint, planeNormal], point) {
   if (dot < 0) return Side.Same;
   return Side.OnPlane;
 }
+
+/**
+ * Prints a plane to a string.
+ * @param {import("./types.js").plane} a
+ * @param {number} [precision=4]
+ * @returns {string}
+ */
+export function toString(a, precision = 4) {
+  // prettier-ignore
+  return `[${vec3.toString(a[0], precision)}, ${vec3.toString(a[1], precision)}]`;
+}

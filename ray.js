@@ -184,3 +184,14 @@ export function hitTestAABB([origin, direction], aabb) {
  * @function
  */
 export const intersectsAABB = hitTestAABB;
+
+/**
+ * Prints a plane to a string.
+ * @param {import("./types.js").ray} a
+ * @param {number} [precision=4]
+ * @returns {string}
+ */
+export function toString(a, precision = 4) {
+  // prettier-ignore
+  return `[${vec3.toString(a[0], precision)}, ${vec3.toString(a[1], precision)}]`;
+}
