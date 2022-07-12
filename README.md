@@ -96,6 +96,7 @@ console.log(intersect);
   - [.containsPoint(a, p)](#module_aabb.containsPoint) ⇒ <code>boolean</code>
   - [.includeAABB(a, b)](#module_aabb.includeAABB) ⇒ [<code>aabb</code>](#aabb)
   - [.includePoint(a, p)](#module_aabb.includePoint) ⇒ <code>module:pex-math~vec3</code>
+  - [.toString(a, [precision])](#module_aabb.toString) ⇒ <code>string</code>
 
 <a name="module_aabb.create"></a>
 
@@ -244,6 +245,19 @@ Includes a point in a bounding box.
 | a     | [<code>aabb</code>](#aabb)        |
 | p     | <code>module:pex-math~vec3</code> |
 
+<a name="module_aabb.toString"></a>
+
+### aabb.toString(a, [precision]) ⇒ <code>string</code>
+
+Prints a bounding box to a string.
+
+**Kind**: static method of [<code>aabb</code>](#module_aabb)
+
+| Param       | Type                       | Default        |
+| ----------- | -------------------------- | -------------- |
+| a           | [<code>aabb</code>](#aabb) |                |
+| [precision] | <code>number</code>        | <code>4</code> |
+
 <a name="module_index"></a>
 
 ## index
@@ -258,6 +272,7 @@ Re-export aabb, plane, ray and rect
   - [.Side](#module_plane.Side) : <code>enum</code>
   - [.create()](#module_plane.create) ⇒ [<code>plane</code>](#plane)
   - [.side(plane, point)](#module_plane.side) ⇒ <code>number</code>
+  - [.toString(a, [precision])](#module_plane.toString) ⇒ <code>string</code>
 
 <a name="module_plane.Side"></a>
 
@@ -287,6 +302,19 @@ Returns on which side a point is.
 | plane | [<code>plane</code>](#plane)      |
 | point | <code>module:pex-math~vec3</code> |
 
+<a name="module_plane.toString"></a>
+
+### plane.toString(a, [precision]) ⇒ <code>string</code>
+
+Prints a plane to a string.
+
+**Kind**: static method of [<code>plane</code>](#module_plane)
+
+| Param       | Type                         | Default        |
+| ----------- | ---------------------------- | -------------- |
+| a           | [<code>plane</code>](#plane) |                |
+| [precision] | <code>number</code>          | <code>4</code> |
+
 <a name="module_ray"></a>
 
 ## ray
@@ -298,6 +326,7 @@ Returns on which side a point is.
   - [.hitTestTriangle(ray, triangle, out)](#module_ray.hitTestTriangle) ⇒ <code>number</code>
   - [.hitTestAABB(ray, aabb)](#module_ray.hitTestAABB) ⇒ <code>boolean</code>
   - [.intersectsAABB()](#module_ray.intersectsAABB)
+  - [.toString(a, [precision])](#module_ray.toString) ⇒ <code>string</code>
 
 <a name="module_ray.Intersections"></a>
 
@@ -365,6 +394,19 @@ Determines if a ray intersect an AABB bounding box
 Alias for [hitTestAABB](hitTestAABB)
 
 **Kind**: static method of [<code>ray</code>](#module_ray)
+<a name="module_ray.toString"></a>
+
+### ray.toString(a, [precision]) ⇒ <code>string</code>
+
+Prints a plane to a string.
+
+**Kind**: static method of [<code>ray</code>](#module_ray)
+
+| Param       | Type                     | Default        |
+| ----------- | ------------------------ | -------------- |
+| a           | [<code>ray</code>](#ray) |                |
+| [precision] | <code>number</code>      | <code>4</code> |
+
 <a name="module_rect"></a>
 
 ## rect
@@ -391,6 +433,7 @@ Alias for [hitTestAABB](hitTestAABB)
   - [.includeRect(a, b)](#module_rect.includeRect) ⇒ [<code>rect</code>](#rect)
   - [.mapPoint(a, p)](#module_rect.mapPoint) ⇒ <code>module:pex-math~vec2</code>
   - [.clampPoint(a, p)](#module_rect.clampPoint) ⇒ <code>module:pex-math~vec2</code>
+  - [.toString(a, [precision])](#module_rect.toString) ⇒ <code>string</code>
 
 <a name="module_rect.create"></a>
 
@@ -652,6 +695,19 @@ Clamps a point into the dimensions of a rectangle.
 | ----- | --------------------------------- |
 | a     | [<code>rect</code>](#rect)        |
 | p     | <code>module:pex-math~vec2</code> |
+
+<a name="module_rect.toString"></a>
+
+### rect.toString(a, [precision]) ⇒ <code>string</code>
+
+Prints a rect to a string.
+
+**Kind**: static method of [<code>rect</code>](#module_rect)
+
+| Param       | Type                       | Default        |
+| ----------- | -------------------------- | -------------- |
+| a           | [<code>rect</code>](#rect) |                |
+| [precision] | <code>number</code>        | <code>4</code> |
 
 <a name="aabb"></a>
 

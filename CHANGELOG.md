@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.0.0-alpha.2](https://github.com/pex-gl/pex-geom/compare/v3.0.0-alpha.1...v3.0.0-alpha.2) (2022-07-12)
+
+
+### Features
+
+* add toString ([3f4b23e](https://github.com/pex-gl/pex-geom/commit/3f4b23e3a5bf8a1b4b8a61fed22f1879af1d05d1))
+
+
+
 # [3.0.0-alpha.1](https://github.com/pex-gl/pex-geom/compare/v3.0.0-alpha.0...v3.0.0-alpha.1) (2022-07-07)
 
 
