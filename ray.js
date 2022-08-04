@@ -42,7 +42,7 @@ export function create() {
  * @see {@link https://www.cs.princeton.edu/courses/archive/fall00/cs426/lectures/raycast/sld017.htm}
  * @param {import("./types.js").ray} ray
  * @param {import("./types.js").plane} plane
- * @param {import("pex-math").vec3} out
+ * @param {import("pex-math/types/types").vec3} out
  * @returns {number}
  */
 export function hitTestPlane(
@@ -70,7 +70,7 @@ export function hitTestPlane(
  * @see {@link http://geomalgorithms.com/a06-_intersect-2.html#intersect3D_RayTriangle()}
  * @param {import("./types.js").ray} ray
  * @param {import("./types.js").triangle} triangle
- * @param {import("pex-math").vec3} out
+ * @param {import("pex-math/types/types").vec3} out
  * @returns {number}
  */
 export function hitTestTriangle(

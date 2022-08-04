@@ -29,7 +29,7 @@ export function create() {
 /**
  * Returns on which side a point is.
  * @param {import("./types.js").plane} plane
- * @param {import("pex-math").vec3} point
+ * @param {import("pex-math/types/types").vec3} point
  * @returns {number}
  */
 export function side([planePoint, planeNormal], point) {
