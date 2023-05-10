@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>pex-geom by pex-gl (https://github.com/pex-gl)</title>
+    <style>
+      :root {
+        --color-dark: #404040;
+        --color-light: #f2f2f2;
+        --color-accent: #fd5e62;
+      }
+
+      body {
+        margin: 0;
+        overscroll-behavior: none;
+        font-family: sans-serif;
+        color: var(--color-light);
+        background-color: var(--color-dark);
+      }
+
+      main {
+        padding: 0 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>pex-geom</h1>
+      <p>Open your console</p>
+    </main>
+    <script async src="web_modules/es-module-shims.js" type="module"></script>
+    <script src="web_modules/import-map.json" type="importmap-shim"></script>
+    <script type="importmap-shim">
+      {
+        "imports": {
+          "node:test": "./benchmark/utils.js"
+        }
+      }
+    </script>
+
+    <script type="module-shim">
+      import "./benchmark/index.js";
+    </script>
+  </body>
+</html>
