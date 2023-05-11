@@ -72,7 +72,11 @@ export function isEmpty(a) {
 export function fromPoints(a, points) {
   const isTypedArray = !Array.isArray(points);
   for (let i = 0; i < points.length / (isTypedArray ? 3 : 1); i++) {
-    includePoint(a, isTypedArray ? points.slice(i * 3) : points[i]);
+    if (isTypedArray) {
+      includePoint(a, points, i * 3);
+    } else {
+      includePoint(a, points[i]);
+    }
   }
 
   return a;
@@ -166,15 +170,16 @@ export function includeAABB(a, b) {
  * Includes a point in a bounding box.
  * @param {import("./types.js").aabb} a
  * @param {import("pex-math/types/types").vec3} p
+ * @param {number} [i=0] offset in the point array
  * @returns {import("pex-math/types/types").vec3}
  */
-export function includePoint(a, p) {
-  a[0][0] = Math.min(a[0][0], p[0]);
-  a[0][1] = Math.min(a[0][1], p[1]);
-  a[0][2] = Math.min(a[0][2], p[2]);
-  a[1][0] = Math.max(a[1][0], p[0]);
-  a[1][1] = Math.max(a[1][1], p[1]);
-  a[1][2] = Math.max(a[1][2], p[2]);
+export function includePoint(a, p, i = 0) {
+  a[0][0] = Math.min(a[0][0], p[i + 0]);
+  a[0][1] = Math.min(a[0][1], p[i + 1]);
+  a[0][2] = Math.min(a[0][2], p[i + 2]);
+  a[1][0] = Math.max(a[1][0], p[i + 0]);
+  a[1][1] = Math.max(a[1][1], p[i + 1]);
+  a[1][2] = Math.max(a[1][2], p[i + 2]);
   return a;
 }
 
