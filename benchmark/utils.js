@@ -10,6 +10,10 @@ const colors = {
   red: "\u001b[31m",
   gray: "\u001b[90m",
 };
+if (!globalThis.chrome) {
+  Object.keys(symbols).forEach((key) => (symbols[key] = ""));
+  Object.keys(colors).forEach((key) => (colors[key] = ""));
+}
 
 const describe = (name, cb) => {
   requestAnimationFrame(() => {

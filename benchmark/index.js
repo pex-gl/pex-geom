@@ -19,10 +19,16 @@ const NORM_POINTS = Object.freeze([
 ]);
 const NORM_POINTS_U16 = new Uint16Array(NORM_POINTS.flat());
 const NORM_POINTS_F32 = new Float32Array(NORM_POINTS.flat());
-const MEDIUM_RANDOM_F32 = Float32Array.from({ length: 1_000 }, () =>
+const RANDOM_1K_LENGTH_F32 = Float32Array.from({ length: 1024 }, () =>
   Math.random()
 );
-const LARGE_RANDOM_F32 = Float32Array.from({ length: 100_000 }, () =>
+const RANDOM_1K_POINTS_F32 = Float32Array.from({ length: 1_000 * 3 }, () =>
+  Math.random()
+);
+const RANDOM_10K_POINTS_F32 = Float32Array.from({ length: 10_000 * 3 }, () =>
+  Math.random()
+);
+const RANDOM_100K_POINTS_F32 = Float32Array.from({ length: 100_000 * 3 }, () =>
   Math.random()
 );
 
@@ -137,32 +143,43 @@ describe("aabb.fromPoints() compare with Float32Array", () => {
     run(() => fromPointsSlice(a, NORM_POINTS_F32));
   });
 });
-describe("aabb.fromPoints() compare with medium Float32Array", () => {
+describe("aabb.fromPoints() compare with 1k length Float32Array", () => {
   it("aabb.fromPoints() using includePoint with offset", () => {
     const a = aabb.create();
-    run(() => fromPointsOffset(a, MEDIUM_RANDOM_F32), 100);
+    run(() => fromPointsOffset(a, RANDOM_1K_LENGTH_F32), 100);
   });
   it("aabb.fromPoints() using inline", () => {
     const a = aabb.create();
-    run(() => fromPointsInline(a, MEDIUM_RANDOM_F32), 100);
-  });
-  it("aabb.fromPoints() using slicing for array with offset", () => {
-    const a = aabb.create();
-    run(() => fromPointsSlice(a, MEDIUM_RANDOM_F32), 100);
+    run(() => fromPointsInline(a, RANDOM_1K_LENGTH_F32), 100);
   });
 });
-describe("aabb.fromPoints() compare with large Float32Array", () => {
+describe("aabb.fromPoints() compare with 1k points Float32Array", () => {
   it("aabb.fromPoints() using includePoint with offset", () => {
     const a = aabb.create();
-    run(() => fromPointsOffset(a, LARGE_RANDOM_F32), 100);
+    run(() => fromPointsOffset(a, RANDOM_1K_POINTS_F32), 100);
   });
   it("aabb.fromPoints() using inline", () => {
     const a = aabb.create();
-    run(() => fromPointsInline(a, LARGE_RANDOM_F32), 100);
+    run(() => fromPointsInline(a, RANDOM_1K_POINTS_F32), 100);
   });
-  // Too slow
-  // it("aabb.fromPoints() using slicing for array with offset", () => {
-  //   const a = aabb.create();
-  //   run(() => fromPointsSlice(a, LARGE_RANDOM_F32), 10);
-  // });
+});
+describe("aabb.fromPoints() compare with 10k points Float32Array", () => {
+  it("aabb.fromPoints() using includePoint with offset", () => {
+    const a = aabb.create();
+    run(() => fromPointsOffset(a, RANDOM_10K_POINTS_F32), 100);
+  });
+  it("aabb.fromPoints() using inline", () => {
+    const a = aabb.create();
+    run(() => fromPointsInline(a, RANDOM_10K_POINTS_F32), 100);
+  });
+});
+describe("aabb.fromPoints() compare with 100k points Float32Array", () => {
+  it("aabb.fromPoints() using includePoint with offset", () => {
+    const a = aabb.create();
+    run(() => fromPointsOffset(a, RANDOM_100K_POINTS_F32), 100);
+  });
+  it("aabb.fromPoints() using inline", () => {
+    const a = aabb.create();
+    run(() => fromPointsInline(a, RANDOM_100K_POINTS_F32), 100);
+  });
 });
