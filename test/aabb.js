@@ -1,3 +1,4 @@
+import { describe, it } from "node:test";
 import { deepEqual, notStrictEqual, strictEqual } from "node:assert";
 
 import { ORIGIN } from "./constants.js";
@@ -25,6 +26,7 @@ const NORM_POINTS = Object.freeze([
   [1, 1, 1],
   [-1, 1, 1],
 ]);
+const NORM_POINTS_F32 = new Float32Array(NORM_POINTS.flat());
 
 describe("aabb", () => {
   it("create() should create a new bounding box with origin and direction", () => {
@@ -60,10 +62,7 @@ describe("aabb", () => {
   });
   it("fromPoints() should update a bounding box from a list of points passed as flat array", () => {
     deepEqual(
-      aabb.fromPoints(
-        aabb.copy(DEFAULT_BOX),
-        new Float32Array(NORM_POINTS.flat())
-      ),
+      aabb.fromPoints(aabb.copy(DEFAULT_BOX), NORM_POINTS_F32),
       NORM_BOX
     );
   });

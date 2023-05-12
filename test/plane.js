@@ -1,3 +1,4 @@
+import { describe, it } from "node:test";
 import { deepEqual } from "node:assert";
 
 import { ORIGIN, Y_UP_PLANE } from "./constants.js";
