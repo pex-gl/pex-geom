@@ -26,7 +26,7 @@ export function empty(a) {
 
 /**
  * Copies a rectangle.
- * @param {import("./types.js").rect} b
+ * @param {import("./types.js").rect} a
  * @returns {import("./types.js").rect}
  */
 export function copy(a) {

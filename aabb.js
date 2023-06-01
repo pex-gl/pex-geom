@@ -56,7 +56,7 @@ export function set(a, b) {
 
 /**
  * Checks if a bounding box is empty.
- * @param {import("./types.js").aabb} aabb
+ * @param {import("./types.js").aabb} a
  * @returns {boolean}
  */
 export function isEmpty(a) {
@@ -84,7 +84,7 @@ export function fromPoints(a, points) {
 
 /**
  * Returns a list of 8 points from a bounding box.
- * @param {import("./types.js").aabb} aabb
+ * @param {import("./types.js").aabb} a
  * @param {import("pex-math/types/types").vec3[]} [points]
  * @returns {import("pex-math/types/types").vec3[]}
  */
