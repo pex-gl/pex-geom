@@ -88,14 +88,14 @@ console.log(intersect);
   - [.empty(a)](#module_aabb.empty) ⇒ [<code>rect</code>](#rect)
   - [.copy(a)](#module_aabb.copy) ⇒ [<code>aabb</code>](#aabb)
   - [.set(a, b)](#module_aabb.set) ⇒ [<code>aabb</code>](#aabb)
-  - [.isEmpty(aabb)](#module_aabb.isEmpty) ⇒ <code>boolean</code>
+  - [.isEmpty(a)](#module_aabb.isEmpty) ⇒ <code>boolean</code>
   - [.fromPoints(a, points)](#module_aabb.fromPoints) ⇒ [<code>aabb</code>](#aabb)
-  - [.getCorners(aabb, [points])](#module_aabb.getCorners) ⇒ <code>Array.&lt;module:pex-math/types/types~vec3&gt;</code>
+  - [.getCorners(a, [points])](#module_aabb.getCorners) ⇒ <code>Array.&lt;module:pex-math/types/types~vec3&gt;</code>
   - [.center(a, out)](#module_aabb.center) ⇒ <code>module:pex-math/types/types~vec3</code>
   - [.size(a, out)](#module_aabb.size) ⇒ <code>module:pex-math/types/types~vec3</code>
   - [.containsPoint(a, p)](#module_aabb.containsPoint) ⇒ <code>boolean</code>
   - [.includeAABB(a, b)](#module_aabb.includeAABB) ⇒ [<code>aabb</code>](#aabb)
-  - [.includePoint(a, p)](#module_aabb.includePoint) ⇒ <code>module:pex-math/types/types~vec3</code>
+  - [.includePoint(a, p, [i])](#module_aabb.includePoint) ⇒ <code>module:pex-math/types/types~vec3</code>
   - [.toString(a, [precision])](#module_aabb.toString) ⇒ <code>string</code>
 
 <a name="module_aabb.create"></a>
@@ -144,7 +144,7 @@ Sets a bounding box to another.
 
 <a name="module_aabb.isEmpty"></a>
 
-### aabb.isEmpty(aabb) ⇒ <code>boolean</code>
+### aabb.isEmpty(a) ⇒ <code>boolean</code>
 
 Checks if a bounding box is empty.
 
@@ -152,7 +152,7 @@ Checks if a bounding box is empty.
 
 | Param | Type                       |
 | ----- | -------------------------- |
-| aabb  | [<code>aabb</code>](#aabb) |
+| a     | [<code>aabb</code>](#aabb) |
 
 <a name="module_aabb.fromPoints"></a>
 
@@ -169,7 +169,7 @@ Updates a bounding box from a list of points.
 
 <a name="module_aabb.getCorners"></a>
 
-### aabb.getCorners(aabb, [points]) ⇒ <code>Array.&lt;module:pex-math/types/types~vec3&gt;</code>
+### aabb.getCorners(a, [points]) ⇒ <code>Array.&lt;module:pex-math/types/types~vec3&gt;</code>
 
 Returns a list of 8 points from a bounding box.
 
@@ -177,7 +177,7 @@ Returns a list of 8 points from a bounding box.
 
 | Param    | Type                                                        |
 | -------- | ----------------------------------------------------------- |
-| aabb     | [<code>aabb</code>](#aabb)                                  |
+| a        | [<code>aabb</code>](#aabb)                                  |
 | [points] | <code>Array.&lt;module:pex-math/types/types~vec3&gt;</code> |
 
 <a name="module_aabb.center"></a>
@@ -234,16 +234,17 @@ Includes a bounding box in another.
 
 <a name="module_aabb.includePoint"></a>
 
-### aabb.includePoint(a, p) ⇒ <code>module:pex-math/types/types~vec3</code>
+### aabb.includePoint(a, p, [i]) ⇒ <code>module:pex-math/types/types~vec3</code>
 
 Includes a point in a bounding box.
 
 **Kind**: static method of [<code>aabb</code>](#module_aabb)
 
-| Param | Type                                          |
-| ----- | --------------------------------------------- |
-| a     | [<code>aabb</code>](#aabb)                    |
-| p     | <code>module:pex-math/types/types~vec3</code> |
+| Param | Type                                          | Default        | Description               |
+| ----- | --------------------------------------------- | -------------- | ------------------------- |
+| a     | [<code>aabb</code>](#aabb)                    |                |                           |
+| p     | <code>module:pex-math/types/types~vec3</code> |                |                           |
+| [i]   | <code>number</code>                           | <code>0</code> | offset in the point array |
 
 <a name="module_aabb.toString"></a>
 
@@ -414,7 +415,7 @@ Prints a plane to a string.
 - [rect](#module_rect)
   - [.create()](#module_rect.create) ⇒ [<code>rect</code>](#rect)
   - [.empty(a)](#module_rect.empty) ⇒ [<code>rect</code>](#rect)
-  - [.copy(b)](#module_rect.copy) ⇒ [<code>rect</code>](#rect)
+  - [.copy(a)](#module_rect.copy) ⇒ [<code>rect</code>](#rect)
   - [.set(a, b)](#module_rect.set) ⇒ [<code>rect</code>](#rect)
   - [.isEmpty(a)](#module_rect.isEmpty) ⇒ <code>boolean</code>
   - [.fromPoints(a, points)](#module_rect.fromPoints) ⇒ [<code>rect</code>](#rect)
@@ -456,7 +457,7 @@ Reset a rectangle.
 
 <a name="module_rect.copy"></a>
 
-### rect.copy(b) ⇒ [<code>rect</code>](#rect)
+### rect.copy(a) ⇒ [<code>rect</code>](#rect)
 
 Copies a rectangle.
 
@@ -464,7 +465,7 @@ Copies a rectangle.
 
 | Param | Type                       |
 | ----- | -------------------------- |
-| b     | [<code>rect</code>](#rect) |
+| a     | [<code>rect</code>](#rect) |
 
 <a name="module_rect.set"></a>
 
