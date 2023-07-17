@@ -63,16 +63,16 @@ console.log(intersect);
 
 <dl>
 <dt><a href="#aabb">aabb</a> : <code>Array.&lt;Array.&lt;number&gt;&gt;</code></dt>
-<dd><p>An axis-aligned bounding box defined by two min and max 3D points.</p>
+<dd><p>An axis-aligned bounding box defined by two min and max 3D points  (eg. [[minX, minY, minZ], [maxX, maxY, maxZ]]).</p>
 </dd>
 <dt><a href="#plane">plane</a> : <code>Array.&lt;Array.&lt;number&gt;&gt;</code></dt>
-<dd><p>A plane defined by a 3D point and a normal vector perpendicular to the plane’s surface.</p>
+<dd><p>A plane defined by a 3D point and a normal vector perpendicular to the plane’s surface (eg. [[pointX, pointY, pointZ], [normalX, normalY, normalZ]]).</p>
 </dd>
 <dt><a href="#ray">ray</a> : <code>Array.&lt;Array.&lt;number&gt;&gt;</code></dt>
-<dd><p>A ray defined by a starting 3D point origin and a 3D direction vector.</p>
+<dd><p>A ray defined by a starting 3D point origin and a 3D direction vector (eg. [[originX, originY, originZ], [directionX, directionY, directionZ]).</p>
 </dd>
 <dt><a href="#rect">rect</a> : <code>Array.&lt;Array.&lt;number&gt;&gt;</code></dt>
-<dd><p>A rectangle defined by two diagonally opposite 2D points.</p>
+<dd><p>A rectangle defined by two diagonally opposite 2D points (eg. [[minX, minY], [maxX, maxY]]).</p>
 </dd>
 <dt><a href="#triangle">triangle</a> : <code>Array.&lt;Array.&lt;number&gt;&gt;</code></dt>
 <dd><p>A triangle defined by three 3D points.</p>
@@ -714,28 +714,28 @@ Prints a rect to a string.
 
 ## aabb : <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
 
-An axis-aligned bounding box defined by two min and max 3D points.
+An axis-aligned bounding box defined by two min and max 3D points (eg. [[minX, minY, minZ], [maxX, maxY, maxZ]]).
 
 **Kind**: global typedef
 <a name="plane"></a>
 
 ## plane : <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
 
-A plane defined by a 3D point and a normal vector perpendicular to the plane’s surface.
+A plane defined by a 3D point and a normal vector perpendicular to the plane’s surface (eg. [[pointX, pointY, pointZ], [normalX, normalY, normalZ]]).
 
 **Kind**: global typedef
 <a name="ray"></a>
 
 ## ray : <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
 
-A ray defined by a starting 3D point origin and a 3D direction vector.
+A ray defined by a starting 3D point origin and a 3D direction vector (eg. [[originX, originY, originZ], [directionX, directionY, directionZ]).
 
 **Kind**: global typedef
 <a name="rect"></a>
 
 ## rect : <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
 
-A rectangle defined by two diagonally opposite 2D points.
+A rectangle defined by two diagonally opposite 2D points (eg. [[minX, minY], [maxX, maxY]]).
 
 **Kind**: global typedef
 <a name="triangle"></a>
