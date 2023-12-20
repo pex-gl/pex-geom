@@ -60,9 +60,9 @@ describe("rect", () => {
     deepEqual(
       rect.fromPoints(
         rect.copy(DEFAULT_RECT),
-        new Float32Array(NORM_POINTS.flat())
+        new Float32Array(NORM_POINTS.flat()),
       ),
-      NORM_RECT
+      NORM_RECT,
     );
   });
   it("getCorners() should return a list of 4 points from a rectangle", () => {
@@ -113,7 +113,7 @@ describe("rect", () => {
         [-2, -1],
         [2, 1],
       ]),
-      2
+      2,
     );
   });
 
@@ -227,11 +227,11 @@ describe("rect", () => {
     // Already included
     deepEqual(
       rect.includePoint(rect.copy(POSITIVE_RECT), [0, 0]),
-      POSITIVE_RECT
+      POSITIVE_RECT,
     );
     deepEqual(
       rect.includePoint(rect.copy(NEGATIVE_RECT), [0, 0]),
-      NEGATIVE_RECT
+      NEGATIVE_RECT,
     );
     deepEqual(rect.includePoint(rect.copy(NORM_RECT), [0, 0]), NORM_RECT);
   });
@@ -240,26 +240,26 @@ describe("rect", () => {
     // Include itself
     deepEqual(
       rect.includeRect(rect.copy(DEFAULT_RECT), DEFAULT_RECT),
-      [...DEFAULT_RECT].reverse()
+      [...DEFAULT_RECT].reverse(),
     );
     deepEqual(
       rect.includeRect(rect.copy(POSITIVE_RECT), POSITIVE_RECT),
-      POSITIVE_RECT
+      POSITIVE_RECT,
     );
     deepEqual(
       rect.includeRect(rect.copy(NEGATIVE_RECT), NEGATIVE_RECT),
-      NEGATIVE_RECT
+      NEGATIVE_RECT,
     );
     deepEqual(rect.includeRect(rect.copy(NORM_RECT), NORM_RECT), NORM_RECT);
 
     // Include to default
     deepEqual(
       rect.includeRect(rect.copy(DEFAULT_RECT), POSITIVE_RECT),
-      POSITIVE_RECT
+      POSITIVE_RECT,
     );
     deepEqual(
       rect.includeRect(rect.copy(DEFAULT_RECT), NEGATIVE_RECT),
-      NEGATIVE_RECT
+      NEGATIVE_RECT,
     );
     deepEqual(rect.includeRect(rect.copy(DEFAULT_RECT), NORM_RECT), NORM_RECT);
 
@@ -315,7 +315,7 @@ describe("rect", () => {
   it("toString() should print a rect to a string", () => {
     deepEqual(
       rect.toString(DEFAULT_RECT),
-      "[[Infinity, Infinity], [-Infinity, -Infinity]]"
+      "[[Infinity, Infinity], [-Infinity, -Infinity]]",
     );
     deepEqual(rect.toString(NORM_RECT), "[[-1, -1], [1, 1]]");
     deepEqual(rect.toString(POSITIVE_RECT), "[[0, 0], [1, 1]]");

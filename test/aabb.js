@@ -63,7 +63,7 @@ describe("aabb", () => {
   it("fromPoints() should update a bounding box from a list of points passed as flat array", () => {
     deepEqual(
       aabb.fromPoints(aabb.copy(DEFAULT_BOX), NORM_POINTS_F32),
-      NORM_BOX
+      NORM_BOX,
     );
   });
   it("getCorners() should return a list of 8 points from a bounding box", () => {
@@ -114,24 +114,24 @@ describe("aabb", () => {
     // Empty a
     deepEqual(
       aabb.includeAABB(aabb.copy(DEFAULT_BOX), POSITIVE_BOX),
-      POSITIVE_BOX
+      POSITIVE_BOX,
     );
     // Empty b
     deepEqual(
       aabb.includeAABB(POSITIVE_BOX, aabb.copy(DEFAULT_BOX)),
-      POSITIVE_BOX
+      POSITIVE_BOX,
     );
 
     deepEqual(
       aabb.includeAABB(aabb.copy(POSITIVE_BOX), NEGATIVE_BOX),
-      NORM_BOX
+      NORM_BOX,
     );
   });
 
   it("includePoint() should include a point in a bounding box", () => {
     deepEqual(
       aabb.includePoint(aabb.copy(POSITIVE_BOX), [-1, -1, -1]),
-      NORM_BOX
+      NORM_BOX,
     );
     deepEqual(aabb.includePoint(aabb.copy(NEGATIVE_BOX), [1, 1, 1]), NORM_BOX);
     // Collapse itself
@@ -143,7 +143,7 @@ describe("aabb", () => {
   it("toString() should print a bounding box to a string", () => {
     deepEqual(
       aabb.toString(DEFAULT_BOX),
-      "[[Infinity, Infinity, Infinity], [-Infinity, -Infinity, -Infinity]]"
+      "[[Infinity, Infinity, Infinity], [-Infinity, -Infinity, -Infinity]]",
     );
     deepEqual(aabb.toString(NORM_BOX), "[[-1, -1, -1], [1, 1, 1]]");
     deepEqual(aabb.toString(POSITIVE_BOX), "[[0, 0, 0], [1, 1, 1]]");

@@ -22,15 +22,15 @@ describe("ray", () => {
     it("should return 1 if the ray is intersecting", () => {
       deepEqual(
         ray.hitTestPlane(Y_UP_RAY, Y_UP_PLANE),
-        ray.Intersections.Intersect
+        ray.Intersections.Intersect,
       );
       deepEqual(
         ray.hitTestPlane(Y_DOWN_RAY, Y_UP_PLANE),
-        ray.Intersections.Intersect
+        ray.Intersections.Intersect,
       );
       deepEqual(
         ray.hitTestPlane(XYZ_RAY, Y_UP_PLANE),
-        ray.Intersections.Intersect
+        ray.Intersections.Intersect,
       );
     });
     it("should set the plane intersection point", () => {
@@ -41,7 +41,7 @@ describe("ray", () => {
     it("should return -1 if the ray is not intersecting (ray on the plane)", () => {
       deepEqual(
         ray.hitTestPlane(Z_UP_RAY, Y_UP_PLANE),
-        ray.Intersections.SamePlane
+        ray.Intersections.SamePlane,
       );
     });
     it("should return -2 if the ray is not intersecting (ray parallel to plane)", () => {
@@ -51,9 +51,9 @@ describe("ray", () => {
             [0, 1, 0],
             [0, 1, 1],
           ],
-          Y_UP_PLANE
+          Y_UP_PLANE,
         ),
-        ray.Intersections.Parallel
+        ray.Intersections.Parallel,
       );
     });
   });
@@ -69,15 +69,15 @@ describe("ray", () => {
     it("should intersect the triangle", () => {
       deepEqual(
         ray.hitTestTriangle(Y_UP_RAY, triangle),
-        ray.Intersections.Intersect
+        ray.Intersections.Intersect,
       );
       deepEqual(
         ray.hitTestTriangle(Y_DOWN_RAY, triangle),
-        ray.Intersections.Intersect
+        ray.Intersections.Intersect,
       );
       deepEqual(
         ray.hitTestTriangle(XYZ_RAY, triangle),
-        ray.Intersections.Intersect
+        ray.Intersections.Intersect,
       );
     });
     it("should set the triangle intersection point", () => {
@@ -92,7 +92,7 @@ describe("ray", () => {
           [0, 0, 1],
           [1, 0, -1],
         ]),
-        ray.Intersections.TriangleDegenerate
+        ray.Intersections.TriangleDegenerate,
       );
     });
     it("should not intersect if a ray is outside the triangle", () => {
@@ -102,9 +102,9 @@ describe("ray", () => {
             [10, 0, 0],
             [0, 1, 0],
           ],
-          triangle
+          triangle,
         ),
-        ray.Intersections.NoIntersect
+        ray.Intersections.NoIntersect,
       );
     });
     it("should not intersect if a ray is outside the triangle (ray parallel to triangle)", () => {
@@ -114,19 +114,19 @@ describe("ray", () => {
             [0, 1, 0],
             [0, 0, 1],
           ],
-          triangle
+          triangle,
         ),
-        ray.Intersections.NoIntersect
+        ray.Intersections.NoIntersect,
       );
     });
     it("should intersect if a ray is coplanar to the triangle", () => {
       deepEqual(
         ray.hitTestTriangle(X_UP_RAY, triangle),
-        ray.Intersections.SamePlane
+        ray.Intersections.SamePlane,
       );
       deepEqual(
         ray.hitTestTriangle(Z_UP_RAY, triangle),
-        ray.Intersections.SamePlane
+        ray.Intersections.SamePlane,
       );
     });
   });
@@ -149,9 +149,9 @@ describe("ray", () => {
             [-2, 0, 0],
             [-1, 0, 0],
           ],
-          box
+          box,
         ),
-        ray.Intersections.NoIntersect
+        ray.Intersections.NoIntersect,
       );
     });
     it("should intersect if a ray is coplanar to one of the boxes sides", () => {
@@ -161,9 +161,9 @@ describe("ray", () => {
             [0, 0, 1],
             [0, 0, 1],
           ],
-          box
+          box,
         ),
-        ray.Intersections.Intersect
+        ray.Intersections.Intersect,
       );
     });
   });

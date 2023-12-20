@@ -48,7 +48,7 @@ export function create() {
 export function hitTestPlane(
   [origin, direction],
   [point, normal],
-  out = vec3.create()
+  out = vec3.create(),
 ) {
   vec3.set(TEMP_0, origin);
   vec3.set(TEMP_1, direction);
@@ -76,7 +76,7 @@ export function hitTestPlane(
 export function hitTestTriangle(
   [origin, direction],
   [p0, p1, p2],
-  out = vec3.create()
+  out = vec3.create(),
 ) {
   // get triangle edge vectors and plane normal
   const u = vec3.sub(vec3.set(TEMP_0, p1), p0);
@@ -106,7 +106,7 @@ export function hitTestTriangle(
   // intersect point of ray and plane
   const I = vec3.add(
     vec3.set(TEMP_4, origin),
-    vec3.scale(vec3.set(TEMP_5, direction), r)
+    vec3.scale(vec3.set(TEMP_5, direction), r),
   );
 
   const uu = vec3.dot(u, u);
@@ -169,11 +169,11 @@ export function hitTestAABB([origin, direction], aabb) {
 
   const tmin = Math.max(
     Math.max(Math.min(t1, t2), Math.min(t3, t4)),
-    Math.min(t5, t6)
+    Math.min(t5, t6),
   );
   const tmax = Math.min(
     Math.min(Math.max(t1, t2), Math.max(t3, t4)),
-    Math.max(t5, t6)
+    Math.max(t5, t6),
   );
 
   return !(tmax < 0 || tmin > tmax);
