@@ -20,16 +20,16 @@ const NORM_POINTS = Object.freeze([
 const NORM_POINTS_U16 = new Uint16Array(NORM_POINTS.flat());
 const NORM_POINTS_F32 = new Float32Array(NORM_POINTS.flat());
 const RANDOM_1K_LENGTH_F32 = Float32Array.from({ length: 1024 }, () =>
-  Math.random()
+  Math.random(),
 );
 const RANDOM_1K_POINTS_F32 = Float32Array.from({ length: 1_000 * 3 }, () =>
-  Math.random()
+  Math.random(),
 );
 const RANDOM_10K_POINTS_F32 = Float32Array.from({ length: 10_000 * 3 }, () =>
-  Math.random()
+  Math.random(),
 );
 const RANDOM_100K_POINTS_F32 = Float32Array.from({ length: 100_000 * 3 }, () =>
-  Math.random()
+  Math.random(),
 );
 
 // Fixtures
@@ -74,6 +74,35 @@ function fromPointsOffset(a, points) {
   return a;
 }
 
+function fromPointsOffsetPrecomputeLength(a, points) {
+  const isTypedArray = !Array.isArray(points);
+  const l = points.length / (isTypedArray ? 3 : 1);
+  for (let i = 0; i < l; i++) {
+    if (isTypedArray) {
+      includePointOffset(a, points, i * 3);
+    } else {
+      includePointOffset(a, points[i]);
+    }
+  }
+
+  return a;
+}
+function fromPointsOffsetIfCheckOutside(a, points) {
+  const isTypedArray = !Array.isArray(points);
+  const l = points.length;
+  if (isTypedArray) {
+    for (let i = 0; i < l; i += 3) {
+      includePointOffset(a, points, i);
+    }
+  } else {
+    for (let i = 0; i < l; i++) {
+      includePointOffset(a, points[i]);
+    }
+  }
+
+  return a;
+}
+
 function fromPointsInline(a, points) {
   const isTypedArray = !Array.isArray(points);
   if (isTypedArray) {
@@ -105,6 +134,14 @@ describe("aabb.fromPoints() compare with array of vec3", () => {
     const a = aabb.create();
     run(() => fromPointsOffset(a, NORM_POINTS));
   });
+  it("aabb.fromPoints() using includePoint with offset and precomputed for loop length", () => {
+    const a = aabb.create();
+    run(() => fromPointsOffsetPrecomputeLength(a, NORM_POINTS));
+  });
+  it("aabb.fromPoints() using includePoint with offset, precomputed for loop length and two loops", () => {
+    const a = aabb.create();
+    run(() => fromPointsOffsetIfCheckOutside(a, NORM_POINTS));
+  });
   it("aabb.fromPoints() using inline", () => {
     const a = aabb.create();
     run(() => fromPointsInline(a, NORM_POINTS));
@@ -120,6 +157,14 @@ describe("aabb.fromPoints() compare with Uint16Array", () => {
     const a = aabb.create();
     run(() => fromPointsOffset(a, NORM_POINTS_U16));
   });
+  it("aabb.fromPoints() using includePoint with offset and precomputed for loop length", () => {
+    const a = aabb.create();
+    run(() => fromPointsOffsetPrecomputeLength(a, NORM_POINTS_U16));
+  });
+  it("aabb.fromPoints() using includePoint with offset, precomputed for loop length and two loops", () => {
+    const a = aabb.create();
+    run(() => fromPointsOffsetIfCheckOutside(a, NORM_POINTS_U16));
+  });
   it("aabb.fromPoints() using inline", () => {
     const a = aabb.create();
     run(() => fromPointsInline(a, NORM_POINTS_U16));
@@ -133,6 +178,14 @@ describe("aabb.fromPoints() compare with Float32Array", () => {
   it("aabb.fromPoints() using includePoint with offset", () => {
     const a = aabb.create();
     run(() => fromPointsOffset(a, NORM_POINTS_F32));
+  });
+  it("aabb.fromPoints() using includePoint with offset and precomputed for loop length", () => {
+    const a = aabb.create();
+    run(() => fromPointsOffsetPrecomputeLength(a, NORM_POINTS_F32));
+  });
+  it("aabb.fromPoints() using includePoint with offset, precomputed for loop length and two loops", () => {
+    const a = aabb.create();
+    run(() => fromPointsOffsetIfCheckOutside(a, NORM_POINTS_F32));
   });
   it("aabb.fromPoints() using inline", () => {
     const a = aabb.create();
@@ -148,6 +201,14 @@ describe("aabb.fromPoints() compare with 1k length Float32Array", () => {
     const a = aabb.create();
     run(() => fromPointsOffset(a, RANDOM_1K_LENGTH_F32), 100);
   });
+  it("aabb.fromPoints() using includePoint with offset and precomputed for loop length", () => {
+    const a = aabb.create();
+    run(() => fromPointsOffsetPrecomputeLength(a, RANDOM_1K_LENGTH_F32), 100);
+  });
+  it("aabb.fromPoints() using includePoint with offset, precomputed for loop length and two loops", () => {
+    const a = aabb.create();
+    run(() => fromPointsOffsetIfCheckOutside(a, RANDOM_1K_LENGTH_F32), 100);
+  });
   it("aabb.fromPoints() using inline", () => {
     const a = aabb.create();
     run(() => fromPointsInline(a, RANDOM_1K_LENGTH_F32), 100);
@@ -157,6 +218,14 @@ describe("aabb.fromPoints() compare with 1k points Float32Array", () => {
   it("aabb.fromPoints() using includePoint with offset", () => {
     const a = aabb.create();
     run(() => fromPointsOffset(a, RANDOM_1K_POINTS_F32), 100);
+  });
+  it("aabb.fromPoints() using includePoint with offset and precomputed for loop length", () => {
+    const a = aabb.create();
+    run(() => fromPointsOffsetPrecomputeLength(a, RANDOM_1K_POINTS_F32), 100);
+  });
+  it("aabb.fromPoints() using includePoint with offset, precomputed for loop length and two loops", () => {
+    const a = aabb.create();
+    run(() => fromPointsOffsetIfCheckOutside(a, RANDOM_1K_POINTS_F32), 100);
   });
   it("aabb.fromPoints() using inline", () => {
     const a = aabb.create();
@@ -168,6 +237,14 @@ describe("aabb.fromPoints() compare with 10k points Float32Array", () => {
     const a = aabb.create();
     run(() => fromPointsOffset(a, RANDOM_10K_POINTS_F32), 100);
   });
+  it("aabb.fromPoints() using includePoint with offset and precomputed for loop length", () => {
+    const a = aabb.create();
+    run(() => fromPointsOffsetPrecomputeLength(a, RANDOM_10K_POINTS_F32), 100);
+  });
+  it("aabb.fromPoints() using includePoint with offset, precomputed for loop length and two loops", () => {
+    const a = aabb.create();
+    run(() => fromPointsOffsetIfCheckOutside(a, RANDOM_10K_POINTS_F32), 100);
+  });
   it("aabb.fromPoints() using inline", () => {
     const a = aabb.create();
     run(() => fromPointsInline(a, RANDOM_10K_POINTS_F32), 100);
@@ -177,6 +254,14 @@ describe("aabb.fromPoints() compare with 100k points Float32Array", () => {
   it("aabb.fromPoints() using includePoint with offset", () => {
     const a = aabb.create();
     run(() => fromPointsOffset(a, RANDOM_100K_POINTS_F32), 100);
+  });
+  it("aabb.fromPoints() using includePoint with offset and precomputed for loop length", () => {
+    const a = aabb.create();
+    run(() => fromPointsOffsetPrecomputeLength(a, RANDOM_100K_POINTS_F32), 100);
+  });
+  it("aabb.fromPoints() using includePoint with offset, precomputed for loop length and two loops", () => {
+    const a = aabb.create();
+    run(() => fromPointsOffsetIfCheckOutside(a, RANDOM_100K_POINTS_F32), 100);
   });
   it("aabb.fromPoints() using inline", () => {
     const a = aabb.create();
