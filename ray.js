@@ -1,148 +1,197 @@
-var vec3 = require('pex-math/vec3')
+/** @module ray */
 
-var TEMP_VEC3_0 = vec3.create()
-var TEMP_VEC3_1 = vec3.create()
-var TEMP_VEC3_2 = vec3.create()
-var TEMP_VEC3_3 = vec3.create()
-var TEMP_VEC3_4 = vec3.create()
-var TEMP_VEC3_5 = vec3.create()
-var TEMP_VEC3_6 = vec3.create()
-var TEMP_VEC3_7 = vec3.create()
+import { vec3 } from "pex-math";
 
-var EPSILON = 0.000001
-function create () {
-  return [[0, 0, 0], [0, 0, 1]]
+/**
+ * Enum for different intersections values
+ * @readonly
+ * @enum {number}
+ */
+export const Intersections = Object.freeze({
+  Intersect: 1,
+  NoIntersect: 0,
+  SamePlane: -1,
+  Parallel: -2,
+  TriangleDegenerate: -2,
+});
+
+const TEMP_0 = vec3.create();
+const TEMP_1 = vec3.create();
+const TEMP_2 = vec3.create();
+const TEMP_3 = vec3.create();
+const TEMP_4 = vec3.create();
+const TEMP_5 = vec3.create();
+const TEMP_6 = vec3.create();
+const TEMP_7 = vec3.create();
+
+const EPSILON = 1e-6;
+
+/**
+ * Creates a new ray
+ * @returns {import("./types.js").ray}
+ */
+export function create() {
+  return [
+    [0, 0, 0],
+    [0, 0, 1],
+  ];
 }
 
-function hitTestTriangle (a, triangle, out) {
-  var p0 = triangle[0]
-  var p1 = triangle[1]
-  var p2 = triangle[2]
+/**
+ * Determines if a ray intersect a plane and set intersection point
+ * @see {@link https://www.cs.princeton.edu/courses/archive/fall00/cs426/lectures/raycast/sld017.htm}
+ * @param {import("./types.js").ray} ray
+ * @param {import("./types.js").plane} plane
+ * @param {import("pex-math/types/types").vec3} out
+ * @returns {number}
+ */
+export function hitTestPlane(
+  [origin, direction],
+  [point, normal],
+  out = vec3.create(),
+) {
+  vec3.set(TEMP_0, origin);
+  vec3.set(TEMP_1, direction);
 
-  var origin = a[0]
-  var direction = a[1]
+  const dotDirectionNormal = vec3.dot(TEMP_1, normal);
+  if (dotDirectionNormal === 0) return Intersections.SamePlane;
 
-  var u = vec3.sub(vec3.set(TEMP_VEC3_0, p1), p0)
-  var v = vec3.sub(vec3.set(TEMP_VEC3_1, p2), p0)
-  var n = vec3.cross(vec3.set(TEMP_VEC3_2, u), v)
+  vec3.set(TEMP_2, point);
 
-  if (vec3.length(n) < EPSILON) {
-    return -1
-  }
+  const t = vec3.dot(vec3.sub(TEMP_2, TEMP_0), normal) / dotDirectionNormal;
+  if (t < 0) return Intersections.Parallel;
 
-  var w0 = vec3.sub(vec3.set(TEMP_VEC3_3, origin), p0)
-  var a_ = -vec3.dot(n, w0)
-  var b = vec3.dot(n, direction)
+  vec3.set(out, vec3.add(TEMP_0, vec3.scale(TEMP_1, t)));
+  return Intersections.Intersect;
+}
+
+/**
+ * Determines if a ray intersect a triangle and set intersection point
+ * @see {@link http://geomalgorithms.com/a06-_intersect-2.html#intersect3D_RayTriangle()}
+ * @param {import("./types.js").ray} ray
+ * @param {import("./types.js").triangle} triangle
+ * @param {import("pex-math/types/types").vec3} out
+ * @returns {number}
+ */
+export function hitTestTriangle(
+  [origin, direction],
+  [p0, p1, p2],
+  out = vec3.create(),
+) {
+  // get triangle edge vectors and plane normal
+  const u = vec3.sub(vec3.set(TEMP_0, p1), p0);
+  const v = vec3.sub(vec3.set(TEMP_1, p2), p0);
+  const n = vec3.cross(vec3.set(TEMP_2, u), v);
+
+  if (vec3.length(n) < EPSILON) return Intersections.TriangleDegenerate;
+
+  // ray vectors
+  const w0 = vec3.sub(vec3.set(TEMP_3, origin), p0);
+
+  // params to calc ray-plane intersect
+  const a = -vec3.dot(n, w0);
+  const b = vec3.dot(n, direction);
 
   if (Math.abs(b) < EPSILON) {
-    if (a_ === 0) {
-      return -2
-    }
-    return -3
+    if (a === 0) return Intersections.SamePlane;
+    return Intersections.NoIntersect;
   }
 
-  var r = a_ / b
-  if (r < -EPSILON) {
-    return -4
-  }
+  // get intersect point of ray with triangle plane
+  const r = a / b;
+  // ray goes away from triangle
+  if (r < -EPSILON) return Intersections.NoIntersect;
 
-  var I = vec3.add(vec3.set(TEMP_VEC3_4, origin), vec3.scale(vec3.set(TEMP_VEC3_5, direction), r))
+  // for a segment, also test if (r > 1.0) => no intersect
+  // intersect point of ray and plane
+  const I = vec3.add(
+    vec3.set(TEMP_4, origin),
+    vec3.scale(vec3.set(TEMP_5, direction), r),
+  );
 
-  var uu = vec3.dot(u, u)
-  var uv = vec3.dot(u, v)
-  var vv = vec3.dot(v, v)
+  const uu = vec3.dot(u, u);
+  const uv = vec3.dot(u, v);
+  const vv = vec3.dot(v, v);
 
-  var w = vec3.sub(vec3.set(TEMP_VEC3_6, I), p0)
+  const w = vec3.sub(vec3.set(TEMP_6, I), p0);
 
-  var wu = vec3.dot(w, u)
-  var wv = vec3.dot(w, v)
+  const wu = vec3.dot(w, u);
+  const wv = vec3.dot(w, v);
 
-  var D = uv * uv - uu * vv
+  const D = uv * uv - uu * vv;
 
-  var s = (uv * wv - vv * wu) / D
+  // get and test parametric coords
+  const s = (uv * wv - vv * wu) / D;
+  if (s < -EPSILON || s > 1.0 + EPSILON) return Intersections.NoIntersect;
 
-  if (s < -EPSILON || s > 1.0 + EPSILON) {
-    return -5
-  }
+  const t = (uv * wu - uu * wv) / D;
+  if (t < -EPSILON || s + t > 1.0 + EPSILON) return Intersections.NoIntersect;
 
-  var t = (uv * wu - uu * wv) / D
+  vec3.set(out, u);
+  vec3.scale(out, s);
+  vec3.add(out, vec3.scale(vec3.set(TEMP_7, v), t));
+  vec3.add(out, p0);
 
-  if (t < -EPSILON || (s + t) > 1.0 + EPSILON) {
-    return -6
-  }
-
-  out = out === undefined ? vec3.create() : out
-
-  vec3.set(out, u)
-  vec3.scale(out, s)
-  vec3.add(out, vec3.scale(vec3.set(TEMP_VEC3_7, v), t))
-  vec3.add(out, p0)
-
-  return 1
+  return Intersections.Intersect;
 }
 
-function hitTestPlane (a, point, normal, out) {
-  var origin = vec3.set(TEMP_VEC3_0, a[0])
-  var direction = vec3.set(TEMP_VEC3_1, a[1])
+/**
+ * Determines if a ray intersect an AABB bounding box
+ * @see {@link http://gamedev.stackexchange.com/questions/18436/most-efficient-aabb-vs-ray-collision-algorithms}
+ * @param {import("./types.js").ray} ray
+ * @param {import("./types.js").aabb} aabb
+ * @returns {boolean}
+ */
+export function hitTestAABB([origin, direction], aabb) {
+  const dirFracx = 1.0 / direction[0];
+  const dirFracy = 1.0 / direction[1];
+  const dirFracz = 1.0 / direction[2];
 
-  point = vec3.set(TEMP_VEC3_2, point)
+  const min = aabb[0];
+  const max = aabb[1];
 
-  var dotDirectionNormal = vec3.dot(direction, normal)
+  const minx = min[0];
+  const miny = min[1];
+  const minz = min[2];
 
-  if (dotDirectionNormal === 0) {
-    return -1
-  }
+  const maxx = max[0];
+  const maxy = max[1];
+  const maxz = max[2];
 
-  var t = vec3.dot(vec3.sub(point, origin), normal) / dotDirectionNormal
+  const t1 = (minx - origin[0]) * dirFracx;
+  const t2 = (maxx - origin[0]) * dirFracx;
 
-  if (t < 0) {
-    return -2
-  }
+  const t3 = (miny - origin[1]) * dirFracy;
+  const t4 = (maxy - origin[1]) * dirFracy;
 
-  out = out === undefined ? vec3.create() : out
-  vec3.set(out, vec3.add(origin, vec3.scale(direction, t)))
-  return 1
+  const t5 = (minz - origin[2]) * dirFracz;
+  const t6 = (maxz - origin[2]) * dirFracz;
+
+  const tmin = Math.max(
+    Math.max(Math.min(t1, t2), Math.min(t3, t4)),
+    Math.min(t5, t6),
+  );
+  const tmax = Math.min(
+    Math.min(Math.max(t1, t2), Math.max(t3, t4)),
+    Math.max(t5, t6),
+  );
+
+  return !(tmax < 0 || tmin > tmax);
 }
 
-// http://gamedev.stackexchange.com/questions/18436/most-efficient-aabb-vs-ray-collision-algorithms
-function intersectsAABB (a, aabb) {
-  var origin = a[0]
-  var direction = a[1]
+/**
+ * Alias for {@link hitTestAABB}
+ * @function
+ */
+export const intersectsAABB = hitTestAABB;
 
-  var dirFracx = 1.0 / direction[0]
-  var dirFracy = 1.0 / direction[1]
-  var dirFracz = 1.0 / direction[2]
-
-  var min = aabb[0]
-  var max = aabb[1]
-
-  var minx = min[0]
-  var miny = min[1]
-  var minz = min[2]
-
-  var maxx = max[0]
-  var maxy = max[1]
-  var maxz = max[2]
-
-  var t1 = (minx - origin[0]) * dirFracx
-  var t2 = (maxx - origin[0]) * dirFracx
-
-  var t3 = (miny - origin[1]) * dirFracy
-  var t4 = (maxy - origin[1]) * dirFracy
-
-  var t5 = (minz - origin[2]) * dirFracz
-  var t6 = (maxz - origin[2]) * dirFracz
-
-  var tmin = Math.max(Math.max(Math.min(t1, t2), Math.min(t3, t4)), Math.min(t5, t6))
-  var tmax = Math.min(Math.min(Math.max(t1, t2), Math.max(t3, t4)), Math.max(t5, t6))
-
-  return !(tmax < 0 || tmin > tmax)
+/**
+ * Prints a plane to a string.
+ * @param {import("./types.js").ray} a
+ * @param {number} [precision=4]
+ * @returns {string}
+ */
+export function toString(a, precision = 4) {
+  // prettier-ignore
+  return `[${vec3.toString(a[0], precision)}, ${vec3.toString(a[1], precision)}]`;
 }
-
-module.exports = {
-  create: create,
-  hitTestTriangle: hitTestTriangle,
-  hitTestPlane: hitTestPlane,
-  intersectsAABB: intersectsAABB
-}
-

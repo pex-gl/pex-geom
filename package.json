@@ -1,38 +1,60 @@
 {
   "name": "pex-geom",
-  "version": "2.0.2",
-  "description": "Geometry related code for the pex library",
-  "homepage": "https://github.com/pex-gl/pex-geom",
-  "scripts": {
-    "test": "tape ./test/*.js"
-  },
+  "version": "3.0.0-alpha.4",
+  "description": "Geometry intersection and bounding volume helpers for PEX.",
   "keywords": [
     "pex",
+    "geom",
     "geometry",
+    "webgl",
     "3d",
-    "graphics"
+    "intersection",
+    "bounding-volume",
+    "bounding-box",
+    "bbox",
+    "aabb",
+    "plane",
+    "ray",
+    "rect"
   ],
-  "author": {
-    "name": "Marcin Ignac",
-    "email": "marcin.ignac@gmail.com",
-    "url": "http://marcinignac.com"
-  },
-  "contributors": [
-    {
-      "name": "Henryk Wollik",
-      "email": "hwollik@hotmail.com",
-      "url": "http://henrykwollik.com"
-    }
-  ],
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pex-gl/pex-geom.git"
-  },
+  "homepage": "https://github.com/pex-gl/pex-geom",
   "bugs": "https://github.com/pex-gl/pex-geom/issues",
+  "repository": "pex-gl/pex-geom",
   "license": "MIT",
+  "author": "Marcin Ignac <marcin.ignac@gmail.com> (http://marcinignac.com)",
+  "contributors": [
+    "Damien Seguin (https://github.com/dmnsgn)",
+    "Nick Nikolov (https://github.com/nicknikolov)",
+    "Henryk Wollik <hwollik@hotmail.com> (http://henrykwollik.com)"
+  ],
+  "sideEffects": false,
+  "type": "module",
+  "exports": "./index.js",
+  "main": "index.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "benchmark": "node benchmark/index.js",
+    "benchmark:watch": "node --watch benchmark/index.js",
+    "build": "snowdev build",
+    "dev": "snowdev dev",
+    "release": "snowdev release",
+    "test": "node --test --experimental-test-coverage",
+    "test:watch": "node --test --watch"
+  },
   "dependencies": {
-    "pex-math": "^2.0.0",
-    "tape": "^4.8.0"
+    "pex-math": "^4.0.0"
+  },
+  "devDependencies": {
+    "es-module-shims": "^1.8.2"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=9.6.4"
+  },
+  "snowdev": {
+    "dependencies": [
+      "pex-math",
+      "es-module-shims"
+    ]
   }
 }

@@ -1,21 +1,28 @@
-var test = require('tape')
-var plane = require('../plane')
+import { describe, it } from "node:test";
+import { deepEqual } from "node:assert";
 
-var allMethods = Object.keys(plane)
-var handledMethods = []
+import { ORIGIN, Y_UP_PLANE } from "./constants.js";
 
-test('plane.create', function (t) {
-  t.deepEqual(plane.create(), [[0, 0, 0], [0, 1, 0]], 'should create a new plane')
-  handledMethods.push('create')
-  t.end()
-})
+import { plane } from "../index.js";
 
-test('coverage', function (t) {
-  allMethods.forEach(function (name) {
-    if (handledMethods.indexOf(name) === -1) {
-      console.log('missing test for plane.' + name)
-    }
-  })
-  t.end()
-})
+describe("plane", () => {
+  it("create() should create a new plane with point and normal", () => {
+    deepEqual(plane.create(), [ORIGIN, [0, 1, 0]]);
+  });
 
+  describe("side()", () => {
+    it("should return -1 if the point is on the side of the normal", () => {
+      deepEqual(plane.side(Y_UP_PLANE, [0, 1, 0]), plane.Side.Same);
+    });
+    it("should return 1 if the point is on the opposite side of the normal", () => {
+      deepEqual(plane.side(Y_UP_PLANE, [0, -1, 0]), plane.Side.Opposite);
+    });
+    it("should return 0 if the point is on the plane", () => {
+      deepEqual(plane.side(Y_UP_PLANE, ORIGIN), plane.Side.OnPlane);
+    });
+  });
+
+  it("toString() should print a plane to a string", () => {
+    deepEqual(plane.toString(Y_UP_PLANE), "[[0, 0, 0], [0, 1, 0]]");
+  });
+});
