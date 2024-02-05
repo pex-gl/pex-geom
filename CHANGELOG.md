@@ -1,6 +1,15 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+# [3.0.0](https://github.com/pex-gl/pex-geom/compare/v3.0.0-alpha.4...v3.0.0) (2024-02-05)
+
+
+### Bug Fixes
+
+* check for first array element in fromPoints to determine if flat ([c459e84](https://github.com/pex-gl/pex-geom/commit/c459e84b12ed7759e046570cd8b65db600e17061)), closes [#24](https://github.com/pex-gl/pex-geom/issues/24)
+
+
 
 # [3.0.0-alpha.4](https://github.com/pex-gl/pex-geom/compare/v3.0.0-alpha.3...v3.0.0-alpha.4) (2023-06-01)
 

@@ -1,6 +1,6 @@
 {
   "name": "pex-geom",
-  "version": "3.0.0-alpha.4",
+  "version": "3.0.0",
   "description": "Geometry intersection and bounding volume helpers for PEX.",
   "keywords": [
     "pex",
