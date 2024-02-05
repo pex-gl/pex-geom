@@ -70,9 +70,11 @@ export function isEmpty(a) {
  * @returns {import("./types.js").aabb}
  */
 export function fromPoints(a, points) {
-  const isTypedArray = !Array.isArray(points);
-  for (let i = 0; i < points.length / (isTypedArray ? 3 : 1); i++) {
-    if (isTypedArray) {
+  const isFlatArray = !points[0]?.length;
+  const l = points.length / (isFlatArray ? 3 : 1);
+
+  for (let i = 0; i < l; i++) {
+    if (isFlatArray) {
       includePoint(a, points, i * 3);
     } else {
       includePoint(a, points[i]);
