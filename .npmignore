@@ -8,3 +8,5 @@ screenshot.*
 index.html
 tsconfig.json
 .editorconfig
+.nojekyll
+benchmark
