@@ -31,6 +31,11 @@ const RANDOM_10K_POINTS_F32 = Float32Array.from({ length: 10_000 * 3 }, () =>
 const RANDOM_100K_POINTS_F32 = Float32Array.from({ length: 100_000 * 3 }, () =>
   Math.random(),
 );
+const RANDOM_100K_POINTS = new Array(100_000).map(() => [
+  Math.random(),
+  Math.random(),
+  Math.random(),
+]);
 
 // Fixtures
 function includePointSlice(a, p) {
@@ -142,11 +147,11 @@ describe("aabb.fromPoints() compare with array of vec3", () => {
     const a = aabb.create();
     run(() => fromPointsOffsetIfCheckOutside(a, NORM_POINTS));
   });
-  it("aabb.fromPoints() using inline", () => {
+  it.skip("aabb.fromPoints() using inline", () => {
     const a = aabb.create();
     run(() => fromPointsInline(a, NORM_POINTS));
   });
-  it("aabb.fromPoints() using slicing for array with offset", () => {
+  it.skip("aabb.fromPoints() using slicing for array with offset", () => {
     const a = aabb.create();
     run(() => fromPointsSlice(a, NORM_POINTS));
   });
@@ -165,11 +170,11 @@ describe("aabb.fromPoints() compare with Uint16Array", () => {
     const a = aabb.create();
     run(() => fromPointsOffsetIfCheckOutside(a, NORM_POINTS_U16));
   });
-  it("aabb.fromPoints() using inline", () => {
+  it.skip("aabb.fromPoints() using inline", () => {
     const a = aabb.create();
     run(() => fromPointsInline(a, NORM_POINTS_U16));
   });
-  it("aabb.fromPoints() using slicing for array with offset", () => {
+  it.skip("aabb.fromPoints() using slicing for array with offset", () => {
     const a = aabb.create();
     run(() => fromPointsSlice(a, NORM_POINTS_U16));
   });
@@ -187,11 +192,11 @@ describe("aabb.fromPoints() compare with Float32Array", () => {
     const a = aabb.create();
     run(() => fromPointsOffsetIfCheckOutside(a, NORM_POINTS_F32));
   });
-  it("aabb.fromPoints() using inline", () => {
+  it.skip("aabb.fromPoints() using inline", () => {
     const a = aabb.create();
     run(() => fromPointsInline(a, NORM_POINTS_F32));
   });
-  it("aabb.fromPoints() using slicing for array with offset", () => {
+  it.skip("aabb.fromPoints() using slicing for array with offset", () => {
     const a = aabb.create();
     run(() => fromPointsSlice(a, NORM_POINTS_F32));
   });
@@ -209,7 +214,7 @@ describe("aabb.fromPoints() compare with 1k length Float32Array", () => {
     const a = aabb.create();
     run(() => fromPointsOffsetIfCheckOutside(a, RANDOM_1K_LENGTH_F32), 100);
   });
-  it("aabb.fromPoints() using inline", () => {
+  it.skip("aabb.fromPoints() using inline", () => {
     const a = aabb.create();
     run(() => fromPointsInline(a, RANDOM_1K_LENGTH_F32), 100);
   });
@@ -227,7 +232,7 @@ describe("aabb.fromPoints() compare with 1k points Float32Array", () => {
     const a = aabb.create();
     run(() => fromPointsOffsetIfCheckOutside(a, RANDOM_1K_POINTS_F32), 100);
   });
-  it("aabb.fromPoints() using inline", () => {
+  it.skip("aabb.fromPoints() using inline", () => {
     const a = aabb.create();
     run(() => fromPointsInline(a, RANDOM_1K_POINTS_F32), 100);
   });
@@ -245,7 +250,7 @@ describe("aabb.fromPoints() compare with 10k points Float32Array", () => {
     const a = aabb.create();
     run(() => fromPointsOffsetIfCheckOutside(a, RANDOM_10K_POINTS_F32), 100);
   });
-  it("aabb.fromPoints() using inline", () => {
+  it.skip("aabb.fromPoints() using inline", () => {
     const a = aabb.create();
     run(() => fromPointsInline(a, RANDOM_10K_POINTS_F32), 100);
   });
@@ -263,8 +268,53 @@ describe("aabb.fromPoints() compare with 100k points Float32Array", () => {
     const a = aabb.create();
     run(() => fromPointsOffsetIfCheckOutside(a, RANDOM_100K_POINTS_F32), 100);
   });
-  it("aabb.fromPoints() using inline", () => {
+  it.skip("aabb.fromPoints() using inline", () => {
     const a = aabb.create();
     run(() => fromPointsInline(a, RANDOM_100K_POINTS_F32), 100);
+  });
+});
+
+describe("isFlatArray Float32Array", () => {
+  it("length", () => {
+    run(() => {
+      const isFlatArray = !(
+        RANDOM_100K_POINTS_F32[0] && RANDOM_100K_POINTS_F32[0].length
+      );
+      const l = RANDOM_100K_POINTS_F32.length / (isFlatArray ? 3 : 1);
+    }, 100000);
+  });
+  it("length optional chaining", () => {
+    run(() => {
+      const isFlatArray = !RANDOM_100K_POINTS_F32[0]?.length;
+      const l = RANDOM_100K_POINTS_F32.length / (isFlatArray ? 3 : 1);
+    }, 100000);
+  });
+  it("Array.isArray", () => {
+    run(() => {
+      const isFlatArray = !Array.isArray(RANDOM_100K_POINTS_F32[0]);
+      const l = RANDOM_100K_POINTS_F32.length / (isFlatArray ? 3 : 1);
+    }, 100000);
+  });
+});
+describe("isFlatArray Array of arrays", () => {
+  it("length", () => {
+    run(() => {
+      const isFlatArray = !(
+        RANDOM_100K_POINTS[0] && RANDOM_100K_POINTS[0].length
+      );
+      const l = RANDOM_100K_POINTS.length / (isFlatArray ? 3 : 1);
+    }, 100000);
+  });
+  it("length optional chaining", () => {
+    run(() => {
+      const isFlatArray = !RANDOM_100K_POINTS[0]?.length;
+      const l = RANDOM_100K_POINTS.length / (isFlatArray ? 3 : 1);
+    }, 100000);
+  });
+  it("Array.isArray", () => {
+    run(() => {
+      const isFlatArray = !Array.isArray(RANDOM_100K_POINTS[0]);
+      const l = RANDOM_100K_POINTS.length / (isFlatArray ? 3 : 1);
+    }, 100000);
   });
 });

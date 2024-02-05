@@ -36,7 +36,9 @@ const it = (name, cb) => {
   console.log(
     `  ${prefix} ${name} ${colors.gray}(${(
       globalThis.performance.now() - start
-    ).toFixed(6)}ms)${colors.white}`
+    ).toFixed(2)}ms)${colors.white}`,
   );
 };
+it.skip = () => {};
+
 export { describe, it };
