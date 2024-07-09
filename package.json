@@ -1,6 +1,6 @@
 {
   "name": "pex-geom",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Geometry intersection and bounding volume helpers for PEX.",
   "keywords": [
     "pex",
@@ -19,7 +19,10 @@
   ],
   "homepage": "https://github.com/pex-gl/pex-geom",
   "bugs": "https://github.com/pex-gl/pex-geom/issues",
-  "repository": "pex-gl/pex-geom",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pex-gl/pex-geom.git"
+  },
   "license": "MIT",
   "author": "Marcin Ignac <marcin.ignac@gmail.com> (http://marcinignac.com)",
   "contributors": [
