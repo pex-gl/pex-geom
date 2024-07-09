@@ -1,6 +1,5 @@
 node_modules
 .DS_Store
-types
-lib
-coverage
-web_modules
+/types
+/lib
+/web_modules
