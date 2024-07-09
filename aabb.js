@@ -66,7 +66,7 @@ export function isEmpty(a) {
 /**
  * Updates a bounding box from a list of points.
  * @param {import("./types.js").aabb} a
- * @param {import("pex-math/types/types").vec3[] | import("pex-math/types/types").TypedArray} points
+ * @param {import("./types.js").vec3[] | import("./types.js").TypedArray} points
  * @returns {import("./types.js").aabb}
  */
 export function fromPoints(a, points) {
@@ -87,8 +87,8 @@ export function fromPoints(a, points) {
 /**
  * Returns a list of 8 points from a bounding box.
  * @param {import("./types.js").aabb} a
- * @param {import("pex-math/types/types").vec3[]} [points]
- * @returns {import("pex-math/types/types").vec3[]}
+ * @param {import("./types.js").vec3[]} [points]
+ * @returns {import("./types.js").vec3[]}
  */
 export function getCorners(a, points = Array.from({ length: 8 }, () => [])) {
   avec3.set3(points[0], 0, a[0][0], a[0][1], a[0][2]);
@@ -105,8 +105,8 @@ export function getCorners(a, points = Array.from({ length: 8 }, () => [])) {
 /**
  * Returns the center of a bounding box.
  * @param {import("./types.js").aabb} a
- * @param {import("pex-math/types/types").vec3} out
- * @returns {import("pex-math/types/types").vec3}
+ * @param {import("./types.js").vec3} out
+ * @returns {import("./types.js").vec3}
  */
 export function center(a, out = [0, 0, 0]) {
   out[0] = (a[0][0] + a[1][0]) / 2;
@@ -118,8 +118,8 @@ export function center(a, out = [0, 0, 0]) {
 /**
  * Returns the size of a bounding box.
  * @param {import("./types.js").aabb} a
- * @param {import("pex-math/types/types").vec3} out
- * @returns {import("pex-math/types/types").vec3}
+ * @param {import("./types.js").vec3} out
+ * @returns {import("./types.js").vec3}
  */
 export function size(a, out = [0, 0, 0]) {
   out[0] = Math.abs(a[1][0] - a[0][0]);
@@ -131,7 +131,7 @@ export function size(a, out = [0, 0, 0]) {
 /**
  * Checks if a point is inside a bounding box.
  * @param {import("./types.js").aabb} a
- * @param {import("pex-math/types/types").vec3} p
+ * @param {import("./types.js").vec3} p
  * @returns {boolean}
  */
 export function containsPoint(a, [x, y, z]) {
@@ -171,9 +171,9 @@ export function includeAABB(a, b) {
 /**
  * Includes a point in a bounding box.
  * @param {import("./types.js").aabb} a
- * @param {import("pex-math/types/types").vec3} p
+ * @param {import("./types.js").vec3} p
  * @param {number} [i=0] offset in the point array
- * @returns {import("pex-math/types/types").vec3}
+ * @returns {import("./types.js").vec3}
  */
 export function includePoint(a, p, i = 0) {
   a[0][0] = Math.min(a[0][0], p[i + 0]);

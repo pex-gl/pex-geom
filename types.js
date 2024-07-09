@@ -18,4 +18,8 @@
  * @typedef {number[][]} triangle A triangle defined by three 3D points.
  */
 
+/** @typedef {import("pex-math").vec2} vec2  */
+/** @typedef {import("pex-math").vec3} vec3  */
+/** @typedef {import("pex-math").TypedArray} TypedArray */
+
 export {};
