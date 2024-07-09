@@ -42,14 +42,15 @@
     "test:watch": "node --test --watch"
   },
   "dependencies": {
-    "pex-math": "^4.0.0"
+    "pex-math": "^4.1.1"
   },
   "devDependencies": {
-    "es-module-shims": "^1.8.2"
+    "es-module-shims": "^1.10.0"
   },
   "engines": {
-    "node": ">=20.0.0",
-    "npm": ">=9.6.4"
+    "node": ">=22.0.0",
+    "npm": ">=10.5.1",
+    "snowdev": ">=2.2.x"
   },
   "snowdev": {
     "dependencies": [
