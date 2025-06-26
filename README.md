@@ -46,9 +46,9 @@ console.log(intersect);
 ## Modules
 
 <dl>
-<dt><a href="#module_pex-geom">pex-geom</a></dt>
-<dd></dd>
 <dt><a href="#module_aabb">aabb</a></dt>
+<dd></dd>
+<dt><a href="#module_pex-geom">pex-geom</a></dt>
 <dd></dd>
 <dt><a href="#module_plane">plane</a></dt>
 <dd></dd>
@@ -84,36 +84,6 @@ console.log(intersect);
 <dd></dd>
 </dl>
 
-<a name="module_pex-geom"></a>
-
-## pex-geom
-
-- [pex-geom](#module_pex-geom)
-  - [.aabb](#module_pex-geom.aabb) : [<code>aabb</code>](#module_aabb)
-  - [.plane](#module_pex-geom.plane) : [<code>plane</code>](#module_plane)
-  - [.ray](#module_pex-geom.ray) : [<code>ray</code>](#module_ray)
-  - [.rect](#module_pex-geom.rect) : [<code>rect</code>](#module_rect)
-
-<a name="module_pex-geom.aabb"></a>
-
-### pex-geom.aabb : [<code>aabb</code>](#module_aabb)
-
-**Kind**: static property of [<code>pex-geom</code>](#module_pex-geom)
-<a name="module_pex-geom.plane"></a>
-
-### pex-geom.plane : [<code>plane</code>](#module_plane)
-
-**Kind**: static property of [<code>pex-geom</code>](#module_pex-geom)
-<a name="module_pex-geom.ray"></a>
-
-### pex-geom.ray : [<code>ray</code>](#module_ray)
-
-**Kind**: static property of [<code>pex-geom</code>](#module_pex-geom)
-<a name="module_pex-geom.rect"></a>
-
-### pex-geom.rect : [<code>rect</code>](#module_rect)
-
-**Kind**: static property of [<code>pex-geom</code>](#module_pex-geom)
 <a name="module_aabb"></a>
 
 ## aabb
@@ -294,6 +264,36 @@ Prints a bounding box to a string.
 | a           | [<code>aabb</code>](#aabb) |                |
 | [precision] | <code>number</code>        | <code>4</code> |
 
+<a name="module_pex-geom"></a>
+
+## pex-geom
+
+- [pex-geom](#module_pex-geom)
+  - [.aabb](#module_pex-geom.aabb) : [<code>aabb</code>](#module_aabb)
+  - [.plane](#module_pex-geom.plane) : [<code>plane</code>](#module_plane)
+  - [.ray](#module_pex-geom.ray) : [<code>ray</code>](#module_ray)
+  - [.rect](#module_pex-geom.rect) : [<code>rect</code>](#module_rect)
+
+<a name="module_pex-geom.aabb"></a>
+
+### pex-geom.aabb : [<code>aabb</code>](#module_aabb)
+
+**Kind**: static property of [<code>pex-geom</code>](#module_pex-geom)
+<a name="module_pex-geom.plane"></a>
+
+### pex-geom.plane : [<code>plane</code>](#module_plane)
+
+**Kind**: static property of [<code>pex-geom</code>](#module_pex-geom)
+<a name="module_pex-geom.ray"></a>
+
+### pex-geom.ray : [<code>ray</code>](#module_ray)
+
+**Kind**: static property of [<code>pex-geom</code>](#module_pex-geom)
+<a name="module_pex-geom.rect"></a>
+
+### pex-geom.rect : [<code>rect</code>](#module_rect)
+
+**Kind**: static property of [<code>pex-geom</code>](#module_pex-geom)
 <a name="module_plane"></a>
 
 ## plane
