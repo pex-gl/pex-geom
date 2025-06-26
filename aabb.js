@@ -70,6 +70,8 @@ export function isEmpty(a) {
  * @returns {import("./types.js").aabb}
  */
 export function fromPoints(a, points) {
+  empty(a);
+
   const isFlatArray = !points[0]?.length;
   const l = points.length / (isFlatArray ? 3 : 1);
 
