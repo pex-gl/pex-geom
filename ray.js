@@ -6,6 +6,11 @@ import { vec3 } from "pex-math";
  * Enum for different intersections values
  * @readonly
  * @enum {number}
+ * @property {number} Intersect Ray intersects the target
+ * @property {number} NoIntersect Ray does not intersect the target
+ * @property {number} SamePlane Ray lies on the same plane as the target
+ * @property {number} Parallel Ray is parallel to the target
+ * @property {number} TriangleDegenerate Triangle has zero area and cannot be tested
  */
 export const Intersections = Object.freeze({
   Intersect: 1,

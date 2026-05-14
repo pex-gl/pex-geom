@@ -6,6 +6,9 @@ import { vec3 } from "pex-math";
  * Enum for different side values
  * @readonly
  * @enum {number}
+ * @property {number} OnPlane Point lies on the plane
+ * @property {number} Same Point is on the same side as the plane normal
+ * @property {number} Opposite Point is on the opposite side of the plane normal
  */
 export const Side = Object.freeze({
   OnPlane: 0,
