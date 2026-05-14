@@ -67,7 +67,7 @@ export function hitTestPlane(
 
 /**
  * Determines if a ray intersect a triangle and set intersection point
- * @see {@link http://geomalgorithms.com/a06-_intersect-2.html#intersect3D_RayTriangle()}
+ * @see {@link https://web.archive.org/web/20200701173519/http://geomalgorithms.com/a06-_intersect-2.html#intersect3D_RayTriangle()}
  * @param {import("./types.js").ray} ray
  * @param {import("./types.js").triangle} triangle
  * @param {import("./types.js").vec3} out
