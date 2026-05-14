@@ -46,9 +46,9 @@ console.log(intersect);
 ## Modules
 
 <dl>
-<dt><a href="#module_aabb">aabb</a></dt>
-<dd></dd>
 <dt><a href="#module_pex-geom">pex-geom</a></dt>
+<dd></dd>
+<dt><a href="#module_aabb">aabb</a></dt>
 <dd></dd>
 <dt><a href="#module_plane">plane</a></dt>
 <dd></dd>
@@ -84,6 +84,36 @@ console.log(intersect);
 <dd></dd>
 </dl>
 
+<a name="module_pex-geom"></a>
+
+## pex-geom
+
+- [pex-geom](#module_pex-geom)
+  - [.aabb](#module_pex-geom.aabb) : [<code>aabb</code>](#module_aabb)
+  - [.plane](#module_pex-geom.plane) : [<code>plane</code>](#module_plane)
+  - [.ray](#module_pex-geom.ray) : [<code>ray</code>](#module_ray)
+  - [.rect](#module_pex-geom.rect) : [<code>rect</code>](#module_rect)
+
+<a name="module_pex-geom.aabb"></a>
+
+### pex-geom.aabb : [<code>aabb</code>](#module_aabb)
+
+**Kind**: static property of [<code>pex-geom</code>](#module_pex-geom)
+<a name="module_pex-geom.plane"></a>
+
+### pex-geom.plane : [<code>plane</code>](#module_plane)
+
+**Kind**: static property of [<code>pex-geom</code>](#module_pex-geom)
+<a name="module_pex-geom.ray"></a>
+
+### pex-geom.ray : [<code>ray</code>](#module_ray)
+
+**Kind**: static property of [<code>pex-geom</code>](#module_pex-geom)
+<a name="module_pex-geom.rect"></a>
+
+### pex-geom.rect : [<code>rect</code>](#module_rect)
+
+**Kind**: static property of [<code>pex-geom</code>](#module_pex-geom)
 <a name="module_aabb"></a>
 
 ## aabb
@@ -264,36 +294,6 @@ Prints a bounding box to a string.
 | a           | [<code>aabb</code>](#aabb) |                |
 | [precision] | <code>number</code>        | <code>4</code> |
 
-<a name="module_pex-geom"></a>
-
-## pex-geom
-
-- [pex-geom](#module_pex-geom)
-  - [.aabb](#module_pex-geom.aabb) : [<code>aabb</code>](#module_aabb)
-  - [.plane](#module_pex-geom.plane) : [<code>plane</code>](#module_plane)
-  - [.ray](#module_pex-geom.ray) : [<code>ray</code>](#module_ray)
-  - [.rect](#module_pex-geom.rect) : [<code>rect</code>](#module_rect)
-
-<a name="module_pex-geom.aabb"></a>
-
-### pex-geom.aabb : [<code>aabb</code>](#module_aabb)
-
-**Kind**: static property of [<code>pex-geom</code>](#module_pex-geom)
-<a name="module_pex-geom.plane"></a>
-
-### pex-geom.plane : [<code>plane</code>](#module_plane)
-
-**Kind**: static property of [<code>pex-geom</code>](#module_pex-geom)
-<a name="module_pex-geom.ray"></a>
-
-### pex-geom.ray : [<code>ray</code>](#module_ray)
-
-**Kind**: static property of [<code>pex-geom</code>](#module_pex-geom)
-<a name="module_pex-geom.rect"></a>
-
-### pex-geom.rect : [<code>rect</code>](#module_rect)
-
-**Kind**: static property of [<code>pex-geom</code>](#module_pex-geom)
 <a name="module_plane"></a>
 
 ## plane
@@ -312,6 +312,14 @@ Enum for different side values
 
 **Kind**: static enum of [<code>plane</code>](#module_plane)
 **Read only**: true
+**Properties**
+
+| Name     | Type                | Description                                       |
+| -------- | ------------------- | ------------------------------------------------- |
+| OnPlane  | <code>number</code> | Point lies on the plane                           |
+| Same     | <code>number</code> | Point is on the same side as the plane normal     |
+| Opposite | <code>number</code> | Point is on the opposite side of the plane normal |
+
 <a name="module_plane.create"></a>
 
 ### plane.create() ⇒ [<code>plane</code>](#plane)
@@ -366,6 +374,16 @@ Enum for different intersections values
 
 **Kind**: static enum of [<code>ray</code>](#module_ray)
 **Read only**: true
+**Properties**
+
+| Name               | Type                | Description                                 |
+| ------------------ | ------------------- | ------------------------------------------- |
+| Intersect          | <code>number</code> | Ray intersects the target                   |
+| NoIntersect        | <code>number</code> | Ray does not intersect the target           |
+| SamePlane          | <code>number</code> | Ray lies on the same plane as the target    |
+| Parallel           | <code>number</code> | Ray is parallel to the target               |
+| TriangleDegenerate | <code>number</code> | Triangle has zero area and cannot be tested |
+
 <a name="module_ray.create"></a>
 
 ### ray.create() ⇒ [<code>ray</code>](#ray)
@@ -395,7 +413,7 @@ Determines if a ray intersect a plane and set intersection point
 Determines if a ray intersect a triangle and set intersection point
 
 **Kind**: static method of [<code>ray</code>](#module_ray)
-**See**: [http://geomalgorithms.com/a06-\_intersect-2.html#intersect3D_RayTriangle()](<http://geomalgorithms.com/a06-_intersect-2.html#intersect3D_RayTriangle()>)
+**See**: [https://web.archive.org/web/20200701173519/http://geomalgorithms.com/a06-\_intersect-2.html#intersect3D_RayTriangle()](<https://web.archive.org/web/20200701173519/http://geomalgorithms.com/a06-_intersect-2.html#intersect3D_RayTriangle()>)
 
 | Param    | Type                               |
 | -------- | ---------------------------------- |
