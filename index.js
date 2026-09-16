@@ -24,3 +24,5 @@ export * as ray from "./ray.js";
  * @static
  */
 export * as rect from "./rect.js";
+
+export * from "./types.js";
