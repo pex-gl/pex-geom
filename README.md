@@ -61,27 +61,27 @@ console.log(intersect);
 ## Typedefs
 
 <dl>
-<dt><a href="#aabb">aabb</a> : <code>Array.&lt;Array.&lt;number&gt;&gt;</code></dt>
-<dd><p>An axis-aligned bounding box defined by two min and max 3D points  (eg. [[minX, minY, minZ], [maxX, maxY, maxZ]]).</p>
+<dt><a href="#AABB">AABB</a> : <code>Array.&lt;Array.&lt;number&gt;&gt;</code></dt>
+<dd><p>An axis-aligned bounding box defined by two min
+  and max 3D points (eg. [[minX, minY, minZ], [maxX, maxY, maxZ]]).</p>
 </dd>
-<dt><a href="#plane">plane</a> : <code>Array.&lt;Array.&lt;number&gt;&gt;</code></dt>
-<dd><p>A plane defined by a 3D point and a normal vector perpendicular to the plane’s surface (eg. [[pointX, pointY, pointZ], [normalX, normalY, normalZ]]).</p>
+<dt><a href="#Plane">Plane</a> : <code>Array.&lt;Array.&lt;number&gt;&gt;</code></dt>
+<dd><p>A plane defined by a 3D point and a normal vector
+  perpendicular to the plane’s surface (eg. [[pointX, pointY, pointZ],
+  [normalX, normalY, normalZ]]).</p>
 </dd>
-<dt><a href="#ray">ray</a> : <code>Array.&lt;Array.&lt;number&gt;&gt;</code></dt>
-<dd><p>A ray defined by a starting 3D point origin and a 3D direction vector (eg. [[originX, originY, originZ], [directionX, directionY, directionZ]).</p>
+<dt><a href="#Ray">Ray</a> : <code>Array.&lt;Array.&lt;number&gt;&gt;</code></dt>
+<dd><p>A ray defined by a starting 3D point origin and a
+  3D direction vector (eg. [[originX, originY, originZ], [directionX,
+  directionY, directionZ]).</p>
 </dd>
-<dt><a href="#rect">rect</a> : <code>Array.&lt;Array.&lt;number&gt;&gt;</code></dt>
-<dd><p>A rectangle defined by two diagonally opposite 2D points (eg. [[minX, minY], [maxX, maxY]]).</p>
+<dt><a href="#Rect">Rect</a> : <code>Array.&lt;Array.&lt;number&gt;&gt;</code></dt>
+<dd><p>A rectangle defined by two diagonally opposite 2D
+  points (eg. [[minX, minY], [maxX, maxY]]).</p>
 </dd>
-<dt><a href="#triangle">triangle</a> : <code>Array.&lt;Array.&lt;number&gt;&gt;</code></dt>
+<dt><a href="#Triangle">Triangle</a> : <code>Array.&lt;Array.&lt;number&gt;&gt;</code></dt>
 <dd><p>A triangle defined by three 3D points.</p>
 </dd>
-<dt><a href="#vec2">vec2</a> : <code>module:pex-math~vec2</code></dt>
-<dd></dd>
-<dt><a href="#vec3">vec3</a> : <code>module:pex-math~vec3</code></dt>
-<dd></dd>
-<dt><a href="#TypedArray">TypedArray</a> : <code>module:pex-math~TypedArray</code></dt>
-<dd></dd>
 </dl>
 
 <a name="module_pex-geom"></a>
@@ -119,30 +119,30 @@ console.log(intersect);
 ## aabb
 
 - [aabb](#module_aabb)
-  - [.create()](#module_aabb.create) ⇒ [<code>aabb</code>](#aabb)
-  - [.empty(a)](#module_aabb.empty) ⇒ [<code>rect</code>](#rect)
-  - [.copy(a)](#module_aabb.copy) ⇒ [<code>aabb</code>](#aabb)
-  - [.set(a, b)](#module_aabb.set) ⇒ [<code>aabb</code>](#aabb)
+  - [.create()](#module_aabb.create) ⇒ [<code>AABB</code>](#AABB)
+  - [.empty(a)](#module_aabb.empty) ⇒ [<code>Rect</code>](#Rect)
+  - [.copy(a)](#module_aabb.copy) ⇒ [<code>AABB</code>](#AABB)
+  - [.set(a, b)](#module_aabb.set) ⇒ [<code>AABB</code>](#AABB)
   - [.isEmpty(a)](#module_aabb.isEmpty) ⇒ <code>boolean</code>
-  - [.fromPoints(a, points)](#module_aabb.fromPoints) ⇒ [<code>aabb</code>](#aabb)
-  - [.getCorners(a, [points])](#module_aabb.getCorners) ⇒ [<code>Array.&lt;vec3&gt;</code>](#vec3)
-  - [.center(a, out)](#module_aabb.center) ⇒ [<code>vec3</code>](#vec3)
-  - [.size(a, out)](#module_aabb.size) ⇒ [<code>vec3</code>](#vec3)
+  - [.fromPoints(a, points)](#module_aabb.fromPoints) ⇒ [<code>AABB</code>](#AABB)
+  - [.getCorners(a, [points])](#module_aabb.getCorners) ⇒ <code>Array.&lt;module:pex-math~Vec3&gt;</code>
+  - [.center(a, out)](#module_aabb.center) ⇒ <code>module:pex-math~Vec3</code>
+  - [.size(a, out)](#module_aabb.size) ⇒ <code>module:pex-math~Vec3</code>
   - [.containsPoint(a, p)](#module_aabb.containsPoint) ⇒ <code>boolean</code>
-  - [.includeAABB(a, b)](#module_aabb.includeAABB) ⇒ [<code>aabb</code>](#aabb)
-  - [.includePoint(a, p, [i])](#module_aabb.includePoint) ⇒ [<code>vec3</code>](#vec3)
+  - [.includeAABB(a, b)](#module_aabb.includeAABB) ⇒ [<code>AABB</code>](#AABB)
+  - [.includePoint(a, p, [i])](#module_aabb.includePoint) ⇒ <code>module:pex-math~Vec3</code>
   - [.toString(a, [precision])](#module_aabb.toString) ⇒ <code>string</code>
 
 <a name="module_aabb.create"></a>
 
-### aabb.create() ⇒ [<code>aabb</code>](#aabb)
+### aabb.create() ⇒ [<code>AABB</code>](#AABB)
 
 Creates a new bounding box.
 
 **Kind**: static method of [<code>aabb</code>](#module_aabb)
 <a name="module_aabb.empty"></a>
 
-### aabb.empty(a) ⇒ [<code>rect</code>](#rect)
+### aabb.empty(a) ⇒ [<code>Rect</code>](#Rect)
 
 Reset a bounding box.
 
@@ -150,11 +150,11 @@ Reset a bounding box.
 
 | Param | Type                       |
 | ----- | -------------------------- |
-| a     | [<code>aabb</code>](#aabb) |
+| a     | [<code>AABB</code>](#AABB) |
 
 <a name="module_aabb.copy"></a>
 
-### aabb.copy(a) ⇒ [<code>aabb</code>](#aabb)
+### aabb.copy(a) ⇒ [<code>AABB</code>](#AABB)
 
 Copies a bounding box.
 
@@ -162,11 +162,11 @@ Copies a bounding box.
 
 | Param | Type                       |
 | ----- | -------------------------- |
-| a     | [<code>aabb</code>](#aabb) |
+| a     | [<code>AABB</code>](#AABB) |
 
 <a name="module_aabb.set"></a>
 
-### aabb.set(a, b) ⇒ [<code>aabb</code>](#aabb)
+### aabb.set(a, b) ⇒ [<code>AABB</code>](#AABB)
 
 Sets a bounding box to another.
 
@@ -174,8 +174,8 @@ Sets a bounding box to another.
 
 | Param | Type                       |
 | ----- | -------------------------- |
-| a     | [<code>aabb</code>](#aabb) |
-| b     | [<code>aabb</code>](#aabb) |
+| a     | [<code>AABB</code>](#AABB) |
+| b     | [<code>AABB</code>](#AABB) |
 
 <a name="module_aabb.isEmpty"></a>
 
@@ -187,59 +187,59 @@ Checks if a bounding box is empty.
 
 | Param | Type                       |
 | ----- | -------------------------- |
-| a     | [<code>aabb</code>](#aabb) |
+| a     | [<code>AABB</code>](#AABB) |
 
 <a name="module_aabb.fromPoints"></a>
 
-### aabb.fromPoints(a, points) ⇒ [<code>aabb</code>](#aabb)
+### aabb.fromPoints(a, points) ⇒ [<code>AABB</code>](#AABB)
 
 Updates a bounding box from a list of points.
 
 **Kind**: static method of [<code>aabb</code>](#module_aabb)
 
-| Param  | Type                                                                               |
-| ------ | ---------------------------------------------------------------------------------- |
-| a      | [<code>aabb</code>](#aabb)                                                         |
-| points | [<code>Array.&lt;vec3&gt;</code>](#vec3) \| [<code>TypedArray</code>](#TypedArray) |
+| Param  | Type                                                                                         |
+| ------ | -------------------------------------------------------------------------------------------- |
+| a      | [<code>AABB</code>](#AABB)                                                                   |
+| points | <code>Array.&lt;module:pex-math~~Vec3&gt;</code> \| <code>module:pex-math~~TypedArray</code> |
 
 <a name="module_aabb.getCorners"></a>
 
-### aabb.getCorners(a, [points]) ⇒ [<code>Array.&lt;vec3&gt;</code>](#vec3)
+### aabb.getCorners(a, [points]) ⇒ <code>Array.&lt;module:pex-math~Vec3&gt;</code>
 
 Returns a list of 8 points from a bounding box.
 
 **Kind**: static method of [<code>aabb</code>](#module_aabb)
 
-| Param    | Type                                     |
-| -------- | ---------------------------------------- |
-| a        | [<code>aabb</code>](#aabb)               |
-| [points] | [<code>Array.&lt;vec3&gt;</code>](#vec3) |
+| Param    | Type                                            |
+| -------- | ----------------------------------------------- |
+| a        | [<code>AABB</code>](#AABB)                      |
+| [points] | <code>Array.&lt;module:pex-math~Vec3&gt;</code> |
 
 <a name="module_aabb.center"></a>
 
-### aabb.center(a, out) ⇒ [<code>vec3</code>](#vec3)
+### aabb.center(a, out) ⇒ <code>module:pex-math~Vec3</code>
 
 Returns the center of a bounding box.
 
 **Kind**: static method of [<code>aabb</code>](#module_aabb)
 
-| Param | Type                       |
-| ----- | -------------------------- |
-| a     | [<code>aabb</code>](#aabb) |
-| out   | [<code>vec3</code>](#vec3) |
+| Param | Type                              |
+| ----- | --------------------------------- |
+| a     | [<code>AABB</code>](#AABB)        |
+| out   | <code>module:pex-math~Vec3</code> |
 
 <a name="module_aabb.size"></a>
 
-### aabb.size(a, out) ⇒ [<code>vec3</code>](#vec3)
+### aabb.size(a, out) ⇒ <code>module:pex-math~Vec3</code>
 
 Returns the size of a bounding box.
 
 **Kind**: static method of [<code>aabb</code>](#module_aabb)
 
-| Param | Type                       |
-| ----- | -------------------------- |
-| a     | [<code>aabb</code>](#aabb) |
-| out   | [<code>vec3</code>](#vec3) |
+| Param | Type                              |
+| ----- | --------------------------------- |
+| a     | [<code>AABB</code>](#AABB)        |
+| out   | <code>module:pex-math~Vec3</code> |
 
 <a name="module_aabb.containsPoint"></a>
 
@@ -249,14 +249,14 @@ Checks if a point is inside a bounding box.
 
 **Kind**: static method of [<code>aabb</code>](#module_aabb)
 
-| Param | Type                       |
-| ----- | -------------------------- |
-| a     | [<code>aabb</code>](#aabb) |
-| p     | [<code>vec3</code>](#vec3) |
+| Param | Type                              |
+| ----- | --------------------------------- |
+| a     | [<code>AABB</code>](#AABB)        |
+| p     | <code>module:pex-math~Vec3</code> |
 
 <a name="module_aabb.includeAABB"></a>
 
-### aabb.includeAABB(a, b) ⇒ [<code>aabb</code>](#aabb)
+### aabb.includeAABB(a, b) ⇒ [<code>AABB</code>](#AABB)
 
 Includes a bounding box in another.
 
@@ -264,22 +264,22 @@ Includes a bounding box in another.
 
 | Param | Type                       |
 | ----- | -------------------------- |
-| a     | [<code>aabb</code>](#aabb) |
-| b     | [<code>aabb</code>](#aabb) |
+| a     | [<code>AABB</code>](#AABB) |
+| b     | [<code>AABB</code>](#AABB) |
 
 <a name="module_aabb.includePoint"></a>
 
-### aabb.includePoint(a, p, [i]) ⇒ [<code>vec3</code>](#vec3)
+### aabb.includePoint(a, p, [i]) ⇒ <code>module:pex-math~Vec3</code>
 
 Includes a point in a bounding box.
 
 **Kind**: static method of [<code>aabb</code>](#module_aabb)
 
-| Param | Type                       | Default        | Description               |
-| ----- | -------------------------- | -------------- | ------------------------- |
-| a     | [<code>aabb</code>](#aabb) |                |                           |
-| p     | [<code>vec3</code>](#vec3) |                |                           |
-| [i]   | <code>number</code>        | <code>0</code> | offset in the point array |
+| Param | Type                              | Default        | Description               |
+| ----- | --------------------------------- | -------------- | ------------------------- |
+| a     | [<code>AABB</code>](#AABB)        |                |                           |
+| p     | <code>module:pex-math~Vec3</code> |                |                           |
+| [i]   | <code>number</code>               | <code>0</code> | Offset in the point array |
 
 <a name="module_aabb.toString"></a>
 
@@ -291,7 +291,7 @@ Prints a bounding box to a string.
 
 | Param       | Type                       | Default        |
 | ----------- | -------------------------- | -------------- |
-| a           | [<code>aabb</code>](#aabb) |                |
+| a           | [<code>AABB</code>](#AABB) |                |
 | [precision] | <code>number</code>        | <code>4</code> |
 
 <a name="module_plane"></a>
@@ -300,7 +300,7 @@ Prints a bounding box to a string.
 
 - [plane](#module_plane)
   - [.Side](#module_plane.Side) : <code>enum</code>
-  - [.create()](#module_plane.create) ⇒ [<code>plane</code>](#plane)
+  - [.create()](#module_plane.create) ⇒ [<code>Plane</code>](#Plane)
   - [.side(plane, point)](#module_plane.side) ⇒ <code>number</code>
   - [.toString(a, [precision])](#module_plane.toString) ⇒ <code>string</code>
 
@@ -322,7 +322,7 @@ Enum for different side values
 
 <a name="module_plane.create"></a>
 
-### plane.create() ⇒ [<code>plane</code>](#plane)
+### plane.create() ⇒ [<code>Plane</code>](#Plane)
 
 Creates a new plane
 
@@ -335,10 +335,10 @@ Returns on which side a point is.
 
 **Kind**: static method of [<code>plane</code>](#module_plane)
 
-| Param | Type                         |
-| ----- | ---------------------------- |
-| plane | [<code>plane</code>](#plane) |
-| point | [<code>vec3</code>](#vec3)   |
+| Param | Type                              |
+| ----- | --------------------------------- |
+| plane | [<code>Plane</code>](#Plane)      |
+| point | <code>module:pex-math~Vec3</code> |
 
 <a name="module_plane.toString"></a>
 
@@ -350,7 +350,7 @@ Prints a plane to a string.
 
 | Param       | Type                         | Default        |
 | ----------- | ---------------------------- | -------------- |
-| a           | [<code>plane</code>](#plane) |                |
+| a           | [<code>Plane</code>](#Plane) |                |
 | [precision] | <code>number</code>          | <code>4</code> |
 
 <a name="module_ray"></a>
@@ -359,7 +359,7 @@ Prints a plane to a string.
 
 - [ray](#module_ray)
   - [.Intersections](#module_ray.Intersections) : <code>enum</code>
-  - [.create()](#module_ray.create) ⇒ [<code>ray</code>](#ray)
+  - [.create()](#module_ray.create) ⇒ [<code>Ray</code>](#Ray)
   - [.hitTestPlane(ray, plane, out)](#module_ray.hitTestPlane) ⇒ <code>number</code>
   - [.hitTestTriangle(ray, triangle, out)](#module_ray.hitTestTriangle) ⇒ <code>number</code>
   - [.hitTestAABB(ray, aabb)](#module_ray.hitTestAABB) ⇒ <code>boolean</code>
@@ -386,7 +386,7 @@ Enum for different intersections values
 
 <a name="module_ray.create"></a>
 
-### ray.create() ⇒ [<code>ray</code>](#ray)
+### ray.create() ⇒ [<code>Ray</code>](#Ray)
 
 Creates a new ray
 
@@ -400,11 +400,11 @@ Determines if a ray intersect a plane and set intersection point
 **Kind**: static method of [<code>ray</code>](#module_ray)
 **See**: [https://www.cs.princeton.edu/courses/archive/fall00/cs426/lectures/raycast/sld017.htm](https://www.cs.princeton.edu/courses/archive/fall00/cs426/lectures/raycast/sld017.htm)
 
-| Param | Type                         |
-| ----- | ---------------------------- |
-| ray   | [<code>ray</code>](#ray)     |
-| plane | [<code>plane</code>](#plane) |
-| out   | [<code>vec3</code>](#vec3)   |
+| Param | Type                              |
+| ----- | --------------------------------- |
+| ray   | [<code>Ray</code>](#Ray)          |
+| plane | [<code>Plane</code>](#Plane)      |
+| out   | <code>module:pex-math~Vec3</code> |
 
 <a name="module_ray.hitTestTriangle"></a>
 
@@ -413,13 +413,13 @@ Determines if a ray intersect a plane and set intersection point
 Determines if a ray intersect a triangle and set intersection point
 
 **Kind**: static method of [<code>ray</code>](#module_ray)
-**See**: [https://web.archive.org/web/20200701173519/http://geomalgorithms.com/a06-\_intersect-2.html#intersect3D_RayTriangle()](<https://web.archive.org/web/20200701173519/http://geomalgorithms.com/a06-_intersect-2.html#intersect3D_RayTriangle()>)
+**See**: [https://web.archive.org/web/20200701173519/http://geomalgorithms.com/a06-_intersect-2.html#intersect3D_RayTriangle()](<https://web.archive.org/web/20200701173519/http://geomalgorithms.com/a06-_intersect-2.html#intersect3D_RayTriangle()>)
 
 | Param    | Type                               |
 | -------- | ---------------------------------- |
-| ray      | [<code>ray</code>](#ray)           |
-| triangle | [<code>triangle</code>](#triangle) |
-| out      | [<code>vec3</code>](#vec3)         |
+| ray      | [<code>Ray</code>](#Ray)           |
+| triangle | [<code>Triangle</code>](#Triangle) |
+| out      | <code>module:pex-math~Vec3</code>  |
 
 <a name="module_ray.hitTestAABB"></a>
 
@@ -432,8 +432,8 @@ Determines if a ray intersect an AABB bounding box
 
 | Param | Type                       |
 | ----- | -------------------------- |
-| ray   | [<code>ray</code>](#ray)   |
-| aabb  | [<code>aabb</code>](#aabb) |
+| ray   | [<code>Ray</code>](#Ray)   |
+| aabb  | [<code>AABB</code>](#AABB) |
 
 <a name="module_ray.intersectsAABB"></a>
 
@@ -452,7 +452,7 @@ Prints a plane to a string.
 
 | Param       | Type                     | Default        |
 | ----------- | ------------------------ | -------------- |
-| a           | [<code>ray</code>](#ray) |                |
+| a           | [<code>Ray</code>](#Ray) |                |
 | [precision] | <code>number</code>      | <code>4</code> |
 
 <a name="module_rect"></a>
@@ -460,39 +460,39 @@ Prints a plane to a string.
 ## rect
 
 - [rect](#module_rect)
-  - [.create()](#module_rect.create) ⇒ [<code>rect</code>](#rect)
-  - [.empty(a)](#module_rect.empty) ⇒ [<code>rect</code>](#rect)
-  - [.copy(a)](#module_rect.copy) ⇒ [<code>rect</code>](#rect)
-  - [.set(a, b)](#module_rect.set) ⇒ [<code>rect</code>](#rect)
+  - [.create()](#module_rect.create) ⇒ [<code>Rect</code>](#Rect)
+  - [.empty(a)](#module_rect.empty) ⇒ [<code>Rect</code>](#Rect)
+  - [.copy(a)](#module_rect.copy) ⇒ [<code>Rect</code>](#Rect)
+  - [.set(a, b)](#module_rect.set) ⇒ [<code>Rect</code>](#Rect)
   - [.isEmpty(a)](#module_rect.isEmpty) ⇒ <code>boolean</code>
-  - [.fromPoints(a, points)](#module_rect.fromPoints) ⇒ [<code>rect</code>](#rect)
-  - [.getCorners(a, points)](#module_rect.getCorners) ⇒ [<code>Array.&lt;vec2&gt;</code>](#vec2)
-  - [.scale(a, n)](#module_rect.scale) ⇒ [<code>rect</code>](#rect)
-  - [.setSize(a, size)](#module_rect.setSize) ⇒ [<code>rect</code>](#rect)
-  - [.size(a, out)](#module_rect.size) ⇒ [<code>vec2</code>](#vec2)
+  - [.fromPoints(a, points)](#module_rect.fromPoints) ⇒ [<code>Rect</code>](#Rect)
+  - [.getCorners(a, points)](#module_rect.getCorners) ⇒ <code>Array.&lt;module:pex-math~Vec2&gt;</code>
+  - [.scale(a, n)](#module_rect.scale) ⇒ [<code>Rect</code>](#Rect)
+  - [.setSize(a, size)](#module_rect.setSize) ⇒ [<code>Rect</code>](#Rect)
+  - [.size(a, out)](#module_rect.size) ⇒ <code>module:pex-math~Vec2</code>
   - [.width(a)](#module_rect.width) ⇒ <code>number</code>
   - [.height(a)](#module_rect.height) ⇒ <code>number</code>
   - [.aspectRatio(a)](#module_rect.aspectRatio) ⇒ <code>number</code>
-  - [.setPosition(a, p)](#module_rect.setPosition) ⇒ [<code>rect</code>](#rect)
-  - [.center(a, out)](#module_rect.center) ⇒ [<code>rect</code>](#rect)
+  - [.setPosition(a, p)](#module_rect.setPosition) ⇒ [<code>Rect</code>](#Rect)
+  - [.center(a, out)](#module_rect.center) ⇒ [<code>Rect</code>](#Rect)
   - [.containsPoint(a, p)](#module_rect.containsPoint) ⇒ <code>boolean</code>
   - [.containsRect(a, b)](#module_rect.containsRect) ⇒ <code>boolean</code>
-  - [.includePoint(a, p)](#module_rect.includePoint) ⇒ [<code>rect</code>](#rect)
-  - [.includeRect(a, b)](#module_rect.includeRect) ⇒ [<code>rect</code>](#rect)
-  - [.mapPoint(a, p)](#module_rect.mapPoint) ⇒ [<code>vec2</code>](#vec2)
-  - [.clampPoint(a, p)](#module_rect.clampPoint) ⇒ [<code>vec2</code>](#vec2)
+  - [.includePoint(a, p)](#module_rect.includePoint) ⇒ [<code>Rect</code>](#Rect)
+  - [.includeRect(a, b)](#module_rect.includeRect) ⇒ [<code>Rect</code>](#Rect)
+  - [.mapPoint(a, p)](#module_rect.mapPoint) ⇒ <code>module:pex-math~Vec2</code>
+  - [.clampPoint(a, p)](#module_rect.clampPoint) ⇒ <code>module:pex-math~Vec2</code>
   - [.toString(a, [precision])](#module_rect.toString) ⇒ <code>string</code>
 
 <a name="module_rect.create"></a>
 
-### rect.create() ⇒ [<code>rect</code>](#rect)
+### rect.create() ⇒ [<code>Rect</code>](#Rect)
 
 Creates a new rectangle.
 
 **Kind**: static method of [<code>rect</code>](#module_rect)
 <a name="module_rect.empty"></a>
 
-### rect.empty(a) ⇒ [<code>rect</code>](#rect)
+### rect.empty(a) ⇒ [<code>Rect</code>](#Rect)
 
 Reset a rectangle.
 
@@ -500,11 +500,11 @@ Reset a rectangle.
 
 | Param | Type                       |
 | ----- | -------------------------- |
-| a     | [<code>rect</code>](#rect) |
+| a     | [<code>Rect</code>](#Rect) |
 
 <a name="module_rect.copy"></a>
 
-### rect.copy(a) ⇒ [<code>rect</code>](#rect)
+### rect.copy(a) ⇒ [<code>Rect</code>](#Rect)
 
 Copies a rectangle.
 
@@ -512,11 +512,11 @@ Copies a rectangle.
 
 | Param | Type                       |
 | ----- | -------------------------- |
-| a     | [<code>rect</code>](#rect) |
+| a     | [<code>Rect</code>](#Rect) |
 
 <a name="module_rect.set"></a>
 
-### rect.set(a, b) ⇒ [<code>rect</code>](#rect)
+### rect.set(a, b) ⇒ [<code>Rect</code>](#Rect)
 
 Sets a rectangle to another.
 
@@ -524,8 +524,8 @@ Sets a rectangle to another.
 
 | Param | Type                       |
 | ----- | -------------------------- |
-| a     | [<code>rect</code>](#rect) |
-| b     | [<code>rect</code>](#rect) |
+| a     | [<code>Rect</code>](#Rect) |
+| b     | [<code>Rect</code>](#Rect) |
 
 <a name="module_rect.isEmpty"></a>
 
@@ -537,37 +537,37 @@ Checks if a rectangle is empty.
 
 | Param | Type                       |
 | ----- | -------------------------- |
-| a     | [<code>rect</code>](#rect) |
+| a     | [<code>Rect</code>](#Rect) |
 
 <a name="module_rect.fromPoints"></a>
 
-### rect.fromPoints(a, points) ⇒ [<code>rect</code>](#rect)
+### rect.fromPoints(a, points) ⇒ [<code>Rect</code>](#Rect)
 
 Updates a rectangle from a list of points.
 
 **Kind**: static method of [<code>rect</code>](#module_rect)
 
-| Param  | Type                                                                               |
-| ------ | ---------------------------------------------------------------------------------- |
-| a      | [<code>rect</code>](#rect)                                                         |
-| points | [<code>Array.&lt;vec2&gt;</code>](#vec2) \| [<code>TypedArray</code>](#TypedArray) |
+| Param  | Type                                                                                         |
+| ------ | -------------------------------------------------------------------------------------------- |
+| a      | [<code>Rect</code>](#Rect)                                                                   |
+| points | <code>Array.&lt;module:pex-math~~Vec2&gt;</code> \| <code>module:pex-math~~TypedArray</code> |
 
 <a name="module_rect.getCorners"></a>
 
-### rect.getCorners(a, points) ⇒ [<code>Array.&lt;vec2&gt;</code>](#vec2)
+### rect.getCorners(a, points) ⇒ <code>Array.&lt;module:pex-math~Vec2&gt;</code>
 
 Returns a list of 4 points from a rectangle.
 
 **Kind**: static method of [<code>rect</code>](#module_rect)
 
-| Param  | Type                                     |
-| ------ | ---------------------------------------- |
-| a      | [<code>rect</code>](#rect)               |
-| points | [<code>Array.&lt;vec2&gt;</code>](#vec2) |
+| Param  | Type                                            |
+| ------ | ----------------------------------------------- |
+| a      | [<code>Rect</code>](#Rect)                      |
+| points | <code>Array.&lt;module:pex-math~Vec2&gt;</code> |
 
 <a name="module_rect.scale"></a>
 
-### rect.scale(a, n) ⇒ [<code>rect</code>](#rect)
+### rect.scale(a, n) ⇒ [<code>Rect</code>](#Rect)
 
 Scales a rectangle.
 
@@ -575,34 +575,34 @@ Scales a rectangle.
 
 | Param | Type                       |
 | ----- | -------------------------- |
-| a     | [<code>rect</code>](#rect) |
+| a     | [<code>Rect</code>](#Rect) |
 | n     | <code>number</code>        |
 
 <a name="module_rect.setSize"></a>
 
-### rect.setSize(a, size) ⇒ [<code>rect</code>](#rect)
+### rect.setSize(a, size) ⇒ [<code>Rect</code>](#Rect)
 
 Sets the size of a rectangle using width and height.
 
 **Kind**: static method of [<code>rect</code>](#module_rect)
 
-| Param | Type                       |
-| ----- | -------------------------- |
-| a     | [<code>rect</code>](#rect) |
-| size  | [<code>vec2</code>](#vec2) |
+| Param | Type                              |
+| ----- | --------------------------------- |
+| a     | [<code>Rect</code>](#Rect)        |
+| size  | <code>module:pex-math~Vec2</code> |
 
 <a name="module_rect.size"></a>
 
-### rect.size(a, out) ⇒ [<code>vec2</code>](#vec2)
+### rect.size(a, out) ⇒ <code>module:pex-math~Vec2</code>
 
 Returns the size of a rectangle.
 
 **Kind**: static method of [<code>rect</code>](#module_rect)
 
-| Param | Type                       |
-| ----- | -------------------------- |
-| a     | [<code>rect</code>](#rect) |
-| out   | [<code>vec2</code>](#vec2) |
+| Param | Type                              |
+| ----- | --------------------------------- |
+| a     | [<code>Rect</code>](#Rect)        |
+| out   | <code>module:pex-math~Vec2</code> |
 
 <a name="module_rect.width"></a>
 
@@ -614,7 +614,7 @@ Returns the width of a rectangle.
 
 | Param | Type                       |
 | ----- | -------------------------- |
-| a     | [<code>rect</code>](#rect) |
+| a     | [<code>Rect</code>](#Rect) |
 
 <a name="module_rect.height"></a>
 
@@ -626,7 +626,7 @@ Returns the height of a rectangle.
 
 | Param | Type                       |
 | ----- | -------------------------- |
-| a     | [<code>rect</code>](#rect) |
+| a     | [<code>Rect</code>](#Rect) |
 
 <a name="module_rect.aspectRatio"></a>
 
@@ -638,33 +638,33 @@ Returns the aspect ratio of a rectangle.
 
 | Param | Type                       |
 | ----- | -------------------------- |
-| a     | [<code>rect</code>](#rect) |
+| a     | [<code>Rect</code>](#Rect) |
 
 <a name="module_rect.setPosition"></a>
 
-### rect.setPosition(a, p) ⇒ [<code>rect</code>](#rect)
+### rect.setPosition(a, p) ⇒ [<code>Rect</code>](#Rect)
 
 Sets the position of a rectangle.
 
 **Kind**: static method of [<code>rect</code>](#module_rect)
 
-| Param | Type                       |
-| ----- | -------------------------- |
-| a     | [<code>rect</code>](#rect) |
-| p     | [<code>vec2</code>](#vec2) |
+| Param | Type                              |
+| ----- | --------------------------------- |
+| a     | [<code>Rect</code>](#Rect)        |
+| p     | <code>module:pex-math~Vec2</code> |
 
 <a name="module_rect.center"></a>
 
-### rect.center(a, out) ⇒ [<code>rect</code>](#rect)
+### rect.center(a, out) ⇒ [<code>Rect</code>](#Rect)
 
 Returns the center of a rectangle.
 
 **Kind**: static method of [<code>rect</code>](#module_rect)
 
-| Param | Type                       |
-| ----- | -------------------------- |
-| a     | [<code>rect</code>](#rect) |
-| out   | [<code>vec2</code>](#vec2) |
+| Param | Type                              |
+| ----- | --------------------------------- |
+| a     | [<code>Rect</code>](#Rect)        |
+| out   | <code>module:pex-math~Vec2</code> |
 
 <a name="module_rect.containsPoint"></a>
 
@@ -674,10 +674,10 @@ Checks if a point is inside a rectangle.
 
 **Kind**: static method of [<code>rect</code>](#module_rect)
 
-| Param | Type                       |
-| ----- | -------------------------- |
-| a     | [<code>rect</code>](#rect) |
-| p     | [<code>vec2</code>](#vec2) |
+| Param | Type                              |
+| ----- | --------------------------------- |
+| a     | [<code>Rect</code>](#Rect)        |
+| p     | <code>module:pex-math~Vec2</code> |
 
 <a name="module_rect.containsRect"></a>
 
@@ -689,25 +689,25 @@ Checks if a rectangle is inside another rectangle.
 
 | Param | Type                       |
 | ----- | -------------------------- |
-| a     | [<code>rect</code>](#rect) |
-| b     | [<code>rect</code>](#rect) |
+| a     | [<code>Rect</code>](#Rect) |
+| b     | [<code>Rect</code>](#Rect) |
 
 <a name="module_rect.includePoint"></a>
 
-### rect.includePoint(a, p) ⇒ [<code>rect</code>](#rect)
+### rect.includePoint(a, p) ⇒ [<code>Rect</code>](#Rect)
 
 Includes a point in a rectangle.
 
 **Kind**: static method of [<code>rect</code>](#module_rect)
 
-| Param | Type                       |
-| ----- | -------------------------- |
-| a     | [<code>rect</code>](#rect) |
-| p     | [<code>vec2</code>](#vec2) |
+| Param | Type                              |
+| ----- | --------------------------------- |
+| a     | [<code>Rect</code>](#Rect)        |
+| p     | <code>module:pex-math~Vec2</code> |
 
 <a name="module_rect.includeRect"></a>
 
-### rect.includeRect(a, b) ⇒ [<code>rect</code>](#rect)
+### rect.includeRect(a, b) ⇒ [<code>Rect</code>](#Rect)
 
 Includes a rectangle in another rectangle.
 
@@ -715,34 +715,34 @@ Includes a rectangle in another rectangle.
 
 | Param | Type                       |
 | ----- | -------------------------- |
-| a     | [<code>rect</code>](#rect) |
-| b     | [<code>rect</code>](#rect) |
+| a     | [<code>Rect</code>](#Rect) |
+| b     | [<code>Rect</code>](#Rect) |
 
 <a name="module_rect.mapPoint"></a>
 
-### rect.mapPoint(a, p) ⇒ [<code>vec2</code>](#vec2)
+### rect.mapPoint(a, p) ⇒ <code>module:pex-math~Vec2</code>
 
 Maps a point into the dimensions of a rectangle.
 
 **Kind**: static method of [<code>rect</code>](#module_rect)
 
-| Param | Type                       |
-| ----- | -------------------------- |
-| a     | [<code>rect</code>](#rect) |
-| p     | [<code>vec2</code>](#vec2) |
+| Param | Type                              |
+| ----- | --------------------------------- |
+| a     | [<code>Rect</code>](#Rect)        |
+| p     | <code>module:pex-math~Vec2</code> |
 
 <a name="module_rect.clampPoint"></a>
 
-### rect.clampPoint(a, p) ⇒ [<code>vec2</code>](#vec2)
+### rect.clampPoint(a, p) ⇒ <code>module:pex-math~Vec2</code>
 
 Clamps a point into the dimensions of a rectangle.
 
 **Kind**: static method of [<code>rect</code>](#module_rect)
 
-| Param | Type                       |
-| ----- | -------------------------- |
-| a     | [<code>rect</code>](#rect) |
-| p     | [<code>vec2</code>](#vec2) |
+| Param | Type                              |
+| ----- | --------------------------------- |
+| a     | [<code>Rect</code>](#Rect)        |
+| p     | <code>module:pex-math~Vec2</code> |
 
 <a name="module_rect.toString"></a>
 
@@ -754,57 +754,48 @@ Prints a rect to a string.
 
 | Param       | Type                       | Default        |
 | ----------- | -------------------------- | -------------- |
-| a           | [<code>rect</code>](#rect) |                |
+| a           | [<code>Rect</code>](#Rect) |                |
 | [precision] | <code>number</code>        | <code>4</code> |
 
-<a name="aabb"></a>
+<a name="AABB"></a>
 
-## aabb : <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
+## AABB : <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
 
-An axis-aligned bounding box defined by two min and max 3D points (eg. [[minX, minY, minZ], [maxX, maxY, maxZ]]).
-
-**Kind**: global typedef
-<a name="plane"></a>
-
-## plane : <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
-
-A plane defined by a 3D point and a normal vector perpendicular to the plane’s surface (eg. [[pointX, pointY, pointZ], [normalX, normalY, normalZ]]).
+An axis-aligned bounding box defined by two min
+  and max 3D points (eg. [[minX, minY, minZ], [maxX, maxY, maxZ]]).
 
 **Kind**: global typedef
-<a name="ray"></a>
+<a name="Plane"></a>
 
-## ray : <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
+## Plane : <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
 
-A ray defined by a starting 3D point origin and a 3D direction vector (eg. [[originX, originY, originZ], [directionX, directionY, directionZ]).
-
-**Kind**: global typedef
-<a name="rect"></a>
-
-## rect : <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
-
-A rectangle defined by two diagonally opposite 2D points (eg. [[minX, minY], [maxX, maxY]]).
+A plane defined by a 3D point and a normal vector
+  perpendicular to the plane’s surface (eg. [[pointX, pointY, pointZ],
+  [normalX, normalY, normalZ]]).
 
 **Kind**: global typedef
-<a name="triangle"></a>
+<a name="Ray"></a>
 
-## triangle : <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
+## Ray : <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
+
+A ray defined by a starting 3D point origin and a
+3D direction vector (eg. [[originX, originY, originZ], [directionX,
+directionY, directionZ]).
+
+**Kind**: global typedef
+<a name="Rect"></a>
+
+## Rect : <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
+
+A rectangle defined by two diagonally opposite 2D
+  points (eg. [[minX, minY], [maxX, maxY]]).
+
+**Kind**: global typedef
+<a name="Triangle"></a>
+
+## Triangle : <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
 
 A triangle defined by three 3D points.
-
-**Kind**: global typedef
-<a name="vec2"></a>
-
-## vec2 : <code>module:pex-math~vec2</code>
-
-**Kind**: global typedef
-<a name="vec3"></a>
-
-## vec3 : <code>module:pex-math~vec3</code>
-
-**Kind**: global typedef
-<a name="TypedArray"></a>
-
-## TypedArray : <code>module:pex-math~TypedArray</code>
 
 **Kind**: global typedef
 

@@ -4,13 +4,15 @@ import { vec3 } from "pex-math";
 
 /**
  * Enum for different intersections values
- * @readonly
- * @enum {number}
+ *
  * @property {number} Intersect Ray intersects the target
  * @property {number} NoIntersect Ray does not intersect the target
  * @property {number} SamePlane Ray lies on the same plane as the target
  * @property {number} Parallel Ray is parallel to the target
- * @property {number} TriangleDegenerate Triangle has zero area and cannot be tested
+ * @property {number} TriangleDegenerate Triangle has zero area and cannot be
+ *   tested
+ * @readonly
+ * @enum {number}
  */
 export const Intersections = Object.freeze({
   Intersect: 1,
@@ -33,6 +35,7 @@ const EPSILON = 1e-6;
 
 /**
  * Creates a new ray
+ *
  * @returns {import("./types.js").Ray}
  */
 export function create() {
@@ -44,11 +47,12 @@ export function create() {
 
 /**
  * Determines if a ray intersect a plane and set intersection point
- * @see {@link https://www.cs.princeton.edu/courses/archive/fall00/cs426/lectures/raycast/sld017.htm}
+ *
  * @param {import("./types.js").Ray} ray
  * @param {import("./types.js").Plane} plane
  * @param {import("pex-math").Vec3} out
  * @returns {number}
+ * @see {@link https://www.cs.princeton.edu/courses/archive/fall00/cs426/lectures/raycast/sld017.htm}
  */
 export function hitTestPlane(
   [origin, direction],
@@ -72,11 +76,12 @@ export function hitTestPlane(
 
 /**
  * Determines if a ray intersect a triangle and set intersection point
- * @see {@link https://web.archive.org/web/20200701173519/http://geomalgorithms.com/a06-_intersect-2.html#intersect3D_RayTriangle()}
+ *
  * @param {import("./types.js").Ray} ray
  * @param {import("./types.js").Triangle} triangle
  * @param {import("pex-math").Vec3} out
  * @returns {number}
+ * @see {@link https://web.archive.org/web/20200701173519/http://geomalgorithms.com/a06-_intersect-2.html#intersect3D_RayTriangle()}
  */
 export function hitTestTriangle(
   [origin, direction],
@@ -142,10 +147,11 @@ export function hitTestTriangle(
 
 /**
  * Determines if a ray intersect an AABB bounding box
- * @see {@link http://gamedev.stackexchange.com/questions/18436/most-efficient-aabb-vs-ray-collision-algorithms}
+ *
  * @param {import("./types.js").Ray} ray
  * @param {import("./types.js").AABB} aabb
  * @returns {boolean}
+ * @see {@link http://gamedev.stackexchange.com/questions/18436/most-efficient-aabb-vs-ray-collision-algorithms}
  */
 export function hitTestAABB([origin, direction], aabb) {
   const dirFracx = 1 / direction[0];
@@ -180,12 +186,14 @@ export function hitTestAABB([origin, direction], aabb) {
 
 /**
  * Alias for {@link hitTestAABB}
+ *
  * @function
  */
 export const intersectsAABB = hitTestAABB;
 
 /**
  * Prints a plane to a string.
+ *
  * @param {import("./types.js").Ray} a
  * @param {number} [precision=4]
  * @returns {string}

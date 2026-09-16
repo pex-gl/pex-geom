@@ -4,11 +4,12 @@ import { vec3 } from "pex-math";
 
 /**
  * Enum for different side values
- * @readonly
- * @enum {number}
+ *
  * @property {number} OnPlane Point lies on the plane
  * @property {number} Same Point is on the same side as the plane normal
  * @property {number} Opposite Point is on the opposite side of the plane normal
+ * @readonly
+ * @enum {number}
  */
 export const Side = Object.freeze({
   OnPlane: 0,
@@ -20,6 +21,7 @@ const TEMP_0 = vec3.create();
 
 /**
  * Creates a new plane
+ *
  * @returns {import("./types.js").Plane}
  */
 export function create() {
@@ -31,6 +33,7 @@ export function create() {
 
 /**
  * Returns on which side a point is.
+ *
  * @param {import("./types.js").Plane} plane
  * @param {import("pex-math").Vec3} point
  * @returns {number}
@@ -47,6 +50,7 @@ export function side([planePoint, planeNormal], point) {
 
 /**
  * Prints a plane to a string.
+ *
  * @param {import("./types.js").Plane} a
  * @param {number} [precision=4]
  * @returns {string}

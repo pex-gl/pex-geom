@@ -4,6 +4,7 @@ import { avec3, vec3 } from "pex-math";
 
 /**
  * Creates a new bounding box.
+ *
  * @returns {import("./types.js").AABB}
  */
 export function create() {
@@ -16,6 +17,7 @@ export function create() {
 
 /**
  * Reset a bounding box.
+ *
  * @param {import("./types.js").AABB} a
  * @returns {import("./types.js").Rect}
  */
@@ -31,6 +33,7 @@ export function empty(a) {
 
 /**
  * Copies a bounding box.
+ *
  * @param {import("./types.js").AABB} a
  * @returns {import("./types.js").AABB}
  */
@@ -40,6 +43,7 @@ export function copy(a) {
 
 /**
  * Sets a bounding box to another.
+ *
  * @param {import("./types.js").AABB} a
  * @param {import("./types.js").AABB} b
  * @returns {import("./types.js").AABB}
@@ -56,6 +60,7 @@ export function set(a, b) {
 
 /**
  * Checks if a bounding box is empty.
+ *
  * @param {import("./types.js").AABB} a
  * @returns {boolean}
  */
@@ -65,6 +70,7 @@ export function isEmpty(a) {
 
 /**
  * Updates a bounding box from a list of points.
+ *
  * @param {import("./types.js").AABB} a
  * @param {import("pex-math").Vec3[] | import("pex-math").TypedArray} points
  * @returns {import("./types.js").AABB}
@@ -88,6 +94,7 @@ export function fromPoints(a, points) {
 
 /**
  * Returns a list of 8 points from a bounding box.
+ *
  * @param {import("./types.js").AABB} a
  * @param {import("pex-math").Vec3[]} [points]
  * @returns {import("pex-math").Vec3[]}
@@ -106,6 +113,7 @@ export function getCorners(a, points = Array.from({ length: 8 }, () => [])) {
 
 /**
  * Returns the center of a bounding box.
+ *
  * @param {import("./types.js").AABB} a
  * @param {import("pex-math").Vec3} out
  * @returns {import("pex-math").Vec3}
@@ -119,6 +127,7 @@ export function center(a, out = [0, 0, 0]) {
 
 /**
  * Returns the size of a bounding box.
+ *
  * @param {import("./types.js").AABB} a
  * @param {import("pex-math").Vec3} out
  * @returns {import("pex-math").Vec3}
@@ -132,6 +141,7 @@ export function size(a, out = [0, 0, 0]) {
 
 /**
  * Checks if a point is inside a bounding box.
+ *
  * @param {import("./types.js").AABB} a
  * @param {import("pex-math").Vec3} p
  * @returns {boolean}
@@ -149,6 +159,7 @@ export function containsPoint(a, [x, y, z]) {
 
 /**
  * Includes a bounding box in another.
+ *
  * @param {import("./types.js").AABB} a
  * @param {import("./types.js").AABB} b
  * @returns {import("./types.js").AABB}
@@ -172,9 +183,10 @@ export function includeAABB(a, b) {
 
 /**
  * Includes a point in a bounding box.
+ *
  * @param {import("./types.js").AABB} a
  * @param {import("pex-math").Vec3} p
- * @param {number} [i=0] offset in the point array
+ * @param {number} [i=0] Offset in the point array
  * @returns {import("pex-math").Vec3}
  */
 export function includePoint(a, p, i = 0) {
@@ -189,6 +201,7 @@ export function includePoint(a, p, i = 0) {
 
 /**
  * Prints a bounding box to a string.
+ *
  * @param {import("./types.js").AABB} a
  * @param {number} [precision=4]
  * @returns {string}
