@@ -4,7 +4,7 @@ import { vec2 } from "pex-math";
 
 /**
  * Creates a new rectangle.
- * @returns {import("./types.js").rect}
+ * @returns {import("./types.js").Rect}
  */
 export function create() {
   return [
@@ -15,8 +15,8 @@ export function create() {
 
 /**
  * Reset a rectangle.
- * @param {import("./types.js").rect} a
- * @returns {import("./types.js").rect}
+ * @param {import("./types.js").Rect} a
+ * @returns {import("./types.js").Rect}
  */
 export function empty(a) {
   a[0][0] = a[0][1] = Infinity;
@@ -26,8 +26,8 @@ export function empty(a) {
 
 /**
  * Copies a rectangle.
- * @param {import("./types.js").rect} a
- * @returns {import("./types.js").rect}
+ * @param {import("./types.js").Rect} a
+ * @returns {import("./types.js").Rect}
  */
 export function copy(a) {
   return [a[0].slice(), a[1].slice()];
@@ -35,9 +35,9 @@ export function copy(a) {
 
 /**
  * Sets a rectangle to another.
- * @param {import("./types.js").rect} a
- * @param {import("./types.js").rect} b
- * @returns {import("./types.js").rect}
+ * @param {import("./types.js").Rect} a
+ * @param {import("./types.js").Rect} b
+ * @returns {import("./types.js").Rect}
  */
 export function set(a, b) {
   a[0][0] = b[0][0];
@@ -49,7 +49,7 @@ export function set(a, b) {
 
 /**
  * Checks if a rectangle is empty.
- * @param {import("./types.js").rect} a
+ * @param {import("./types.js").Rect} a
  * @returns {boolean}
  */
 export function isEmpty(a) {
@@ -58,9 +58,9 @@ export function isEmpty(a) {
 
 /**
  * Updates a rectangle from a list of points.
- * @param {import("./types.js").rect} a
- * @param {import("./types.js").vec2[] | import("./types.js").TypedArray} points
- * @returns {import("./types.js").rect}
+ * @param {import("./types.js").Rect} a
+ * @param {import("pex-math").Vec2[] | import("pex-math").TypedArray} points
+ * @returns {import("./types.js").Rect}
  */
 export function fromPoints(a, points) {
   const isTypedArray = !Array.isArray(points);
@@ -73,9 +73,9 @@ export function fromPoints(a, points) {
 
 /**
  * Returns a list of 4 points from a rectangle.
- * @param {import("./types.js").rect} a
- * @param {import("./types.js").vec2[]} points
- * @returns {import("./types.js").vec2[]}
+ * @param {import("./types.js").Rect} a
+ * @param {import("pex-math").Vec2[]} points
+ * @returns {import("pex-math").Vec2[]}
  */
 export function getCorners(a, points = []) {
   points[0] = a[0].slice();
@@ -87,9 +87,9 @@ export function getCorners(a, points = []) {
 
 /**
  * Scales a rectangle.
- * @param {import("./types.js").rect} a
+ * @param {import("./types.js").Rect} a
  * @param {number} n
- * @returns {import("./types.js").rect}
+ * @returns {import("./types.js").Rect}
  */
 export function scale(a, n) {
   a[0][0] *= n;
@@ -101,9 +101,9 @@ export function scale(a, n) {
 
 /**
  * Sets the size of a rectangle using width and height.
- * @param {import("./types.js").rect} a
- * @param {import("./types.js").vec2} size
- * @returns {import("./types.js").rect}
+ * @param {import("./types.js").Rect} a
+ * @param {import("pex-math").Vec2} size
+ * @returns {import("./types.js").Rect}
  */
 export function setSize(a, size) {
   a[1][0] = a[0][0] + size[0];
@@ -113,9 +113,9 @@ export function setSize(a, size) {
 
 /**
  * Returns the size of a rectangle.
- * @param {import("./types.js").rect} a
- * @param {import("./types.js").vec2} out
- * @returns {import("./types.js").vec2}
+ * @param {import("./types.js").Rect} a
+ * @param {import("pex-math").Vec2} out
+ * @returns {import("pex-math").Vec2}
  */
 export function size(a, out = []) {
   out[0] = width(a);
@@ -125,7 +125,7 @@ export function size(a, out = []) {
 
 /**
  * Returns the width of a rectangle.
- * @param {import("./types.js").rect} a
+ * @param {import("./types.js").Rect} a
  * @returns {number}
  */
 export function width(a) {
@@ -134,7 +134,7 @@ export function width(a) {
 
 /**
  * Returns the height of a rectangle.
- * @param {import("./types.js").rect} a
+ * @param {import("./types.js").Rect} a
  * @returns {number}
  */
 export function height(a) {
@@ -143,7 +143,7 @@ export function height(a) {
 
 /**
  * Returns the aspect ratio of a rectangle.
- * @param {import("./types.js").rect} a
+ * @param {import("./types.js").Rect} a
  * @returns {number}
  */
 export function aspectRatio(a) {
@@ -152,9 +152,9 @@ export function aspectRatio(a) {
 
 /**
  * Sets the position of a rectangle.
- * @param {import("./types.js").rect} a
- * @param {import("./types.js").vec2} p
- * @returns {import("./types.js").rect}
+ * @param {import("./types.js").Rect} a
+ * @param {import("pex-math").Vec2} p
+ * @returns {import("./types.js").Rect}
  */
 export function setPosition(a, [x, y]) {
   const w = width(a);
@@ -168,9 +168,9 @@ export function setPosition(a, [x, y]) {
 
 /**
  * Returns the center of a rectangle.
- * @param {import("./types.js").rect} a
- * @param {import("./types.js").vec2} out
- * @returns {import("./types.js").rect}
+ * @param {import("./types.js").Rect} a
+ * @param {import("pex-math").Vec2} out
+ * @returns {import("./types.js").Rect}
  */
 export function center(a, out = []) {
   out[0] = a[0][0] + width(a) * 0.5;
@@ -180,8 +180,8 @@ export function center(a, out = []) {
 
 /**
  * Checks if a point is inside a rectangle.
- * @param {import("./types.js").rect} a
- * @param {import("./types.js").vec2} p
+ * @param {import("./types.js").Rect} a
+ * @param {import("pex-math").Vec2} p
  * @returns {boolean}
  */
 export function containsPoint(a, [x, y]) {
@@ -190,8 +190,8 @@ export function containsPoint(a, [x, y]) {
 
 /**
  * Checks if a rectangle is inside another rectangle.
- * @param {import("./types.js").rect} a
- * @param {import("./types.js").rect} b
+ * @param {import("./types.js").Rect} a
+ * @param {import("./types.js").Rect} b
  * @returns {boolean}
  */
 export function containsRect(a, b) {
@@ -200,9 +200,9 @@ export function containsRect(a, b) {
 
 /**
  * Includes a point in a rectangle.
- * @param {import("./types.js").rect} a
- * @param {import("./types.js").vec2} p
- * @returns {import("./types.js").rect}
+ * @param {import("./types.js").Rect} a
+ * @param {import("pex-math").Vec2} p
+ * @returns {import("./types.js").Rect}
  */
 export function includePoint(a, [x, y]) {
   const minx = a[0][0];
@@ -220,9 +220,9 @@ export function includePoint(a, [x, y]) {
 
 /**
  * Includes a rectangle in another rectangle.
- * @param {import("./types.js").rect} a
- * @param {import("./types.js").rect} b
- * @returns {import("./types.js").rect}
+ * @param {import("./types.js").Rect} a
+ * @param {import("./types.js").Rect} b
+ * @returns {import("./types.js").Rect}
  */
 export function includeRect(a, b) {
   includePoint(a, b[0]);
@@ -232,9 +232,9 @@ export function includeRect(a, b) {
 
 /**
  * Maps a point into the dimensions of a rectangle.
- * @param {import("./types.js").rect} a
- * @param {import("./types.js").vec2} p
- * @returns {import("./types.js").vec2}
+ * @param {import("./types.js").Rect} a
+ * @param {import("pex-math").Vec2} p
+ * @returns {import("pex-math").Vec2}
  */
 export function mapPoint(a, p) {
   const minx = a[0][0];
@@ -249,9 +249,9 @@ export function mapPoint(a, p) {
 
 /**
  * Clamps a point into the dimensions of a rectangle.
- * @param {import("./types.js").rect} a
- * @param {import("./types.js").vec2} p
- * @returns {import("./types.js").vec2}
+ * @param {import("./types.js").Rect} a
+ * @param {import("pex-math").Vec2} p
+ * @returns {import("pex-math").Vec2}
  */
 export function clampPoint(a, p) {
   const minx = a[0][0];
@@ -266,7 +266,7 @@ export function clampPoint(a, p) {
 
 /**
  * Prints a rect to a string.
- * @param {import("./types.js").rect} a
+ * @param {import("./types.js").Rect} a
  * @param {number} [precision=4]
  * @returns {string}
  */

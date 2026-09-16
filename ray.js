@@ -33,7 +33,7 @@ const EPSILON = 1e-6;
 
 /**
  * Creates a new ray
- * @returns {import("./types.js").ray}
+ * @returns {import("./types.js").Ray}
  */
 export function create() {
   return [
@@ -45,9 +45,9 @@ export function create() {
 /**
  * Determines if a ray intersect a plane and set intersection point
  * @see {@link https://www.cs.princeton.edu/courses/archive/fall00/cs426/lectures/raycast/sld017.htm}
- * @param {import("./types.js").ray} ray
- * @param {import("./types.js").plane} plane
- * @param {import("./types.js").vec3} out
+ * @param {import("./types.js").Ray} ray
+ * @param {import("./types.js").Plane} plane
+ * @param {import("pex-math").Vec3} out
  * @returns {number}
  */
 export function hitTestPlane(
@@ -73,9 +73,9 @@ export function hitTestPlane(
 /**
  * Determines if a ray intersect a triangle and set intersection point
  * @see {@link https://web.archive.org/web/20200701173519/http://geomalgorithms.com/a06-_intersect-2.html#intersect3D_RayTriangle()}
- * @param {import("./types.js").ray} ray
- * @param {import("./types.js").triangle} triangle
- * @param {import("./types.js").vec3} out
+ * @param {import("./types.js").Ray} ray
+ * @param {import("./types.js").Triangle} triangle
+ * @param {import("pex-math").Vec3} out
  * @returns {number}
  */
 export function hitTestTriangle(
@@ -143,8 +143,8 @@ export function hitTestTriangle(
 /**
  * Determines if a ray intersect an AABB bounding box
  * @see {@link http://gamedev.stackexchange.com/questions/18436/most-efficient-aabb-vs-ray-collision-algorithms}
- * @param {import("./types.js").ray} ray
- * @param {import("./types.js").aabb} aabb
+ * @param {import("./types.js").Ray} ray
+ * @param {import("./types.js").AABB} aabb
  * @returns {boolean}
  */
 export function hitTestAABB([origin, direction], aabb) {
@@ -186,7 +186,7 @@ export const intersectsAABB = hitTestAABB;
 
 /**
  * Prints a plane to a string.
- * @param {import("./types.js").ray} a
+ * @param {import("./types.js").Ray} a
  * @param {number} [precision=4]
  * @returns {string}
  */

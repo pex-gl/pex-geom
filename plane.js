@@ -20,7 +20,7 @@ const TEMP_0 = vec3.create();
 
 /**
  * Creates a new plane
- * @returns {import("./types.js").plane}
+ * @returns {import("./types.js").Plane}
  */
 export function create() {
   return [
@@ -31,8 +31,8 @@ export function create() {
 
 /**
  * Returns on which side a point is.
- * @param {import("./types.js").plane} plane
- * @param {import("./types.js").vec3} point
+ * @param {import("./types.js").Plane} plane
+ * @param {import("pex-math").Vec3} point
  * @returns {number}
  */
 export function side([planePoint, planeNormal], point) {
@@ -47,7 +47,7 @@ export function side([planePoint, planeNormal], point) {
 
 /**
  * Prints a plane to a string.
- * @param {import("./types.js").plane} a
+ * @param {import("./types.js").Plane} a
  * @param {number} [precision=4]
  * @returns {string}
  */
