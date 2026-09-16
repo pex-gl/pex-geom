@@ -210,10 +210,10 @@ export function includePoint(a, [x, y]) {
   const maxx = a[1][0];
   const maxy = a[1][1];
 
-  a[0][0] = minx > x ? x : minx;
-  a[0][1] = miny > y ? y : miny;
-  a[1][0] = maxx < x ? x : maxx;
-  a[1][1] = maxy < y ? y : maxy;
+  a[0][0] = Math.min(minx, x);
+  a[0][1] = Math.min(miny, y);
+  a[1][0] = Math.max(maxx, x);
+  a[1][1] = Math.max(maxy, y);
 
   return a;
 }

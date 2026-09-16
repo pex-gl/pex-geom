@@ -107,7 +107,7 @@ export function hitTestTriangle(
   // ray goes away from triangle
   if (r < -EPSILON) return Intersections.NoIntersect;
 
-  // for a segment, also test if (r > 1.0) => no intersect
+  // for a segment, also test if (r > 1) => no intersect
   // intersect point of ray and plane
   const I = vec3.add(
     vec3.set(TEMP_4, origin),
@@ -127,10 +127,10 @@ export function hitTestTriangle(
 
   // get and test parametric coords
   const s = (uv * wv - vv * wu) / D;
-  if (s < -EPSILON || s > 1.0 + EPSILON) return Intersections.NoIntersect;
+  if (s < -EPSILON || s > 1 + EPSILON) return Intersections.NoIntersect;
 
   const t = (uv * wu - uu * wv) / D;
-  if (t < -EPSILON || s + t > 1.0 + EPSILON) return Intersections.NoIntersect;
+  if (t < -EPSILON || s + t > 1 + EPSILON) return Intersections.NoIntersect;
 
   vec3.set(out, u);
   vec3.scale(out, s);
@@ -148,9 +148,9 @@ export function hitTestTriangle(
  * @returns {boolean}
  */
 export function hitTestAABB([origin, direction], aabb) {
-  const dirFracx = 1.0 / direction[0];
-  const dirFracy = 1.0 / direction[1];
-  const dirFracz = 1.0 / direction[2];
+  const dirFracx = 1 / direction[0];
+  const dirFracy = 1 / direction[1];
+  const dirFracz = 1 / direction[2];
 
   const min = aabb[0];
   const max = aabb[1];
@@ -172,14 +172,8 @@ export function hitTestAABB([origin, direction], aabb) {
   const t5 = (minz - origin[2]) * dirFracz;
   const t6 = (maxz - origin[2]) * dirFracz;
 
-  const tmin = Math.max(
-    Math.max(Math.min(t1, t2), Math.min(t3, t4)),
-    Math.min(t5, t6),
-  );
-  const tmax = Math.min(
-    Math.min(Math.max(t1, t2), Math.max(t3, t4)),
-    Math.max(t5, t6),
-  );
+  const tmin = Math.max(Math.min(t1, t2), Math.min(t3, t4), Math.min(t5, t6));
+  const tmax = Math.min(Math.max(t1, t2), Math.max(t3, t4), Math.max(t5, t6));
 
   return !(tmax < 0 || tmin > tmax);
 }
