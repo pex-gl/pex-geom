@@ -50,15 +50,15 @@
     "test:watch": "node --test --watch"
   },
   "dependencies": {
-    "pex-math": "^4.2.0"
+    "pex-math": "^4.4.0"
   },
   "devDependencies": {
-    "es-module-shims": "^2.8.1"
+    "es-module-shims": "^2.8.4"
   },
   "engines": {
     "node": ">=22.0.0",
     "npm": ">=10.5.1",
-    "snowdev": ">=2.7.x"
+    "snowdev": ">=3.0.0-alpha.1"
   },
   "snowdev": {
     "dependencies": [
